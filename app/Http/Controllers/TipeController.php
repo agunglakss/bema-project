@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tipe;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\str;
 
 class TipeController extends Controller
 {
@@ -15,11 +15,11 @@ class TipeController extends Controller
      */
     public function index()
     {
-        $data = [
-            'title'      => 'Dashboard Tipe Motor',
-            'tipeMotors' => Tipe::orderBy('nama_tipe')->get(),
-        ];    
-        return view('admin.product.tipe', $data);
+        $title = 'Dashboard Tipe Motor';
+
+        $tipeMotors = Tipe::orderBy('nama_tipe')->get();
+
+        return view('admin.product.tipe', compact('title', 'tipeMotors',));
     }
 
     /**
@@ -29,11 +29,11 @@ class TipeController extends Controller
      */
     public function create()
     {
-        $data = [
-            'title' => 'Dashboard Tambah Tipe Motor',
-        ];
+        $title = 'Dashboard Tambah Tipe Motor';
 
-        return view('admin.product.create_tipe', $data);
+        $kategoriMotors = \App\Kategori::all('id', 'nama_kategori');
+
+        return view('admin.product.create_tipe', compact('title', 'kategoriMotors',));
     }
 
     /**
@@ -45,66 +45,64 @@ class TipeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_tipe' => 'required',
+            'nama_kategori'     => 'required',
+            'nama_tipe'         => 'required',
         ]);
 
-        Tipe::create([
-            'nama_tipe' => $request->nama_tipe,
-            'slug'      => Str::slug($request->nama_tipe, '-'),
+     Tipe::create([
+            'kategori_id'   => $request->nama_kategori,
+            'nama_tipe'     => $request->nama_tipe,
+            'slug'          => str::slug($request->nama_tipe, '-'),
         ]);
 
-        return redirect('/products/tipe-motor')->with('status', 'Tipe Motor Berhasil Ditambahkan!');
+        return redirect('/products/tipe-motor')->with('status',  'Tipe Motor Berhasil Ditambahkan!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tipe  $tipe
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Tipe $tipe)
+    public function show (Tipe $tipe)
     {
-        $data = [
-            'title' => 'Dashboard Detail Tipe Motor',
-            'tipe'  => $tipe,
-        ];
-
-        return $this->view('admin.product.detail-tipe', $data);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tipe  $tipe
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tipe $tipe)
+    public function edit (Tipe  $tipe)
     {
-        $data = [
-            'title' => 'Dashboard Update Tipe Motor',
-            'tipe'  => $tipe,
-        ];
+        $title = 'Dashboard Tipe Motor';
 
-        return view('admin.product.update_tipe', $data);
+        $kategoriMotors = \App\Kategori::all('id', 'nama_kategori');
+
+        return view('admin.product.update_tipe', compact('title', 'kategoriMotors', 'tipe'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tipe  $tipe
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tipe $tipe)
+    public function update(Request $request, Tipe  $tipe)
     {
         $request->validate([
+            'nama_kategori'     => 'required',
             'nama_tipe' => 'required',
         ]);
 
-        $tipe->update([
-                'nama_tipe' => $request->nama_tipe,
-                'slug'      => Str::slug($request->nama_tipe, '-'),
-            ]);
+         $tipe->update([
+            'kategori_id'       => $request->nama_kategori,
+            'nama_tipe' => $request->nama_tipe,
+            'slug'          => Str::slug($request->nama_tipe),
+        ]);
 
         return redirect('products/tipe-motor');
     }
@@ -112,10 +110,10 @@ class TipeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tipe  $tipe
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tipe $tipe)
+    public function destroy($id)
     {
         //
     }

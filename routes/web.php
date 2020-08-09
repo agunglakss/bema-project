@@ -40,17 +40,17 @@ Route::get('/admin', function() {
 	return view('admin.dashboard.index', compact('title'));
 });
 
-Route::get('/products/tipe-motor', 'TipeController@index');
-Route::get('/products/tipe-motor/create', 'TipeController@create');
-Route::get('/products/tipe-motor/{tipe:slug}/edit', 'TipeController@edit');
-Route::patch('/products/tipe-motor/{tipe:slug}/edit', 'TipeController@update');
-Route::post('/products/tipe-motor', 'TipeController@store');
-
 Route::get('/products/kategori-motor', 'KategoriController@index');
 Route::get('/products/kategori-motor/create', 'KategoriController@create');
 Route::get('/products/kategori-motor/{kategori:slug}/edit', 'KategoriController@edit');
 Route::patch('/products/kategori-motor/{kategori:slug}/edit', 'KategoriController@update');
 Route::post('/products/kategori-motor', 'KategoriController@store');
+
+Route::get('/products/tipe-motor', 'TipeController@index');
+Route::get('/products/tipe-motor/create', 'TipeController@create');
+Route::get('/products/tipe-motor/{tipe:slug}/edit', 'TipeController@edit');
+Route::patch('/products/tipe-motor/{tipe:slug}/edit', 'TipeController@update');
+Route::post('/products/tipe-motor', 'TipeController@store');
 
 Route::get('/products/motor', 'MotorsController@index');
 Route::get('/products/motor/create', 'MotorsController@create');

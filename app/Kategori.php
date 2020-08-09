@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
-    protected $fillable = ['tipe_id', 'nama_kategori', 'slug'];
+    protected $fillable = ['nama_kategori', 'slug'];
 
-    public function tipe()
+    public function tipes()
     {
-        return $this->belongsTo('App\Tipe');
+        return $this->hasMany('App\Tipe');
     }
 
     public function motors()
     {
-        return $this->hasMany('App\Motor');
+        return $this->hasManyThrough('App\Motor', 'App\Tipe');
     }
 }

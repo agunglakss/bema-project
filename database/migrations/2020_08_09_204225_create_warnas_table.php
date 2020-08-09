@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipesTable extends Migration
+class CreateWarnasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTipesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipes', function (Blueprint $table) {
+        Schema::create('warnas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_tipe');
-            $table->string('slug');
+            $table->foreignId('motor_id');
+            $table->string('warna_motor');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateTipesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipes');
+        Schema::dropIfExists('warnas');
     }
 }

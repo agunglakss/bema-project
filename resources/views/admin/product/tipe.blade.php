@@ -45,58 +45,65 @@
                      <h4>Daftar Tipe Motor</h4>
                   </div>
                   <div class="card-body">
+
                      <div class="table-responsive">
                         <table class="table table-striped">
                            <tr>
                               <th>No</th>
                               <th>Tipe Motor</th>
+                              <th>Kategori Motor</th>
                               <th>Created At</th>
                               <th>Updated At</th>
                               <th>Status</th>
                               <th>Action</th>
                            </tr>
-                           @foreach($tipeMotors as $tipeMotor)
+                           @forelse ($tipeMotors as $tipeMotor)
                            <tr>
                               <td>{{ $loop->iteration }}</td>
-                              <td>{{ $tipeMotor->nama_tipe }}</td>
+                              <td>{{ $tipeMotor->nama_tipe}}</td>
+                              <td>{{ $tipeMotor->kategori->nama_kategori }}</td>
                               <td>{{ $tipeMotor->created_at }}</td>
                               <td>{{ $tipeMotor->updated_at }}</td>
                               <td><div class="badge badge-success">Aktif</div></td>
                               <td>
-                                 <a class="btn btn-info" href="{{ url ('/products/tipe-motor') }}/{{$tipeMotor->slug}}/edit">Edit</a>
-                                 <a class="btn btn-danger" href="#">Hapus</a>
+                                 <a class="btn btn-info" href="{{ url('products/tipe-motor') }}/{{ $tipeMotor->slug }}/edit">Edit</a>
+                                 <a class="btn btn-danger" href="">Hapus</a>
                               </td>
                            </tr>
-                           @endforeach
+                           @empty
+                               
+                           @endforelse
                         </table>
                      </div>
+
                      <div class="float-right">
-                      <nav>
-                        <ul class="pagination">
-                          <li class="page-item disabled">
-                            <a class="page-link" href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                              <span class="sr-only">Previous</span>
-                            </a>
-                          </li>
-                          <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                              <span class="sr-only">Next</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
+                        <nav>
+                           <ul class="pagination">
+                              <li class="page-item disabled">
+                                 <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                 </a>
+                              </li>
+                              <li class="page-item active">
+                                 <a class="page-link" href="#">1</a>
+                              </li>
+                              <li class="page-item">
+                                 <a class="page-link" href="#">2</a>
+                              </li>
+                              <li class="page-item">
+                                 <a class="page-link" href="#">3</a>
+                              </li>
+                              <li class="page-item">
+                                 <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                 </a>
+                              </li>
+                           </ul>
+                        </nav>
                      </div>
+
                   </div>
                </div>
             </div>

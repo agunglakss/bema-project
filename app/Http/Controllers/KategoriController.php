@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Kategori;
 use Illuminate\Http\Request;
-use Illuminate\Support\str;
+use Illuminate\Support\Str;
 
 class KategoriController extends Controller
 {
@@ -17,7 +17,7 @@ class KategoriController extends Controller
     {
         $title = 'Dashboard Kategori Motor';
 
-        $kategoriMotors = Kategori::orderBy('nama_kategori')->get();
+        $kategoriMotors = Kategori::orderBy('nama_Kategori')->get();
 
         return view('admin.product.kategori', compact('title', 'kategoriMotors',));
     }
@@ -29,11 +29,11 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        $title = 'Dashboard Tambah Kategori Motor';
+        $data = [
+            'title' => 'Dashboard Tambah Kategori Motor',
+        ];
 
-        $tipeMotors = \App\Tipe::all('id', 'nama_tipe');
-
-        return view('admin.product.create_kategori', compact('title', 'tipeMotors',));
+        return view('admin.product.create_kategori', $data);
     }
 
     /**
@@ -45,14 +45,12 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_tipe'     => 'required',
             'nama_kategori' => 'required',
         ]);
 
         Kategori::create([
-            'tipe_id'       => $request->nama_tipe,
             'nama_kategori' => $request->nama_kategori,
-            'slug'          => str::slug($request->nama_kategori, '-'),
+            'slug'          => Str::slug($request->nama_kategori, '-'),
         ]);
 
         return redirect('/products/kategori-motor')->with('status', 'Kategori Motor Berhasil Ditambahkan!');
@@ -61,48 +59,47 @@ class KategoriController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
     public function show(Kategori $kategori)
     {
-        //
+    
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
     public function edit(Kategori $kategori)
     {
-        $title = 'Dashboard Kategori Motor';
+        $data = [
+            'title' => 'Dashboard Update Kategori Motor',
+            'kategori'  => $kategori,
+        ];
 
-        $tipeMotors = \App\Tipe::all('id', 'nama_tipe');
-
-        return view('admin.product.update_kategori', compact('title', 'tipeMotors', 'kategori'));
+        return view('admin.product.update_kategori', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Kategori $kategori)
     {
         $request->validate([
-            'nama_tipe'     => 'required',
             'nama_kategori' => 'required',
         ]);
 
         $kategori->update([
-            'tipe_id'       => $request->nama_tipe,
-            'nama_kategori' => $request->nama_kategori,
-            'slug'          => Str::slug($request->nama_kategori),
-        ]);
+                'nama_kategori' => $request->nama_kategori,
+                'slug'          => Str::slug($request->nama_kategori, '-'),
+            ]);
 
         return redirect('products/kategori-motor');
     }
@@ -110,10 +107,10 @@ class KategoriController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Kategori $kategori)
     {
         //
     }
