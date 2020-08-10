@@ -4,10 +4,10 @@
 	<section class="section">
 
 		<div class="section-header">
-         <h1>Tipe Motor</h1>
+         <h1>Daftar Tipe Motor</h1>
          <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ url('/admin') }}">Dashboard</a></div>
-              <div class="breadcrumb-item">Tipe Motor</div>
+              <div class="breadcrumb-item">Daftar Tipe Motor</div>
             </div>
       </div>
       
@@ -66,12 +66,12 @@
                               <td>{{ $tipeMotor->updated_at }}</td>
                               <td><div class="badge badge-success">Aktif</div></td>
                               <td>
-                                 <a class="btn btn-info" href="{{ url('products/tipe-motor') }}/{{ $tipeMotor->slug }}/edit">Edit</a>
-                                 <a class="btn btn-danger" href="">Hapus</a>
+                                 <a class="btn btn-info" href="{{ url('products/tipe-motor') }}/{{ $tipeMotor->slug }}/edit" title="Edit Tipe Motor"><i class="fa fa-edit"></i></a>
+                                 <a class="btn btn-danger" href="" title="Hapus Tipe Motor"><i class="fa fa-trash"></i></a>
                               </td>
                            </tr>
                            @empty
-                               
+                           <strong>Data Tipe Motor Belum Tersedia.</strong>
                            @endforelse
                         </table>
                      </div>

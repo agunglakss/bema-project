@@ -4,10 +4,10 @@
 	<section class="section">
 
 		<div class="section-header">
-         <h1>Daftar Motor</h1>
+         <h1>{{ $title }}</h1>
          <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ url('/admin') }}">Dashboard</a></div>
-              <div class="breadcrumb-item">Daftar Motor</div>
+            <div class="breadcrumb-item">{{ $title }}</div>
             </div>
       </div>
       
@@ -17,7 +17,8 @@
             <div class="col-12">
                <div class="card mb-0">
                   <div class="card-body">
-                     <a class="btn btn-primary" href="{{ url('/products/motor/create') }}">Tambah Motor</a>
+                     <a class="btn btn-primary" href="{{ url('/products/motor/create') }}">Tambah Harga</a>
+                     <a class="btn btn-success" href="{{ url('/products/motor/create') }}">Import Harga Dari Excel</a>
                   </div>
                </div>
             </div>
@@ -26,43 +27,37 @@
          <div class="row mt-4">
             <div class="col-12">
                <div class="card">
-                  <div class="card-header">
-                     <h4>Daftar Motor</h4>
-                  </div>
+                  {{-- <div class="card-header">
+                     <h4>Daftar Harga Cicilan Motor</h4>
+                  </div> --}}
                   <div class="card-body">
 
                      <div class="table-responsive">
                         <table class="table table-striped">
                            <tr>
                               <th>No</th>
-                              <th>Nama Motor</th>
-                              <th>Kategori Motor</th>
-                              <th>Tipe Motor</th>
-                              <th>Harga OTR</th>
-                              {{-- <th>Warna</th> --}}
+                              <th>Motor</th>
+                              <th>Uang Muka</th>
+                              <th>Potongan Harga</th>
                               <th>Created At</th>
                               <th>Updated At</th>
-                              <th>Status</th>
+                              <th>Daftar Cicilan Harga</th>
                               <th>Action</th>
                            </tr>
-                           @forelse ($Motors as $Motor)
+                          
                            <tr>
-                              <td>{{ $loop->iteration }}</td>
-                              <td>{{ $Motor->nama_motor }}</td>
-                              <td>{{ $Motor->tipe->kategori->nama_kategori }}</td>
-                              <td>{{ $Motor->tipe->nama_tipe }}</td>
-                              <td>Rp {{ number_format ($Motor->harga_otr) }}</td>
-                              <td>{{ $Motor->created_at->format('d-M-Y') }}</td>
-                              <td>{{ $Motor->updated_at->format('d-M-Y') }}</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
                               <td><div class="badge badge-success">Aktif</div></td>
                               <td>
-                                 <a class="btn btn-info" href="{{ url('/products/motor') }}/{{$Motor->slug}}/edit" title="Edit Motor"><i class="fa fa-edit"></i></a>
-                                 <a class="btn btn-danger" href="{{ url('products/motor') }}/{{ $Motor->slug }}/delete" title="Hapus Motor"><i class="fa fa-trash"></i></a>
+                                 <a class="btn btn-info" href="{{ url('/pricelist') }}" title="Edit Daftar Harga"><i class="fa fa-edit"></i></a>
+                                 <a class="btn btn-danger" href="{{ url('/pricelist') }}" title="Hapus Daftar Harga"><i class="fa fa-trash"></i></a>
                               </td>
                            </tr>
-                           @empty
-                           <strong>Data Motor Belum Tersedia.</strong> 
-                           @endforelse
                         </table>
                      </div>
 

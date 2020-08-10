@@ -10,7 +10,7 @@
          <h1>Tambah Tipe Motor</h1>
          <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ url('/admin') }}">Dashboard</a></div>
-            <div class="breadcrumb-item active"><a href="{{ url('/products/tipe-motor') }}">Tipe Motor</a></div>
+            <div class="breadcrumb-item active"><a href="{{ url('/products/tipe-motor') }}">Daftar Tipe Motor</a></div>
             <div class="breadcrumb-item">Tambah Tipe Motor</div>
          </div>
       </div>

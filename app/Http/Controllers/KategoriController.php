@@ -15,7 +15,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $title = 'Dashboard Kategori Motor';
+        $title = 'Daftar Kategori Motor';
 
         $kategoriMotors = Kategori::orderBy('nama_Kategori')->get();
 
@@ -30,7 +30,7 @@ class KategoriController extends Controller
     public function create()
     {
         $data = [
-            'title' => 'Dashboard Tambah Kategori Motor',
+            'title' => 'Tambah Kategori Motor',
         ];
 
         return view('admin.product.create_kategori', $data);
@@ -76,7 +76,7 @@ class KategoriController extends Controller
     public function edit(Kategori $kategori)
     {
         $data = [
-            'title' => 'Dashboard Update Kategori Motor',
+            'title'     => 'Edit Kategori Motor',
             'kategori'  => $kategori,
         ];
 

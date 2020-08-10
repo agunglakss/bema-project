@@ -10,8 +10,8 @@
          <h1>Edit Kategori Motor</h1>
          <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ url('/admin') }}">Dashboard</a></div>
-            <div class="breadcrumb-item active"><a href="{{ url('/products/kategori-motor') }}">Kategori Motor</a></div>
-            <div class="breadcrumb-item">Tambah Kategori Motor</div>
+            <div class="breadcrumb-item active"><a href="{{ url('/products/kategori-motor') }}">Daftar Motor</a></div>
+            <div class="breadcrumb-item">Edit Kategori Motor</div>
          </div>
       </div>
       

@@ -18,11 +18,11 @@
          <ul class="dropdown-menu">
             <li class="active"><a class="nav-link" href="{{ url('products/kategori-motor') }}">Kategori Motor</a></li>
             <li><a class="nav-link" href="{{ url('products/tipe-motor') }}">Tipe Motor</a></li>
-            <li><a class="nav-link" href="{{ url('products/motor') }}">Detail Motor </a></li>
+            <li><a class="nav-link" href="{{ url('products/motor') }}">Motor </a></li>
          </ul>
       </li>
       <li class="dropdown">
-         <a href="{{ url('#') }}" class="nav-link"><i class="fas fa-wallet"></i><span>Pricelist</span></a>
+         <a href="{{ url('/pricelists') }}" class="nav-link"><i class="fas fa-wallet"></i><span>Pricelist</span></a>
       </li>
       <li class="dropdown">
          <a href="#" class="nav-link"><i class="fas fa-address-book"></i><span>Subcribers</span></a>

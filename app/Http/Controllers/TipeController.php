@@ -15,7 +15,7 @@ class TipeController extends Controller
      */
     public function index()
     {
-        $title = 'Dashboard Tipe Motor';
+        $title = 'Daftar Tipe Motor';
 
         $tipeMotors = Tipe::orderBy('nama_tipe')->get();
 
@@ -29,7 +29,7 @@ class TipeController extends Controller
      */
     public function create()
     {
-        $title = 'Dashboard Tambah Tipe Motor';
+        $title = 'Tambah Tipe Motor';
 
         $kategoriMotors = \App\Kategori::all('id', 'nama_kategori');
 
@@ -77,7 +77,7 @@ class TipeController extends Controller
      */
     public function edit (Tipe  $tipe)
     {
-        $title = 'Dashboard Tipe Motor';
+        $title = 'Edit Tipe Motor';
 
         $kategoriMotors = \App\Kategori::all('id', 'nama_kategori');
 

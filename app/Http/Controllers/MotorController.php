@@ -15,7 +15,7 @@ class MotorController extends Controller
      */
     public function index()
     {
-        $title = 'Dashboard Motor';
+        $title = 'Daftar Motor';
 
         $Motors = Motor::all();
 
@@ -29,12 +29,12 @@ class MotorController extends Controller
      */
     public function create()
     {
-        $title = 'Dashboard Tambah Motor';
+        $title = 'Tambah Motor';
         
+        $kategoriMotors = \App\Kategori::all('id', 'nama_kategori');
         $tipeMotors = \App\Tipe::all('id', 'nama_tipe');
-        $kategoriMotors = \App\Kategori::all();
 
-        return view('admin.product.create_motor', compact('title', 'tipeMotors', 'kategoriMotors'));
+        return view('admin.product.create_motor', compact('title', 'kategoriMotors', 'tipeMotors'));
     }
 
     /**
@@ -46,18 +46,18 @@ class MotorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_tipe'     => 'required',
             'nama_kategori' => 'required',
-            'harga_otr'     => 'required',
+            'nama_tipe'     => 'required',
+            'nama_motor'    => 'required',
+            'harga_otr'     => 'required|integer',
         ]);
 
         Motor::create([
-            'tipe_id'       => $request->nama_tipe,
             'kategori_id'   => $request->nama_kategori,
+            'tipe_id'       => $request->nama_tipe,
             'nama_motor'    => $request->nama_motor,
             'slug'          => str::slug($request->nama_motor, '-'),
             'harga_otr'     => $request->harga_otr,
-            'warna'         => $request->warna,
             'cc_motor'      => $request->cc_motor,
             'deskripsi'     => $request->deskripsi,
         ]);
@@ -84,12 +84,12 @@ class MotorController extends Controller
      */
     public function edit(Motor $motor)
     {
-        $title = 'Dashboard Edit Motor';
-        
-        $tipeMotors = \App\Tipe::all('id', 'nama_tipe');
-        $kategoriMotors = \App\Kategori::all();
+        $title = 'Edit Motor';
 
-        return view('admin.product.update_motor', compact('title', 'tipeMotors', 'kategoriMotors', 'motor'));
+        $kategoriMotors = \App\Kategori::all('id', 'nama_kategori');
+        $tipeMotors = \App\Tipe::all('id', 'nama_tipe');
+
+        return view('admin.product.update_motor', compact('title', 'kategoriMotors', 'tipeMotors', 'motor'));
     }
 
     /**
@@ -102,19 +102,18 @@ class MotorController extends Controller
     public function update(Request $request, Motor $motor)
     {
         $request->validate([
-            'nama_tipe'     => 'required',
             'nama_kategori' => 'required',
+            'nama_tipe'     => 'required',
             'nama_motor'    => 'required',
             'harga_otr'     => 'required',
         ]);
 
         $motor->update([
-            'tipe_id'       => $request->nama_tipe,
             'kategori_id'   => $request->nama_kategori,
+            'tipe_id'       => $request->nama_tipe,
             'nama_motor'    => $request->nama_motor,
             'slug'          => Str::slug($request->nama_motor),
             'harga_otr'     => $request->harga_otr,
-            'warna'         => $request->warna,
             'cc_motor'      => $request->cc_motor,
             'deskripsi'     => $request->deskripsi,
         ]);
