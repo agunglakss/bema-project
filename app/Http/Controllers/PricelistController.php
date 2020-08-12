@@ -26,7 +26,9 @@ class PricelistController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Tambah Daftar Harga Cicilan Motor";
+
+        return view('admin.pricelist.create_pricelist', compact('title'));
     }
 
     /**

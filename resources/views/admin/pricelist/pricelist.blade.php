@@ -17,8 +17,8 @@
             <div class="col-12">
                <div class="card mb-0">
                   <div class="card-body">
-                     <a class="btn btn-primary" href="{{ url('/products/motor/create') }}">Tambah Harga</a>
-                     <a class="btn btn-success" href="{{ url('/products/motor/create') }}">Import Harga Dari Excel</a>
+                     <a class="btn btn-primary" href="{{ url('/pricelists/create') }}">Tambah Harga</a>
+                     <button class="btn btn-success" data-toggle="modal" data-target="#modalImportHarga">Import Harga Dari Excel</button>
                   </div>
                </div>
             </div>
@@ -27,9 +27,6 @@
          <div class="row mt-4">
             <div class="col-12">
                <div class="card">
-                  {{-- <div class="card-header">
-                     <h4>Daftar Harga Cicilan Motor</h4>
-                  </div> --}}
                   <div class="card-body">
 
                      <div class="table-responsive">
