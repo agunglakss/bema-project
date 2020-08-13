@@ -12,4 +12,9 @@ class Motor extends Model
     {
         return $this->belongsTo('App\Tipe');
     }
+
+    public function pricelist()
+    {
+        return $this->hasOne('\App\Pricelist');
+    }
 }

@@ -75,10 +75,10 @@ class TipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit (Tipe  $tipe)
+    public function edit (Tipe $tipe)
     {
         $title = 'Edit Tipe Motor';
-
+        
         $kategoriMotors = \App\Kategori::all('id', 'nama_kategori');
 
         return view('admin.product.update_tipe', compact('title', 'kategoriMotors', 'tipe'));
@@ -91,16 +91,16 @@ class TipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tipe  $tipe)
+    public function update(Request $request, Tipe $tipe)
     {
         $request->validate([
-            'nama_kategori'     => 'required',
-            'nama_tipe' => 'required',
+            'nama_kategori' => 'required',
+            'nama_tipe'     => 'required',
         ]);
-
+		
          $tipe->update([
-            'kategori_id'       => $request->nama_kategori,
-            'nama_tipe' => $request->nama_tipe,
+            'kategori_id'   => $request->nama_kategori,
+            'nama_tipe'     => $request->nama_tipe,
             'slug'          => Str::slug($request->nama_tipe),
         ]);
 

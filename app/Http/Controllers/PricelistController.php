@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Pricelist;
+use Session;
+use App\Imports\PricelistImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class PricelistController extends Controller
@@ -16,7 +19,9 @@ class PricelistController extends Controller
     {
         $title = "Daftar Harga Cicilan Motor";
 
-        return view('admin.pricelist.pricelist', compact('title'));
+        $pricelists = Pricelist::all();
+
+        return view('admin.pricelist.index', compact('title', 'pricelists'));
     }
 
     /**
@@ -26,9 +31,13 @@ class PricelistController extends Controller
      */
     public function create()
     {
+        /* judul halaman */
         $title = "Tambah Daftar Harga Cicilan Motor";
 
-        return view('admin.pricelist.create_pricelist', compact('title'));
+        /* ambil data motor dari database, tampung di variable $motors */
+        $motors = \App\Motor::all('id', 'nama_motor');
+
+        return view('admin.pricelist.create', compact('title', 'motors'));
     }
 
     /**
@@ -39,7 +48,35 @@ class PricelistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* validasi sebelum mengirimkan request ke database */
+        $request->validate([
+            'nama_kategori' => 'required',
+            'uang_muka' => 'required',
+            'bulan_11' => 'required',
+            'bulan_17' => 'required',
+            'bulan_23' => 'required',
+            'bulan_27' => 'required',
+            'bulan_29' => 'required',
+            'bulan_33' => 'required',
+            'bulan_35' => 'required',
+        ]);
+        
+        /* kirim request ke database */
+        Pricelist::create([
+            'motor_id'  => $request->nama_kategori,
+            'uang_muka'  => $request->uang_muka,
+            'diskon'  => $request->diskon,
+            'bulan_11'  => $request->bulan_11,
+            'bulan_17'  => $request->bulan_17,
+            'bulan_23'  => $request->bulan_23,
+            'bulan_27'  => $request->bulan_27,
+            'bulan_29'  => $request->bulan_29,
+            'bulan_33'  => $request->bulan_33,
+            'bulan_35'  => $request->bulan_35,
+        ]);
+
+        return redirect('/pricelists')->with('status', 'Daftar Harga Berhasil Disimpan.');
+
     }
 
     /**
@@ -59,9 +96,15 @@ class PricelistController extends Controller
      * @param  \App\Pricelist  $pricelist
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pricelist $pricelist)
+    public function edit($id)
     {
-        //
+        $title = "Edit Daftar Harga Cicilan Motor";
+        
+        $motors = \App\Motor::all('id', 'nama_motor');
+
+        $pricelist = Pricelist::find($id);
+
+        return view('admin.pricelist.edit', compact('title', 'motors', 'pricelist'));
     }
 
     /**
@@ -71,9 +114,36 @@ class PricelistController extends Controller
      * @param  \App\Pricelist  $pricelist
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pricelist $pricelist)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required',
+            'uang_muka'     => 'required',
+            'bulan_11'      => 'required',
+            'bulan_17'      => 'required',
+            'bulan_23'      => 'required',
+            'bulan_27'      => 'required',
+            'bulan_29'      => 'required',
+            'bulan_33'      => 'required',
+            'bulan_35'      => 'required',
+        ]);
+        $pricelist = Pricelist::find($id);
+        
+        $pricelist->update([
+            'motor_id'  => $request->nama_kategori,
+            'uang_muka' => $request->uang_muka,
+            'diskon'    => $request->diskon,
+            'bulan_11'  => $request->bulan_11,
+            'bulan_17'  => $request->bulan_17,
+            'bulan_23'  => $request->bulan_23,
+            'bulan_27'  => $request->bulan_27,
+            'bulan_29'  => $request->bulan_29,
+            'bulan_33'  => $request->bulan_33,
+            'bulan_35'  => $request->bulan_35,
+
+        ]);
+
+        return redirect('/pricelists')->with('status', 'Daftar Harga Behasil Diupdate');
     }
 
     /**
@@ -86,4 +156,27 @@ class PricelistController extends Controller
     {
         //
     }
+
+    public function import_excel(Request $request) 
+	{
+		// validasi
+		$this->validate($request, [
+			'file' => 'required|mimes:csv,xls,xlsx'
+		]);
+ 
+		// menangkap file excel
+		$file = $request->file('file');
+ 
+		// membuat nama file unik
+		$nama_file = rand().$file->getClientOriginalName();
+ 
+		// upload ke folder import_excel di dalam folder public
+		$file->move('import_excel',$nama_file);
+ 
+		// import data
+		Excel::import(new PricelistImport, public_path('/import_excel/'.$nama_file));
+ 
+		// alihkan halaman pricelists
+		return redirect('/pricelists')->with('status', 'Import File Berhasil!');
+	}
 }

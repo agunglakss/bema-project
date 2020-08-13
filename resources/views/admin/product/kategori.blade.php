@@ -63,8 +63,8 @@
                               <td>{{ $kategoriMotor->updated_at }}</td>
                               <td><div class="badge badge-success">Aktif</div></td>
                               <td>
-                                 <a class="btn btn-info" href="{{ url ('/products/kategori-motor') }}/{{$kategoriMotor->slug}}/edit" title="Edit Kategori Motor"><i class="fa fa-edit"></i></a>
-                                 <a class="btn btn-danger" href="#" title="Hapus Kategori Motor"><i class="fa fa-trash"></i></a>
+                                 <a class="btn-sm btn-info" href="{{ url ('/products/kategori-motor') }}/{{$kategoriMotor->slug}}/edit" title="Edit Kategori Motor"><i class="fa fa-edit"></i></a>
+                                 <a class="btn-sm btn-danger" href="#" title="Hapus Kategori Motor"><i class="fa fa-trash"></i></a>
                               </td>
                            </tr>
                            @empty

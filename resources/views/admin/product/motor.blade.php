@@ -34,30 +34,27 @@
                      <div class="table-responsive">
                         <table class="table table-striped">
                            <tr>
-                              <th>No</th>
+                              <th>ID Motor</th>
                               <th>Nama Motor</th>
                               <th>Kategori Motor</th>
                               <th>Tipe Motor</th>
                               <th>Harga OTR</th>
-                              {{-- <th>Warna</th> --}}
                               <th>Created At</th>
                               <th>Updated At</th>
-                              <th>Status</th>
                               <th>Action</th>
                            </tr>
                            @forelse ($Motors as $Motor)
                            <tr>
-                              <td>{{ $loop->iteration }}</td>
+                              <td>{{ $Motor->id }}</td>
                               <td>{{ $Motor->nama_motor }}</td>
                               <td>{{ $Motor->tipe->kategori->nama_kategori }}</td>
                               <td>{{ $Motor->tipe->nama_tipe }}</td>
                               <td>Rp {{ number_format ($Motor->harga_otr) }}</td>
                               <td>{{ $Motor->created_at->format('d-M-Y') }}</td>
                               <td>{{ $Motor->updated_at->format('d-M-Y') }}</td>
-                              <td><div class="badge badge-success">Aktif</div></td>
                               <td>
-                                 <a class="btn btn-info" href="{{ url('/products/motor') }}/{{$Motor->slug}}/edit" title="Edit Motor"><i class="fa fa-edit"></i></a>
-                                 <a class="btn btn-danger" href="{{ url('products/motor') }}/{{ $Motor->slug }}/delete" title="Hapus Motor"><i class="fa fa-trash"></i></a>
+                                 <a class="btn-sm btn-info" href="{{ url('/products/motor') }}/{{$Motor->slug}}/edit" title="Edit Motor"><i class="fa fa-edit"></i></a>
+                                 <a class="btn-sm btn-danger" href="{{ url('products/motor') }}/{{ $Motor->slug }}/delete" title="Hapus Motor"><i class="fa fa-trash"></i></a>
                               </td>
                            </tr>
                            @empty

@@ -18,4 +18,9 @@ class Pricelist extends Model
         'bulan_33',
         'bulan_35',
     ];
+
+    public function motor()
+    {
+        return $this->belongsTo('\App\Motor');
+    }
 }

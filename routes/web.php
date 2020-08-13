@@ -64,6 +64,7 @@ Route::post('/products/motor', 'MotorController@store');
 // Admin Pricelists
 Route::get('/pricelists', 'PricelistController@index');
 Route::get('/pricelists/create', 'PricelistController@create');
+Route::post('/pricelists/importExcel', 'PricelistController@import_excel');
 Route::get('/pricelists/{id}/edit', 'PricelistController@edit');
 Route::patch('/pricelists/{id}/edit', 'PricelistController@update');
 Route::post('/pricelists', 'PricelistController@store');

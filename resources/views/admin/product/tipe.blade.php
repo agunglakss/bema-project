@@ -66,8 +66,8 @@
                               <td>{{ $tipeMotor->updated_at }}</td>
                               <td><div class="badge badge-success">Aktif</div></td>
                               <td>
-                                 <a class="btn btn-info" href="{{ url('products/tipe-motor') }}/{{ $tipeMotor->slug }}/edit" title="Edit Tipe Motor"><i class="fa fa-edit"></i></a>
-                                 <a class="btn btn-danger" href="" title="Hapus Tipe Motor"><i class="fa fa-trash"></i></a>
+                                 <a class="btn-sm btn-info" href="{{ url('products/tipe-motor') }}/{{ $tipeMotor->slug }}/edit" title="Edit Tipe Motor"><i class="fa fa-edit"></i></a>
+                                 <a class="btn-sm btn-danger" href="" title="Hapus Tipe Motor"><i class="fa fa-trash"></i></a>
                               </td>
                            </tr>
                            @empty
