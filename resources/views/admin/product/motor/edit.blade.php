@@ -28,7 +28,7 @@
                         <div class="form-group row">
                            <label class="col-sm-2 col-form-label" >Kategori Motor *</label>
                            <div class="col-sm-10">
-                              <select class="form-control" name="nama_kategori" required="">
+                              <select class="form-control selectric" name="nama_kategori" required="">
                                  <option value="">- Pilih Tipe Motor -</option>
                                  @forelse ($kategoriMotors as $kategoriMotor)
                                  <option value="{{ old('nama_kategori') ?? $kategoriMotor->id }}" @if ($kategoriMotor->id == $motor->kategori_id) selected="selected" @endif >{{ $kategoriMotor->nama_kategori }}</option>    
@@ -45,7 +45,7 @@
                         <div class="form-group row">
                            <label class="col-sm-2 col-form-label">Tipe Motor *</label>
                            <div class="col-sm-10">
-                              <select class="form-control" name="nama_tipe" required="">
+                              <select class="form-control selectric" name="nama_tipe" required="">
                                  <option value="">- Pilih Tipe Motor -</option>
                                  @forelse ($tipeMotors as $tipeMotor)
                                  <option value="{{ old('nama_tipe') ?? $tipeMotor->id }}" @if ($tipeMotor->id == $motor->tipe_id) selected="selected" @endif >{{ $tipeMotor->nama_tipe }}</option>

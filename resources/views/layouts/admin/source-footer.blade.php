@@ -5,10 +5,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="{{ asset('assets-admin/js/stisla.js') }}"></script>
+
+<!-- Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<script src="{{ asset('assets-admin/js/jquery.selectric.min.js') }}"></script>
+<script src="{{ asset('assets-admin/js/jquery.uploadPreview.min.js') }}"></script>
+<script src="{{ asset('assets-admin/js/bootstrap-tagsinput.min.js') }}"></script>
 
 <!-- Template JS File -->
 <script src="{{ asset('assets-admin/js/scripts.js') }}"></script>
 <script src="{{ asset('assets-admin/js/custom.js') }}"></script>
 
 <!-- Page Specific JS File -->
+<script src="{{ asset('assets-admin/js/page/features-post-create.js') }}"></script>

@@ -27,7 +27,7 @@
                         <div class="form-group row">
                            <label class="col-sm-2 col-form-label" >Kategori Motor <span style="color: red;">*</span></label>
                            <div class="col-sm-10">
-                              <select class="form-control" name="nama_kategori" required="">
+                              <select class="form-control selectric" name="nama_kategori" required="">
                                  <option value="">- Pilih Kategori Motor -</option>
                                  @forelse ($kategoriMotors as $kategoriMotor)
                                  <option value="{{ $kategoriMotor->id }}">{{ $kategoriMotor->nama_kategori }}</option>    
@@ -44,7 +44,7 @@
                         <div class="form-group row">
                            <label class="col-sm-2 col-form-label">Tipe Motor <span style="color: red;">*</span></label>
                            <div class="col-sm-10">
-                              <select class="form-control" name="nama_tipe" required="">
+                              <select class="form-control selectric" name="nama_tipe" required="">
                                  <option value="">- Pilih Tipe Motor -</option>
                                  @forelse ($tipeMotors as $tipeMotor)
                                  <option value="{{ $tipeMotor->id }}">{{ $tipeMotor->nama_tipe }}</option>
@@ -61,6 +61,19 @@
                            <input type="text" class="form-control" name="nama_motor" required="">
                            <div class="invalid-feedback">
                               Nama motor wajib di isi.
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" name="nama_motor">Upload Thumbnail <span style="color: red;">*</span></label>
+                        <div class="col-sm-10">
+                           <div id="image-preview" class="image-preview">
+                              <label for="image-upload" id="image-label">Choose File</label>
+                              <input type="file" name="image" id="image-upload" />
+                            </div>
+                           <div class="invalid-feedback">
+                              Thumbnail wajib di isi.
                            </div>
                         </div>
                      </div>
