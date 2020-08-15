@@ -17,9 +17,9 @@ class KategoriController extends Controller
     {
         $title = 'Daftar Kategori Motor';
 
-        $kategoriMotors = Kategori::orderBy('nama_Kategori')->get();
+        $kategoriMotors = Kategori::orderBy('nama_Kategori')->paginate(5);
 
-        return view('admin.product.kategori', compact('title', 'kategoriMotors',));
+        return view('admin.product.kategori.index', compact('title', 'kategoriMotors',));
     }
 
     /**
@@ -33,7 +33,7 @@ class KategoriController extends Controller
             'title' => 'Tambah Kategori Motor',
         ];
 
-        return view('admin.product.create_kategori', $data);
+        return view('admin.product.kategori.create', $data);
     }
 
     /**
@@ -80,7 +80,7 @@ class KategoriController extends Controller
             'kategori'  => $kategori,
         ];
 
-        return view('admin.product.update_kategori', $data);
+        return view('admin.product.kategori.edit', $data);
     }
 
     /**

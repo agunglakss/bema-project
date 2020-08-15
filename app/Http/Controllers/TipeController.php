@@ -17,9 +17,9 @@ class TipeController extends Controller
     {
         $title = 'Daftar Tipe Motor';
 
-        $tipeMotors = Tipe::orderBy('nama_tipe')->get();
+        $tipeMotors = Tipe::orderBy('nama_tipe')->paginate(5);
 
-        return view('admin.product.tipe', compact('title', 'tipeMotors',));
+        return view('admin.product.tipe.index', compact('title', 'tipeMotors',));
     }
 
     /**
@@ -33,7 +33,7 @@ class TipeController extends Controller
 
         $kategoriMotors = \App\Kategori::all('id', 'nama_kategori');
 
-        return view('admin.product.create_tipe', compact('title', 'kategoriMotors',));
+        return view('admin.product.tipe.create', compact('title', 'kategoriMotors',));
     }
 
     /**
@@ -81,7 +81,7 @@ class TipeController extends Controller
         
         $kategoriMotors = \App\Kategori::all('id', 'nama_kategori');
 
-        return view('admin.product.update_tipe', compact('title', 'kategoriMotors', 'tipe'));
+        return view('admin.product.tipe.edit', compact('title', 'kategoriMotors', 'tipe'));
     }
 
     /**

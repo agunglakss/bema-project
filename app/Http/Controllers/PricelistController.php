@@ -19,7 +19,7 @@ class PricelistController extends Controller
     {
         $title = "Daftar Harga Cicilan Motor";
 
-        $pricelists = Pricelist::all();
+        $pricelists = Pricelist::paginate(5);
 
         return view('admin.pricelist.index', compact('title', 'pricelists'));
     }
