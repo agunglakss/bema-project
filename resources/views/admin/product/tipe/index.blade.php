@@ -62,8 +62,8 @@
                               <td>{{ $loop->iteration }}</td>
                               <td>{{ $tipeMotor->nama_tipe}}</td>
                               <td>{{ $tipeMotor->kategori->nama_kategori }}</td>
-                              <td>{{ $tipeMotor->created_at }}</td>
-                              <td>{{ $tipeMotor->updated_at }}</td>
+                              <td>{{ $tipeMotor->created_at->format('d-M-Y') }}</td>
+                              <td>{{ $tipeMotor->updated_at->format('d-M-Y') }}</td>
                               <td><div class="badge badge-success">Aktif</div></td>
                               <td>
                                  <a class="btn-sm btn-info" href="{{ url('products/tipe-motor') }}/{{ $tipeMotor->slug }}/edit" title="Edit Tipe Motor"><i class="fa fa-edit"></i></a>

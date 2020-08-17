@@ -44,16 +44,16 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_kategori' => 'required',
-        ]);
+		$request->validate([
+			'nama_kategori' => 'required',
+		]);
 
-        Kategori::create([
-            'nama_kategori' => $request->nama_kategori,
-            'slug'          => Str::slug($request->nama_kategori, '-'),
-        ]);
+		Kategori::create([
+			'nama_kategori' => $request->nama_kategori,
+			'slug'          => Str::slug($request->nama_kategori, '-'),
+		]);
 
-        return redirect('/products/kategori-motor')->with('status', 'Kategori Motor Berhasil Ditambahkan!');
+		return redirect('/products/kategori-motor')->with('status', 'Kategori Motor Berhasil Ditambahkan!');
     }
 
     /**
