@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Motor extends Model
 {
-    protected $fillable = ['tipe_id', 'kategori_id', 'nama_motor', 'slug', 'harga_otr', 'cc_motor', 'deskripsi'];
+    protected $fillable = ['tipe_id', 'kategori_id', 'nama_motor', 'slug', 'thumbnail', 'warna', 'harga_otr', 'cc_motor', 'deskripsi'];
 
     public function tipe()
     {

@@ -20,7 +20,7 @@
          <div class="row">
             <div class="col-12">
                <div class="card">
-                  <form class="needs-validation" novalidate="" method="post" action="{{ url('/products/motor') }}">
+                  <form class="needs-validation" novalidate="" method="post" action="{{ url('/products/motor') }}" enctype="multipart/form-data">
                      @csrf
                     <div class="card-body">
 
@@ -66,15 +66,24 @@
                      </div>
 
                      <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" name="nama_motor">Upload Thumbnail <span style="color: red;">*</span></label>
+                        <label class="col-sm-2 col-form-label" for="upload_thumbnail">Upload Thumbnail <span style="color: red;">*</span></label>
                         <div class="col-sm-10">
-                           <div id="image-preview" class="image-preview">
-                              <label for="image-upload" id="image-label">Choose File</label>
-                              <input type="file" name="image" id="image-upload" />
-                            </div>
-                           <div class="invalid-feedback">
-                              Thumbnail wajib di isi.
-                           </div>
+									<div id="image-preview" class="image-preview">
+										<label for="upload_thumbnail" id="image-label">Choose File</label>
+										<input type="file" name="upload_thumbnail" id="image-upload" required="">
+									</div>
+									<span class="text-small">File image harus berektensi jpg, jpeg dan png</span><br>
+									<span class="text-small">Maksimal ukuran file 2MB</span>
+									<div class="invalid-feedback">
+										Nama motor wajib di isi.
+									</div>
+								</div>
+                     </div>
+
+                     <div class="form-group row mb-4">
+                        <label class="col-sm-2 col-form-label">Warna Motor</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control inputtags" name="warna[]">
                         </div>
                      </div>
                      
@@ -87,13 +96,6 @@
                            </div>
                         </div>
                      </div>
-
-                     {{-- <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" name="warna">Warna Motor</label>
-                        <div class="col-sm-10">
-                           <input type="text" class="form-control" name="warna">
-                        </div>
-                     </div> --}}
 
                      <div class="form-group row">
                         <label class="col-sm-2 col-form-label" name="cc_motor">CC Motor</label>

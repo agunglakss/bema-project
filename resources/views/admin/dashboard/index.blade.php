@@ -4,7 +4,7 @@
 	<section class="section">
 
 		<div class="section-header">
-			<h1>Dashboard</h1>
+			<h1>{{ $title }}</h1>
 		</div>
 
 		<div class="row">
@@ -18,7 +18,7 @@
 							<h4>Total Seluruh Motor</h4>
 						</div>
 						<div class="card-body">
-							10
+							{{ $countMotor }}
 						</div>
 					</div>
 				</div>
@@ -33,7 +33,7 @@
 						<h4>Total Motor Matic</h4>
 					</div>
 					<div class="card-body">
-						42
+						{{ $countMotorMatic }}
 					</div>
 					</div>
 				</div>
@@ -48,7 +48,7 @@
 						<h4>Total Motor Sport</h4>
 					</div>
 					<div class="card-body">
-						1,201
+						{{ $countMotorBebek }}
 					</div>
 					</div>
 				</div>
@@ -63,7 +63,7 @@
 						<h4>Total Motor Bebek</h4>
 					</div>
 					<div class="card-body">
-						47
+						{{ $countMotorSport }}
 					</div>
 					</div>
 				</div>

@@ -32,39 +32,44 @@ Route::get('/about-us', function() {
 	return view('user.about-us');
 });
 
+Route::group(['middleware' => ['auth']], function () {
 
-//Dashboard Admin
-Route::get('/admin', function() {
-	$title = 'Dashboard - Beranda';
-
-	return view('admin.dashboard.index', compact('title'));
+	//Dashboard Admin
+	Route::get('/admin', 'DashboardController@index');
+	
+	// Admin Kategori
+	Route::get('/products/kategori-motor', 'KategoriController@index');
+	Route::get('/products/kategori-motor/create', 'KategoriController@create');
+	Route::get('/products/kategori-motor/{kategori:slug}/edit', 'KategoriController@edit');
+	Route::patch('/products/kategori-motor/{kategori:slug}/edit', 'KategoriController@update');
+	Route::post('/products/kategori-motor', 'KategoriController@store');
+	
+	// Admin Tipe
+	Route::get('/products/tipe-motor', 'TipeController@index');
+	Route::get('/products/tipe-motor/create', 'TipeController@create');
+	Route::get('/products/tipe-motor/{tipe:slug}/edit', 'TipeController@edit');
+	Route::patch('/products/tipe-motor/{tipe:slug}/edit', 'TipeController@update');
+	Route::post('/products/tipe-motor', 'TipeController@store');
+	
+	// Admin Motor
+	Route::get('/products/motor', 'MotorController@index');
+	Route::get('/products/motor/create', 'MotorController@create');
+	Route::get('/products/motor/{motor:slug}/edit', 'MotorController@edit');
+	Route::patch('/products/motor/{motor:slug}/edit', 'MotorController@update');
+	Route::post('/products/motor', 'MotorController@store');
+	
+	// Admin Pricelists
+	Route::get('/pricelists', 'PricelistController@index');
+	Route::get('/pricelists/create', 'PricelistController@create');
+	Route::post('/pricelists/importExcel', 'PricelistController@import_excel');
+	Route::get('/pricelists/{id}/edit', 'PricelistController@edit');
+	Route::patch('/pricelists/{id}/edit', 'PricelistController@update');
+	Route::post('/pricelists', 'PricelistController@store');
+	
+	Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 });
 
-// Admin Kategori
-Route::get('/products/kategori-motor', 'KategoriController@index');
-Route::get('/products/kategori-motor/create', 'KategoriController@create');
-Route::get('/products/kategori-motor/{kategori:slug}/edit', 'KategoriController@edit');
-Route::patch('/products/kategori-motor/{kategori:slug}/edit', 'KategoriController@update');
-Route::post('/products/kategori-motor', 'KategoriController@store');
+// Authentication
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login')->name('login');
 
-// Admin Tipe
-Route::get('/products/tipe-motor', 'TipeController@index');
-Route::get('/products/tipe-motor/create', 'TipeController@create');
-Route::get('/products/tipe-motor/{tipe:slug}/edit', 'TipeController@edit');
-Route::patch('/products/tipe-motor/{tipe:slug}/edit', 'TipeController@update');
-Route::post('/products/tipe-motor', 'TipeController@store');
-
-// Admin Motor
-Route::get('/products/motor', 'MotorController@index');
-Route::get('/products/motor/create', 'MotorController@create');
-Route::get('/products/motor/{motor:slug}/edit', 'MotorController@edit');
-Route::patch('/products/motor/{motor:slug}/edit', 'MotorController@update');
-Route::post('/products/motor', 'MotorController@store');
-
-// Admin Pricelists
-Route::get('/pricelists', 'PricelistController@index');
-Route::get('/pricelists/create', 'PricelistController@create');
-Route::post('/pricelists/importExcel', 'PricelistController@import_excel');
-Route::get('/pricelists/{id}/edit', 'PricelistController@edit');
-Route::patch('/pricelists/{id}/edit', 'PricelistController@update');
-Route::post('/pricelists', 'PricelistController@store');

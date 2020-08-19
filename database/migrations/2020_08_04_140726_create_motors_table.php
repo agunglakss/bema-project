@@ -19,6 +19,8 @@ class CreateMotorsTable extends Migration
             $table->foreignId('tipe_id');
             $table->string('nama_motor');
             $table->string('slug');
+            $table->longText('thumbnail');
+            $table->string('warna');
             $table->integer('harga_otr');
             $table->string('cc_motor');
             $table->longText('deskripsi');

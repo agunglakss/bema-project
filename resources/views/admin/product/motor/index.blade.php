@@ -12,7 +12,22 @@
       </div>
       
       <div class="section-body">
-
+         @if (session('status'))
+            <div class="alert alert-info alert-dismissible show fade" id="alert">
+               <div class="alert-body">
+               <button class="close" data-dismiss="alert">
+                  <span>&times;</span>
+               </button>
+               {{ session('status') }}
+               </div>
+            </div>
+         @endif
+         <script>
+            setTimeout(function () {
+               document.getElementById('alert').style.display='none'}, 
+               5000
+            );
+         </script>
          <div class="row">
             <div class="col-12">
                <div class="card mb-0">
