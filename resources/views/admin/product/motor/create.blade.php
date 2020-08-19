@@ -27,7 +27,7 @@
                         <div class="form-group row">
                            <label class="col-sm-2 col-form-label" >Kategori Motor <span style="color: red;">*</span></label>
                            <div class="col-sm-10">
-                              <select class="form-control selectric" name="nama_kategori" required="">
+                              <select class="form-control selectric" name="nama_kategori" >
                                  <option value="">- Pilih Kategori Motor -</option>
                                  @forelse ($kategoriMotors as $kategoriMotor)
                                  <option value="{{ $kategoriMotor->id }}">{{ $kategoriMotor->nama_kategori }}</option>    
@@ -44,7 +44,7 @@
                         <div class="form-group row">
                            <label class="col-sm-2 col-form-label">Tipe Motor <span style="color: red;">*</span></label>
                            <div class="col-sm-10">
-                              <select class="form-control selectric" name="nama_tipe" required="">
+                              <select class="form-control selectric" name="nama_tipe" >
                                  <option value="">- Pilih Tipe Motor -</option>
                                  @forelse ($tipeMotors as $tipeMotor)
                                  <option value="{{ $tipeMotor->id }}">{{ $tipeMotor->nama_tipe }}</option>
@@ -58,26 +58,11 @@
                      <div class="form-group row">
                         <label class="col-sm-2 col-form-label" name="nama_motor">Nama Motor <span style="color: red;">*</span></label>
                         <div class="col-sm-10">
-                           <input type="text" class="form-control" name="nama_motor" required="">
+                           <input type="text" class="form-control" name="nama_motor" >
                            <div class="invalid-feedback">
                               Nama motor wajib di isi.
                            </div>
                         </div>
-                     </div>
-
-                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="upload_thumbnail">Upload Thumbnail <span style="color: red;">*</span></label>
-                        <div class="col-sm-10">
-									<div id="image-preview" class="image-preview">
-										<label for="upload_thumbnail" id="image-label">Choose File</label>
-										<input type="file" name="upload_thumbnail" id="image-upload" required="">
-									</div>
-									<span class="text-small">File image harus berektensi jpg, jpeg dan png</span><br>
-									<span class="text-small">Maksimal ukuran file 2MB</span>
-									<div class="invalid-feedback">
-										Nama motor wajib di isi.
-									</div>
-								</div>
                      </div>
 
                      <div class="form-group row mb-4">
@@ -90,7 +75,7 @@
                      <div class="form-group row">
                         <label class="col-sm-2 col-form-label" name="harga_otr">Harga OTR Motor <span style="color: red;">*</span></label>
                         <div class="col-sm-10">
-                           <input type="number" class="form-control" name="harga_otr" required="">
+                           <input type="number" class="form-control" name="harga_otr" >
                            <div class="invalid-feedback">
                               Nama otr motor wajib di isi.
                            </div>
@@ -101,6 +86,16 @@
                         <label class="col-sm-2 col-form-label" name="cc_motor">CC Motor</label>
                         <div class="col-sm-10">
                            <input type="text" class="form-control" name="cc_motor">
+                        </div>
+                     </div>
+
+                     <div class="form-group row" id="wrapper">
+                        <label class="col-sm-2 col-form-label" for="upload_img[]">Upload Gambar</label>
+                        <div class="input-group col-sm-10">
+                           <input type="file" class="form-control" name="upload_img[]" style="padding:7px 0 0 5px;">
+                           <div class="input-group-append">
+                              <button class="btn btn-info btnAdd"><i class="fa fa-plus"></i> Tambah</button>
+                           </div>
                         </div>
                      </div>
 

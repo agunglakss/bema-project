@@ -45,43 +45,49 @@ class MotorController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request)
-	{
-		foreach($request->warna as $warna)
-		{
-			$data_warna = $warna;
-		}
-
+	{	
 		$request->validate([
 			'nama_kategori'		=> 'required',
-				'nama_tipe'     	=> 'required',
-				'nama_motor'    	=> 'required',
-				'harga_otr'    		=> 'required|integer',
-			'upload_thumbnail'	=> 'required|image|mimes:jpeg,png,jpg|max:2048',
+			'nama_tipe'     		=> 'required',
+			'nama_motor'    		=> 'required',
+			'harga_otr'    		=> 'required|integer',
+			'upload_img'			=> 'required',
+			'upload_img.*'			=> 'image|mimes:png,jpg,jpeg|max:3048',
 		]);
 
-		// Cek jika mempunyai file poto
-		if ($request->hasFile('upload_thumbnail')) {
-
-			// simpan poto didalam variable $photo
-			$photo = $request->file('upload_thumbnail');
-
-			// rubah nama file dengan nama random maksimal 8 karakter
-			$thumbnail_name = Str::random(8). '.' .$photo->getClientOriginalExtension();
-
-			// simpan path folder didalam variable $path
-			$path = public_path().'/img-products';
-
-			// pindahkan file kedalam folder public
-			$photo->move($path, $thumbnail_name);
+		// lakukan looping untuk menyimpan value didalam variable array $warna[]
+		foreach($request->warna as $warna)
+		{
+			$data_warna[] = $warna;
 		}
 
+		// Cek jika mempunyai file poto
+		if ($request->hasFile('upload_img')) {
+
+			// lakukan looping untuk menyimpan value didalam variable array $image[]
+			foreach($request->file('upload_img') as $image)
+			{
+				// rubah nama file dengan nama random maksimal 8 karakter
+				$thumbnail_name = Str::random(8). '.' .$image->getClientOriginalExtension();
+
+				// simpan path folder didalam variable $path
+				$path = public_path().'/img-products';
+
+				// pindahkan file kedalam folder public
+				$image->move($path, $thumbnail_name);
+				
+				// simpan file image yang sudah dirubah namanya kedalam variable array $img[]
+				$img[] = $thumbnail_name;
+			}
+		}
+		
 		$motor = Motor::create([
 			'kategori_id'   => $request->nama_kategori,
 			'tipe_id'       => $request->nama_tipe,
 			'nama_motor'    => $request->nama_motor,
 			'slug'          => str::slug($request->nama_motor, '-'),
-			'thumbnail'	    => $thumbnail_name,
-			'warna'		    => $data_warna,
+			'thumbnail'	    => json_encode($img),
+			'warna'		    => json_encode($data_warna),
 			'harga_otr'     => $request->harga_otr,
 			'cc_motor'      => $request->cc_motor,
 			'deskripsi'     => $request->deskripsi,

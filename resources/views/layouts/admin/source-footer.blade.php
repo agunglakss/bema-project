@@ -18,3 +18,28 @@
 
 <!-- Page Specific JS File -->
 <script src="{{ asset('assets-admin/js/page/features-post-create.js') }}"></script>
+
+<!-- function for multiple upload image -->
+<script type="text/javascript">
+   $(document).ready(function() {
+      let wrapper = $("#wrapper");
+      let buttonAdd = $(".btnAdd");
+
+      $(buttonAdd).click(function(e) {
+         e.preventDefault();
+         $(wrapper).append(`
+            <div class="input-group col-sm-10 offset-2 mt-2">
+               <input type="file" class="form-control" name="upload_img[]" style="padding:7px 0 0 5px;">
+               <span class="input-group-append">
+                  <button class="btn btn-danger btnRemove"><i class="fa fa-times"></i> Hapus</button>
+               </span>
+            </div>
+         `);
+      });
+
+      $(wrapper).on("click", ".btnRemove", function(e) {
+         e.preventDefault();
+         $(this).parents('.input-group').remove();
+      });
+   });
+</script>
