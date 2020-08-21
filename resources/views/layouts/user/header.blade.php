@@ -6,7 +6,7 @@
 
             <div class="col-md-3">
                <a class="logo" href="#">
-                  <img class="logo" src="{{ asset('logo.png') }}" alt="">
+                  {{-- <img class="logo" src="{{ asset('logo.png') }}" alt=""> --}}
                </a>
             </div>
 
@@ -21,8 +21,12 @@
 
             <div class="col-md-3">
                <ul>
-                  <li class="text-right hubungi-kami">Contact us</li>
-                  <li class="text-right telp-email">faturahmanbema22@gmail.com | 081281318653 </li>
+                  <li class="text-right telp-email">
+                     <a href="mailto:faturahmanbema22@gmail.com"><i class="fa fa-envelope"></i> faturahmanbema22@gmail.com</a>
+                  </li>
+                  <li class="text-right telp-email mt-1">
+                     <a href="telp:081281318653"> <i class="fa fa-phone-square"></i> +6281281318653</a>
+                  </li>
                </ul>
             </div>
 
@@ -39,7 +43,7 @@
                   <a class="nav-link{{ request()->is('/') ? ' active' : ''  }}" href="{{ url('/') }}">Home</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link{{ request()->is('products') ? ' active' : ''  }}" href="{{ url('products') }}">Products</a>
+                  <a class="nav-link{{ request()->is('products') ? ' active' : ''  }}" href="{{ url('product') }}">Products</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link{{ request()->is('schema') ? ' active' : ''  }}" href="{{ url('schema') }}">Schema Credit</a>

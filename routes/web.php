@@ -13,15 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
-	return view('user.home.index');
-});
-
-//Product
-Route::get('/products', function() {
-	return view('user.product.index');
-});
-
 //Schema
 Route::get('/schema', function() {
 	return view('user.schema');
@@ -73,3 +64,10 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login');
 
+// Product
+Route::get('/product', 'ProductController@index');
+Route::get('/product/{kategori:slug}', 'ProductController@getMotorByCategory');
+Route::get('/product/{kategori:slug}/{tipe:slug}', 'ProductController@getMotorByType');
+
+// Home User
+Route::get('/', 'HomeController@index');
