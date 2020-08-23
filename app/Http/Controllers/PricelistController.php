@@ -35,7 +35,7 @@ class PricelistController extends Controller
         $title = "Tambah Daftar Harga Cicilan Motor";
 
         /* ambil data motor dari database, tampung di variable $motors */
-        $motors = \App\Motor::all('id', 'nama_motor');
+        $motors = \App\Motor::select('id', 'nama_motor')->get();
 
         return view('admin.pricelist.create', compact('title', 'motors'));
     }

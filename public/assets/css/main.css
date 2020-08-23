@@ -408,22 +408,16 @@ text-decoration: none;
 
 .box-header{
   padding: 0;
-  margin: 13px 0 0 0;
 }
 .box-header .title-box{ 
   color: var(--primary-black);
   font-size: 25px;
   font-weight: bold;
-  padding:0;
-  margin:0;
 }
 .box-header .lihat-semua{ 
   color: var(--primary-blue);
   font-size: 14px;
   font-weight: bold;
-  margin:0;
-  padding:0;
-  line-height: 37px;
 }
 .box-header .lihat-semua a{ 
   color: var(--primary-blue);
@@ -510,13 +504,11 @@ text-decoration: none;
   background-color: var(--primary-background);
   margin: 0;
   padding: 0;
-  
 }
 .breadcrumb-item + .breadcrumb-item::before {
   content:"\f0da";
   color: var(--primary-blue);
   font-family: FontAwesome;
-  font-size: 16px;
 }
 .breadcrumb li{
   font-size: 14px;

@@ -31,7 +31,7 @@ class TipeController extends Controller
     {
         $title = 'Tambah Tipe Motor';
 
-        $kategoriMotors = \App\Kategori::all('id', 'nama_kategori');
+        $kategoriMotors = \App\Kategori::select('id', 'nama_kategori')->get();
 
         return view('admin.product.tipe.create', compact('title', 'kategoriMotors',));
     }
@@ -79,7 +79,7 @@ class TipeController extends Controller
     {
         $title = 'Edit Tipe Motor';
         
-        $kategoriMotors = \App\Kategori::all('id', 'nama_kategori');
+        $kategoriMotors = \App\Kategori::select('id', 'nama_kategori')->get();
 
         return view('admin.product.tipe.edit', compact('title', 'kategoriMotors', 'tipe'));
     }

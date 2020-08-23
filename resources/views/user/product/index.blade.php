@@ -5,14 +5,14 @@
 	<div class="row">
 
 		<!-- Breadcrumbs -->
-		<div class="col-md-12 mt-3 mb-5">
-			<nav aria-label="breadcrumb">
-			<ol class="breadcrumb">
+		<div class="col-md-12 mt-3 mb-5 ">
+			<nav aria-label="breadcrumb ">
+			<ol class="breadcrumb ">
 				<li class="breadcrumb-item active"><a href="/">Home</a></li>
 				
 				@if (isset($kategori))
 					<li class="breadcrumb-item active">
-						{{ $kategori->nama_kategori }}
+            {{ $kategori->nama_kategori }}
 					</li class="breadcrumb-item active">
 					@elseif (isset($tipe))
 					<li class="breadcrumb-item active">
@@ -38,13 +38,13 @@
 
             <div class="col-md-12 mb-4">
               <div class="box-header">
-                <div class="row">
-                  <div class="col-auto mr-auto">
-                    <div class="title-box">
+                <div class="row align-items-center">
+                  <div class="col-auto mr-auto ">
+                    <div class="title-box ">
                       @isset($kategori)
-								{{ $kategori->nama_kategori }}
+								        {{ $kategori->nama_kategori }}
                       @else
-								Semua Motor
+								        Semua Motor
                       @endisset
                     </div>
                   </div>

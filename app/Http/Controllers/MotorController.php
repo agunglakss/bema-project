@@ -18,8 +18,8 @@ class MotorController extends Controller
 	{
 		$title = 'Daftar Motor';
 
-		$Motors = Motor::paginate(5);
-
+		$Motors = Motor::with('tipe.kategori')->paginate(5);
+		
 		return view('admin.product.motor.index', compact('title', 'Motors'));
 	}
 
@@ -32,8 +32,8 @@ class MotorController extends Controller
 	{
 		$title = 'Tambah Motor';
 		
-		$kategoriMotors = \App\Kategori::all('id', 'nama_kategori');
-		$tipeMotors = \App\Tipe::all('id', 'nama_tipe');
+		$kategoriMotors = \App\Kategori::select('id', 'nama_kategori')->get();
+		$tipeMotors = \App\Tipe::select('id', 'nama_tipe')->get();
 
 		return view('admin.product.motor.create', compact('title', 'kategoriMotors', 'tipeMotors'));
 	}

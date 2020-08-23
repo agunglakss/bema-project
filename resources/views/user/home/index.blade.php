@@ -123,11 +123,11 @@
    	<div class="container">
    		<div class="row">
          	<!-- Start  -->
-         	<div class="col-md-12">
+         	<div class="col-md-12 mt-3 mb-5">
 					<div class="row">
-						<div class="col-md-12 mb-4">
+						<div class="col-md-12">
 							<div class="box-header">
-								<div class="row">
+								<div class="row align-items-center">
 									<div class="col-auto mr-auto">
 										<div class="title-box">Motor Terbaru</div>
 									</div>
@@ -140,7 +140,7 @@
 							</div>
 						</div>
 						@forelse ($AllMotors as $AllMotor)
-						<div class="col-md-3 mb-5">
+						<div class="col-md-3 mt-4">
 							<div class="box">
 								<a href="#">
 									<div class="card">
@@ -171,12 +171,12 @@
 			<div class="row">
 
 				<!-- Start  -->
-				<div class="col-md-12">
+				<div class="col-md-12 mt-3 mb-5">
 					<div class="row">
 
-						<div class="col-md-12 mb-4">
+						<div class="col-md-12">
 							<div class="box-header">
-								<div class="row">
+								<div class="row align-items-center">
 									<div class="col-auto mr-auto">
 										<div class="title-box">{{ $AllMotorByCategory->nama_kategori}}</div>
 									</div>
@@ -190,7 +190,7 @@
 						</div>
 
 						@forelse ($AllMotorByCategory->motors as $motor)
-						<div class="col-md-3 mb-5">
+						<div class="col-md-3 mt-4">
 							<div class="box">
 								<a href="#">
 									<div class="card">

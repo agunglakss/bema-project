@@ -14,12 +14,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+        \DB::enableQueryLog();
         // Get All Motor
         $AllMotors = Motor::all();
         
         // Get All Motor By Category
         $AllMotorByCategories = \App\Kategori::with('motors')->get();
        
+        //dd(\DB::getQueryLog());
         return view('user.home.index', compact('AllMotors', 'AllMotorByCategories'));
     }
 
