@@ -27,7 +27,7 @@
                         <div class="form-group row">
                            <label class="col-sm-2 col-form-label" >Kategori Motor <span style="color: red;">*</span></label>
                            <div class="col-sm-10">
-                              <select class="form-control selectric" name="nama_kategori" >
+                              <select class="form-control selectric" name="nama_kategori">
                                  <option value="">- Pilih Kategori Motor -</option>
                                  @forelse ($kategoriMotors as $kategoriMotor)
                                  <option value="{{ $kategoriMotor->id }}">{{ $kategoriMotor->nama_kategori }}</option>    
@@ -68,7 +68,7 @@
                      <div class="form-group row mb-4">
                         <label class="col-sm-2 col-form-label">Warna Motor</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control inputtags" name="warna[]">
+                          <input type="text" class="form-control inputtags" name="warna[]" placeholder="Pisahkan dengan koma, jika lebih dari satu warna">
                         </div>
                      </div>
                      
@@ -89,6 +89,13 @@
                         </div>
                      </div>
 
+                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="thumbnail">Thumbnail</label>
+                        <div class="input-group col-sm-10">
+                           <input type="file" class="form-control" name="thumbnail" style="padding:7px 0 0 5px;">
+                        </div>
+                     </div>
+                     
                      <div class="form-group row" id="wrapper">
                         <label class="col-sm-2 col-form-label" for="upload_img[]">Upload Gambar</label>
                         <div class="input-group col-sm-10">

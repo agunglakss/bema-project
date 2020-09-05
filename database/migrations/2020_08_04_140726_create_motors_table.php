@@ -20,7 +20,8 @@ class CreateMotorsTable extends Migration
             $table->string('nama_motor');
             $table->string('slug');
             $table->longText('thumbnail');
-            $table->string('warna');
+            $table->longText('images');
+            $table->longText('warna');
             $table->integer('harga_otr');
             $table->string('cc_motor');
             $table->longText('deskripsi');

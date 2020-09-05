@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Motor extends Model
 {
-    protected $fillable = ['tipe_id', 'kategori_id', 'nama_motor', 'slug', 'thumbnail', 'warna', 'harga_otr', 'cc_motor', 'deskripsi'];
+    protected $fillable = ['tipe_id', 'kategori_id', 'nama_motor', 'slug', 'thumbnail', 'images', 'warna', 'harga_otr', 'cc_motor', 'deskripsi'];
 
     public function tipe()
     {
         return $this->belongsTo('App\Tipe');
     }
 
-    public function pricelist()
+    public function pricelists()
     {
-        return $this->hasOne('\App\Pricelist');
+        return $this->hasMany('App\Pricelist');;
     }
 }

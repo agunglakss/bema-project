@@ -12,3 +12,36 @@
 
 <!-- Lazy load -->
 <script src="{{ asset('assets/js/lazysizes.min.js') }}" async=""></script>
+
+<script>
+
+  function getPricelists()
+  {
+    var motor_id = $("#uang_muka option:selected").attr("data-id");
+    var uang_muka = $("#uang_muka option:selected").attr("data-uang");
+    
+    $.ajax({
+      type: "get",
+      url: '/api/product/'+motor_id+'/'+uang_muka+'',
+      dataType: 'json',
+      success:function(data){
+        $.each(data, function(i, data) {
+          $('#diskon').html('Rp ' + data.diskon + ',-');
+          $('#tenor_cicilan').html(`
+            <option value="` +data.bulan_11+ `">Bulan 11 x Rp ` +data.bulan_11+ `</option>
+            <option value="` +data.bulan_11+ `">Bulan 17 x Rp ` +data.bulan_17+ `</option>
+            <option value="` +data.bulan_11+ `">Bulan 23 x Rp ` +data.bulan_23+ `</option>
+            <option value="` +data.bulan_11+ `">Bulan 27 x Rp ` +data.bulan_27+ `</option>
+            <option value="` +data.bulan_11+ `">Bulan 29 x Rp ` +data.bulan_29+ `</option>
+            <option value="` +data.bulan_11+ `">Bulan 33 x Rp ` +data.bulan_33+ `</option>
+            <option value="` +data.bulan_11+ `">Bulan 35 x Rp ` +data.bulan_35+ `</option>
+          `);
+        }); 
+      },
+      error:function(respone){
+        console.log(respone);
+      }
+    });
+  }
+  
+</script>

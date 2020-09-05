@@ -1,6 +1,6 @@
-<div class="col-md-3">
+<div class="col-md-3 mb-4">
 	<div class="sidebar">
-
+		<h3 class="sidebar-heading mb-3">Kategori Motor</h3>
 		<ul class="list-group list-group-flush">
 			@foreach ($Sidebars as $Menu)
 				

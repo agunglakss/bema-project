@@ -20,16 +20,17 @@
 		@include('layouts.user.header')
 
 		<section>
-			@yield('content')
+		@yield('content')
 		</section>
 
 		@include('layouts.user.footer')
 
 		@include('layouts.user.source-footer')
 
-      <!-- Slider -->
+    {{-- Slider --}}
 		<script>
-			@yield('slider')
+		@yield('slider')
 		</script>
+
 	</body>
 </html>

@@ -132,9 +132,7 @@
 										<div class="title-box">Motor Terbaru</div>
 									</div>
 									<div class="col-auto text-right">
-										<div class="lihat-semua">
-										<a href="{{ url('/product') }}">View All</a>
-										</div>
+										<a class="lihat-semua" href="{{ url('/product') }}">Lihat Semua</a>
 									</div>
 								</div>
 							</div>
@@ -144,7 +142,7 @@
 							<div class="box">
 								<a href="#">
 									<div class="card">
-										<img class="card-img-top img-fluid" alt="" src="assets/img/products/honda-beat.jpg" alt="">
+										<img class="card-img-top img-fluid" alt="" src="{{ asset('/img-products').'/'.$AllMotor->thumbnail}}" alt="">
 										<div class="card-block mt-3 mb-4 pl-3 pr-3">
 										<h6 class="card-title text-truncate mb-2">{{ $AllMotor->nama_motor }}</h6>
 										<div class="title-dp">DP Mulai dari</div>
@@ -166,61 +164,70 @@
 	</div>
 
 	@forelse ($AllMotorByCategories as $AllMotorByCategory)
-	<div class="bg-white mb-3">
-		<div class="container">
-			<div class="row">
-
-				<!-- Start  -->
-				<div class="col-md-12 mt-3 mb-5">
-					<div class="row">
-
-						<div class="col-md-12">
-							<div class="box-header">
-								<div class="row align-items-center">
-									<div class="col-auto mr-auto">
-										<div class="title-box">{{ $AllMotorByCategory->nama_kategori}}</div>
-									</div>
-									<div class="col-auto text-right">
-										<div class="lihat-semua">
-											<a href="{{ url('/product/'.$AllMotorByCategory->slug) }}">View All</a>
+		@if ($AllMotorByCategory->id == $AllMotorByCategory->id)
+		<div class="bg-white mb-3">
+			<div class="container">
+				<div class="row">
+	
+					<!-- Start  -->
+					<div class="col-md-12 mt-3 mb-5">
+						<div class="row">
+	
+							<div class="col-md-12">
+								<div class="box-header">
+									<div class="row align-items-center">
+										<div class="col-auto mr-auto">
+											<div class="title-box">{{ $AllMotorByCategory->nama_kategori}}</div>
+										</div>
+										<div class="col-auto text-right">
+											<a class="lihat-semua" href="{{ url('/product/'.$AllMotorByCategory->slug) }}">Lihat Semua</a>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-
-						@forelse ($AllMotorByCategory->motors as $motor)
-						<div class="col-md-3 mt-4">
-							<div class="box">
-								<a href="#">
-									<div class="card">
-										<img class="card-img-top img-fluid" alt="" src="assets/img/products/honda-beat.jpg" alt="">
-										<div class="card-block mt-3 mb-4 pl-3 pr-3">
-										<h6 class="card-title text-truncate mb-2">{{ $motor->nama_motor }}</h6>
-										<div class="title-dp">DP Mulai dari</div>
-										<div class="harga-diskon">Rp. 500.000,-</div>
-										<span class="harga-asli">Rp. 1.000.000,-</span>
+	
+							@forelse ($AllMotorByCategory->motors as $motor)
+							<div class="col-md-3 mt-4">
+								<div class="box">
+									<a href="#">
+										<div class="card">
+											<img class="card-img-top img-fluid" alt="" src="{{ asset('/img-products').'/'.$motor->thumbnail}}" alt="">
+											<div class="card-block mt-3 mb-4 pl-3 pr-3">
+											<h6 class="card-title text-truncate mb-2">{{ $motor->nama_motor }}</h6>
+											<div class="title-dp">DP Mulai dari</div>
+											<div class="harga-diskon">Rp. 500.000,-</div>
+											<span class="harga-asli">Rp. 1.000.000,-</span>
+											</div>
+											<button class="btn btn-box mb-3 ml-3 mr-3">Ajukan Kredit</button>
 										</div>
-										<button class="btn btn-box mb-3 ml-3 mr-3">Ajukan Kredit</button>
-									</div>
-								</a>
+									</a>
+								</div>
 							</div>
+							@empty
+							<div class="col-md-3 mb-5">
+								{{ $AllMotorByCategory->nama_kategori }} Belum Tersedia.
+							</div>
+							@endforelse
+							
 						</div>
-						@empty
-						<div class="col-md-3 mb-5">
-							Motor {{ $AllMotorByCategory->nama_kategori }} Belum Tersedia.
-						</div>
-						@endforelse
-						
 					</div>
+					<!-- End  -->
+	
 				</div>
-				<!-- End  -->
-
 			</div>
 		</div>
-	</div>
+		@endif
+	
 	@empty
-		  
+	<div class="bg-white mb-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mt-3 mb-5">
+					<h1 class="text-center">Motor belum tersedia.</h1>
+				</div>
+			</div>
+		</div>
+	</div>	  
 	@endforelse
     
 @endsection

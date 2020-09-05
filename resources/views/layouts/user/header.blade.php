@@ -1,5 +1,6 @@
-<!----- Start Area Header ----->
+{{-- Start Area Header --}}
 <header>
+
    <div class="top-header">
       <div class="container">
          <div class="row">
@@ -32,9 +33,10 @@
 
          </div><!-- End row -->
       </div><!-- End container -->
-   </div><!-- End top-header -->
+   </div>
+   {{-- End Top Header --}}
 
-   <nav class="navbar navbar-expand flex-column flex-md-row">
+   <nav class="navbar navbar-expand-lg flex-column flex-md-row">
       <div class="container">
 
          <div class="navbar-nav-scroll">
@@ -53,14 +55,14 @@
                </li>
             </ul>
          </div>
-
          <a class="btn btn-whatsapp" href="#">
             <span class="icon-whatsapp"><i class="fa fa-whatsapp"></i></span>
             <span class="text-whatsapp">Tanya via Whatsapp</span>
          </a>
 
-      </div><!-- End container -->
-   </nav><!-- End nav -->
+      </div>
+   </nav>
+   {{-- End Nav --}}
 
 </header>
-<!----- End Area Header ----->
+{{-- End Area Header  --}}

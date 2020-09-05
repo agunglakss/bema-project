@@ -48,37 +48,45 @@ class MotorController extends Controller
 	{	
 		$request->validate([
 			'nama_kategori'		=> 'required',
-			'nama_tipe'     		=> 'required',
-			'nama_motor'    		=> 'required',
+			'nama_tipe'     	=> 'required',
+			'nama_motor'    	=> 'required',
 			'harga_otr'    		=> 'required|integer',
+			'thumbnail'				=> 'required|mimes:png,jpg,jpeg|max:3048',
 			'upload_img'			=> 'required',
-			'upload_img.*'			=> 'image|mimes:png,jpg,jpeg|max:3048',
+			'upload_img.*'		=> 'image|mimes:png,jpg,jpeg|max:3048',
+			
 		]);
 
 		// lakukan looping untuk menyimpan value didalam variable array $warna[]
-		foreach($request->warna as $warna)
-		{
-			$data_warna[] = $warna;
+		foreach ($request->warna as $warna) {
+			$warnaArray = explode(",", $warna);
 		}
 
-		// Cek jika mempunyai file poto
+		// Multiple upload gambar atau foto
 		if ($request->hasFile('upload_img')) {
 
 			// lakukan looping untuk menyimpan value didalam variable array $image[]
 			foreach($request->file('upload_img') as $image)
 			{
 				// rubah nama file dengan nama random maksimal 8 karakter
-				$thumbnail_name = Str::random(8). '.' .$image->getClientOriginalExtension();
+				$imageName = Str::random(8). '.' .$image->getClientOriginalExtension();
 
 				// simpan path folder didalam variable $path
-				$path = public_path().'/img-products';
+				$imagePath = public_path().'/img-products';
 
 				// pindahkan file kedalam folder public
-				$image->move($path, $thumbnail_name);
+				$image->move($imagePath, $imageName);
 				
 				// simpan file image yang sudah dirubah namanya kedalam variable array $img[]
-				$img[] = $thumbnail_name;
+				$images[] = $imageName;
 			}
+		}
+
+		// Upload thumbnail
+		if ($request->hasFIle('thumbnail')) {
+			$thumbnailName = Str::random(8). '.' .$request->thumbnail->getClientOriginalExtension();
+			$thumbnailPath = public_path().'/img-products';
+			$request->thumbnail->move($thumbnailPath, $thumbnailName);
 		}
 		
 		$motor = Motor::create([
@@ -86,8 +94,9 @@ class MotorController extends Controller
 			'tipe_id'       => $request->nama_tipe,
 			'nama_motor'    => $request->nama_motor,
 			'slug'          => str::slug($request->nama_motor, '-'),
-			'thumbnail'	    => json_encode($img),
-			'warna'		    => json_encode($data_warna),
+			'thumbnail'	    => $thumbnailName,
+			'images'	    	=> json_encode($images),
+			'warna'		    	=> json_encode($warnaArray),
 			'harga_otr'     => $request->harga_otr,
 			'cc_motor'      => $request->cc_motor,
 			'deskripsi'     => $request->deskripsi,

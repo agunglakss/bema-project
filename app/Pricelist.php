@@ -21,6 +21,6 @@ class Pricelist extends Model
 
     public function motor()
     {
-        return $this->belongsTo('\App\Motor');
+        return $this->belongsTo('App\Motor');;
     }
 }
