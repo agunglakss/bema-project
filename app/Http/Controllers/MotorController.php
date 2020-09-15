@@ -18,9 +18,9 @@ class MotorController extends Controller
 	{
 		$title = 'Daftar Motor';
 
-		$Motors = Motor::with('tipe.kategori')->paginate(5);
+		$motors = Motor::with('tipe.kategori')->paginate(5);
 		
-		return view('admin.product.motor.index', compact('title', 'Motors'));
+		return view('admin.product.motor.index', compact('title', 'motors'));
 	}
 
 	/**

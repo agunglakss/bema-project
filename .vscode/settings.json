@@ -1,4 +1,7 @@
 {
-   "editor.fontFamily": "Hack, Menlo, Monaco, monospace",
-   "editor.tabSize": 2,
+    "editor.fontSize": 13,
+    "markdown.preview.lineHeight": 1.2,
+    "editor.lineHeight": 27,
+    "editor.tabSize": 4,
+    "emmet.triggerExpansionOnTab": true,
 }

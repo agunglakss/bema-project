@@ -66,7 +66,7 @@
                         <tr>
                            <th>No</th>
                            <th>Motor</th>
-                           <th>DP (IDR)</th>
+                           <th>Harga OTR</th>
                            <th>Potongan DP (IDR)</th>
                            <th>Created At</th>
                            <th>Updated At</th>
@@ -74,19 +74,19 @@
                            <th>Action</th>
                         </tr>
 
-                        @forelse ($pricelists as $pricelist)
+                        @forelse ($motors as $motor)
                         <tr>
                            <td>{{ $loop->iteration }}</td>
-                           <td>{{ $pricelist->motor->nama_motor }}</td>
-                           <td>{{ number_format($pricelist->uang_muka) }}</td>
-                           <td>{{ number_format($pricelist->diskon) }}</td>
-                           <td>{{ $pricelist->created_at->format('d M Y') }}</td>
-                           <td>{{ $pricelist->updated_at->format('d M Y') }}</td>
+                           <td>{{ $motor->nama_motor }}</td>
+                           <td>{{ number_format($motor->harga_otr) }}</td>
+                           {{-- <td>{{ number_format($pricelist->diskon) }}</td> --}}
+                           <td>{{ $motor->created_at->format('d M Y') }}</td>
+                           <td>{{ $motor->updated_at->format('d M Y') }}</td>
                            <td>
                               <a href="#" class="btn-sm btn-success" title="Detail Cicilan Harga">Detail Cicilan Harga</a>
                            </td>
                            <td>
-                              <a class="btn-sm btn-info" href="{{ url('/pricelists') }}/{{ $pricelist->id }}/edit" title="Edit Daftar Harga"><i class="fa fa-edit"></i></a>
+                              <a class="btn-sm btn-info" href="{{ url('/pricelists') }}/{{ $motor->id }}/edit" title="Edit Daftar Harga"><i class="fa fa-edit"></i></a>
                               <a class="btn-sm btn-danger" href="" title="Hapus Daftar Harga"><i class="fa fa-trash"></i></a>
                            </td>
                         </tr>
@@ -99,7 +99,7 @@
 
                   {{-- pagination --}}
                   <div class="float-right">
-                     {{ $pricelists->links() }}
+                     {{ $motors->links() }}
                   </div>
                   {{-- end pagination --}}
 

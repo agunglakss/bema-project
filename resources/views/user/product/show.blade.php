@@ -69,13 +69,31 @@
               </select>
             </div>
             <h4 class="mb-4 text-center font-weight-bold text-blue" id="textUangMuka">Uang Muka Setelah Diskon Menjadi</h4>
+
             <h1 class="mb-5 text-center font-weight-bold text-orange" id="diskon">Rp ,-</h1>
+
             <div class="form-group mb-4">
               <label for="tenor_cicilan" class="font-weight-bold text-secondary-black">Tenor Cicilan</label>
               <select class="form-control custom-select custom-select-lg" id="tenor_cicilan">
               </select>
             </div>
-            <button type="submit" class="btn btn-orange w-100">Ajukan Kredit Motor</button>
+
+            <div class="form-group mb-4">
+              <label for="nama" class="font-weight-bold text-secondary-black">Nama</label>
+              <input type="text" class="form-control form-control-lg" name="nama">
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="alamat" class="font-weight-bold text-secondary-black">Alamat</label>
+              <textarea class="form-control form-control-lg" name="alamat" id="alamat" ></textarea>
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="nomor_telepon" class="font-weight-bold text-secondary-black">Nomor Telepon</label>
+              <input type="text" class="form-control form-control-lg" name="nomor_telepon">
+            </div>
+
+            <button type="submit" class="btn btn-lg btn-orange w-100">Ajukan Kredit Motor</button>
           </form>
         </div>
         {{-- End data motor --}}

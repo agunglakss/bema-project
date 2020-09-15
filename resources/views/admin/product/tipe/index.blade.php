@@ -32,7 +32,7 @@
             <div class="col-12">
                <div class="card mb-0">
                   <div class="card-body">
-                     <a class="btn btn-primary" href="{{ url('/products/tipe-motor/create') }}">Tambah Tipe Motor</a>
+                     <a class="btn btn-primary" href="{{ url('/tipe-motor/create') }}">Tambah Tipe Motor</a>
                   </div>
                </div>
             </div>
@@ -66,7 +66,7 @@
                               <td>{{ $tipeMotor->updated_at->format('d-M-Y') }}</td>
                               <td><div class="badge badge-success">Aktif</div></td>
                               <td>
-                                 <a class="btn-sm btn-info" href="{{ url('products/tipe-motor') }}/{{ $tipeMotor->slug }}/edit" title="Edit Tipe Motor"><i class="fa fa-edit"></i></a>
+                                 <a class="btn-sm btn-info" href="{{ url('/tipe-motor') }}/{{ $tipeMotor->slug }}/edit" title="Edit Tipe Motor"><i class="fa fa-edit"></i></a>
                                  <a class="btn-sm btn-danger" href="" title="Hapus Tipe Motor"><i class="fa fa-trash"></i></a>
                               </td>
                            </tr>

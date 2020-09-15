@@ -70,6 +70,7 @@
                     <h6 class="card-title text-truncate mb-2">{{ $motor->nama_motor }}</h6>
                     <div class="title-dp">DP Mulai dari</div>
                     <div class="harga-diskon">Rp</div>
+                    <div class="title-dp">Harga OTR</div>
                     <span class="harga-asli">Rp {{ number_format($motor->harga_otr) }},-</span>
                   </div>
                   <button class="btn btn-box mb-3 ml-3 mr-3">Ajukan Kredit</button>

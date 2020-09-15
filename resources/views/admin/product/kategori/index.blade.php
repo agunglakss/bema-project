@@ -32,7 +32,7 @@
             <div class="col-12">
                <div class="card mb-0">
                   <div class="card-body">
-                     <a class="btn btn-primary" href="{{ url('/products/kategori-motor/create') }}">Tambah Kategori Motor</a>
+                     <a class="btn btn-primary" href="{{ url('/kategori-motor/create') }}">Tambah Kategori Motor</a>
                   </div>
                </div>
             </div>
@@ -63,7 +63,7 @@
                               <td>{{ $kategoriMotor->updated_at->format('d-M-Y') }}</td>
                               <td><div class="badge badge-success">Aktif</div></td>
                               <td>
-                                 <a class="btn-sm btn-info" href="{{ url ('/products/kategori-motor') }}/{{$kategoriMotor->slug}}/edit" title="Edit Kategori Motor"><i class="fa fa-edit"></i></a>
+                                 <a class="btn-sm btn-info" href="{{ url ('/kategori-motor') }}/{{$kategoriMotor->slug}}/edit" title="Edit Kategori Motor"><i class="fa fa-edit"></i></a>
                                  <a class="btn-sm btn-danger" href="#" title="Hapus Kategori Motor"><i class="fa fa-trash"></i></a>
                               </td>
                            </tr>

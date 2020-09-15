@@ -2,17 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 //Schema
 Route::get('/schema', function() {
 	return view('user.schema');
@@ -24,30 +13,30 @@ Route::get('/about-us', function() {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-
+	Route::get('/motor/pricelists/{id}', 'PricelistController@showPricelistByIdMotor');
 	//Dashboard Admin
-	Route::get('/admin', 'DashboardController@index');
+	Route::get('/dashboard', 'DashboardController@index');
 	
 	// admin kategori
-	Route::get('/products/kategori-motor', 'KategoriController@index');
-	Route::get('/products/kategori-motor/create', 'KategoriController@create');
-	Route::get('/products/kategori-motor/{kategori:slug}/edit', 'KategoriController@edit');
-	Route::patch('/products/kategori-motor/{kategori:slug}/edit', 'KategoriController@update');
-	Route::post('/products/kategori-motor', 'KategoriController@store');
+	Route::get('/kategori-motor', 'KategoriController@index');
+	Route::get('/kategori-motor/create', 'KategoriController@create');
+	Route::get('/kategori-motor/{kategori:slug}/edit', 'KategoriController@edit');
+	Route::patch('/kategori-motor/{kategori:slug}/edit', 'KategoriController@update');
+	Route::post('/kategori-motor', 'KategoriController@store');
 	
 	// admin tipe
-	Route::get('/products/tipe-motor', 'TipeController@index');
-	Route::get('/products/tipe-motor/create', 'TipeController@create');
-	Route::get('/products/tipe-motor/{tipe:slug}/edit', 'TipeController@edit');
-	Route::patch('/products/tipe-motor/{tipe:slug}/edit', 'TipeController@update');
-	Route::post('/products/tipe-motor', 'TipeController@store');
+	Route::get('/tipe-motor', 'TipeController@index');
+	Route::get('/tipe-motor/create', 'TipeController@create');
+	Route::get('/tipe-motor/{tipe:slug}/edit', 'TipeController@edit');
+	Route::patch('/tipe-motor/{tipe:slug}/edit', 'TipeController@update');
+	Route::post('/tipe-motor', 'TipeController@store');
 	
 	// admin motor
-	Route::get('/products/motor', 'MotorController@index');
-	Route::get('/products/motor/create', 'MotorController@create');
-	Route::get('/products/motor/{motor:slug}/edit', 'MotorController@edit');
-	Route::patch('/products/motor/{motor:slug}/edit', 'MotorController@update');
-	Route::post('/products/motor', 'MotorController@store');
+	Route::get('/motor', 'MotorController@index');
+	Route::get('/motor/create', 'MotorController@create');
+	Route::get('/motor/{motor:slug}/edit', 'MotorController@edit');
+	Route::patch('/motor/{motor:slug}/edit', 'MotorController@update');
+	Route::post('/motor', 'MotorController@store');
 	
 	// admin pricelist
 	Route::get('/pricelists', 'PricelistController@index');
@@ -77,7 +66,6 @@ Route::get('/product', 'ProductController@index');
 Route::get('/product/{kategori:slug}/{tipe:slug}/{motor:slug}', 'ProductController@show');
 Route::get('/product/{kategori:slug}/{tipe:slug}', 'ProductController@getMotorByType');
 Route::get('/product/{kategori:slug}', 'ProductController@getMotorByCategory');
-
 
 // Home User
 Route::get('/', 'HomeController@index');

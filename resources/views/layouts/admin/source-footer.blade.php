@@ -43,3 +43,38 @@
       });
    });
 </script>
+
+<script>
+	function detailHrg(id)
+	{
+		const formatRupiah = new Intl.NumberFormat();
+		$.ajax({
+		type: "get",
+		url: '/motor/pricelists/'+id+'',
+		dataType: 'json',
+		success:function(result){
+			const data = result[0];
+			$('#trHarga td').remove();
+		$('#detailHargaLabel').html(data.nama_motor +' </br> Harga OTR : Rp '+ formatRupiah.format(data.harga_otr));
+			$.each(data.pricelists, function(i, data) {
+				console.log()
+				$('#tableHarga').append(`
+					<tr id="trHarga">
+						<td>Rp `+formatRupiah.format(data.uang_muka)+`</td>
+						<td>Rp `+formatRupiah.format(data.diskon)+`</td>
+						<td>Rp `+formatRupiah.format(data.bulan_11)+`</td>	
+						<td>Rp `+formatRupiah.format(data.bulan_17)+`</td>
+						<td>Rp `+formatRupiah.format(data.bulan_23)+`</td>
+						<td>Rp `+formatRupiah.format(data.bulan_27)+`</td>
+						<td>Rp `+formatRupiah.format(data.bulan_33)+`</td>
+						<td>Rp `+formatRupiah.format(data.bulan_35)+`</td>
+					</tr>
+				`);
+			});
+		},
+		error:function(respone){
+			console.log(respone);
+		}
+		});
+  	}
+</script>

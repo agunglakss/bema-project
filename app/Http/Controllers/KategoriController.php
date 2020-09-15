@@ -97,9 +97,9 @@ class KategoriController extends Controller
         ]);
 
         $kategori->update([
-                'nama_kategori' => $request->nama_kategori,
-                'slug'          => Str::slug($request->nama_kategori, '-'),
-            ]);
+            'nama_kategori' => $request->nama_kategori,
+            'slug'          => Str::slug($request->nama_kategori, '-'),
+        ]);
 
         return redirect('products/kategori-motor');
     }

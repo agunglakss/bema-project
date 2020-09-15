@@ -5,12 +5,12 @@
 
 		<div class="section-header">
          <div class="section-header-back">
-            <a href="{{ url('/products/kategori-motor') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+            <a href="{{ url('/kategori-motor') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
          </div>
          <h1>Tambah Kategori Motor</h1>
          <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ url('/admin') }}">Dashboard</a></div>
-            <div class="breadcrumb-item active"><a href="{{ url('/products/kategori-motor') }}">Daftar Motor</a></div>
+            <div class="breadcrumb-item active"><a href="{{ url('/kategori-motor') }}">Daftar Motor</a></div>
             <div class="breadcrumb-item">Tambah Kategori Motor</div>
          </div>
       </div>
@@ -20,7 +20,7 @@
          <div class="row">
             <div class="col-12">
                <div class="card">
-                  <form class="needs-validation" novalidate="" method="post" action="{{ url('products/kategori-motor') }}">
+                  <form class="needs-validation" novalidate="" method="post" action="{{ url('/kategori-motor') }}">
                      @csrf
                      <div class="card-body">
                         <div class="form-group row">

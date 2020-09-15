@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Pricelist;
-use Session;
-use App\Imports\PricelistImport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\PricelistImport;
 use Illuminate\Http\Request;
+use App\Pricelist;
+use App\Motor;
 
 class PricelistController extends Controller
 {
@@ -19,9 +19,9 @@ class PricelistController extends Controller
     {
         $title = "Daftar Harga Cicilan Motor";
 
-        $pricelists = Pricelist::paginate(5);
+        $motors = Motor::orderBy('id', 'desc')->paginate(15);
 
-        return view('admin.pricelist.index', compact('title', 'pricelists'));
+        return view('admin.pricelist.index', compact('title', 'motors'));
     }
 
     /**
@@ -35,7 +35,7 @@ class PricelistController extends Controller
         $title = "Tambah Daftar Harga Cicilan Motor";
 
         /* ambil data motor dari database, tampung di variable $motors */
-        $motors = \App\Motor::select('id', 'nama_motor')->get();
+        $motors = Motor::select('id', 'nama_motor')->get();
 
         return view('admin.pricelist.create', compact('title', 'motors'));
     }
@@ -178,5 +178,11 @@ class PricelistController extends Controller
  
 		// alihkan halaman pricelists
 		return redirect('/pricelists')->with('status', 'Import File Berhasil!');
-	}
+    }
+    
+    public function showPricelistByIdMotor($id)
+    {
+        $pricelistByIdMotor = Motor::with('pricelists')->where('id', $id)->get();
+        return $pricelistByIdMotor;
+    }
 }
