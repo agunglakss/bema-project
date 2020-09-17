@@ -9,11 +9,6 @@ use Illuminate\Support\str;
 
 class MotorController extends Controller
 {
-   /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 	public function index()
 	{
 		$title = 'Daftar Motor';
@@ -23,11 +18,6 @@ class MotorController extends Controller
 		return view('admin.product.motor.index', compact('title', 'motors'));
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 	public function create()
 	{
 		$title = 'Tambah Motor';
@@ -38,12 +28,6 @@ class MotorController extends Controller
 		return view('admin.product.motor.create', compact('title', 'kategoriMotors', 'tipeMotors'));
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
-	 */
 	public function store(Request $request)
 	{	
 		$request->validate([
@@ -59,7 +43,7 @@ class MotorController extends Controller
 
 		// lakukan looping untuk menyimpan value didalam variable array $warna[]
 		foreach ($request->warna as $warna) {
-			$warnaArray = explode(",", $warna);
+			$warnaArray = explode(",", strtolower($warna));
 		}
 
 		// Multiple upload gambar atau foto
@@ -95,33 +79,26 @@ class MotorController extends Controller
 			'nama_motor'    => $request->nama_motor,
 			'slug'          => str::slug($request->nama_motor, '-'),
 			'thumbnail'	    => $thumbnailName,
-			'images'	    	=> json_encode($images),
-			'warna'		    	=> json_encode($warnaArray),
+			'images'	   	=> json_encode($images),
+			'warna'		    => json_encode($warnaArray),
 			'harga_otr'     => $request->harga_otr,
 			'cc_motor'      => $request->cc_motor,
 			'deskripsi'     => $request->deskripsi,
 		]);
 		
-		return redirect('/products/motor')->with('status', 'Motor Berhasil Ditambahkan!');
+		return redirect('/motor')->with('status', 'Motor Berhasil Ditambahkan!');
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
+	public function show($slug)
 	{
-		//
+		$title = "Detail Motor";
+
+		$detailMotor = Motor::with('pricelists', 'tipe')->where('slug', $slug)->first();
+
+		return view('admin.product.motor.show', compact('title', 'detailMotor'));
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
+	
 	public function edit(Motor $motor)
 	{
 		$title = 'Edit Motor';
@@ -132,13 +109,6 @@ class MotorController extends Controller
 		return view('admin.product.motor.edit', compact('title', 'kategoriMotors', 'tipeMotors', 'motor'));
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
 	public function update(Request $request, Motor $motor)
 	{
 		$request->validate([
@@ -161,14 +131,13 @@ class MotorController extends Controller
 		return redirect('products/motor')->with('status', 'Motor Berhasil Diubah!');
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function editPricelist() 
+	{
+		
 	}
 }

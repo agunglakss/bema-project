@@ -61,7 +61,7 @@
 								@forelse ($motors as $motor)
 								<tr>
 									<td>{{ $motor->id }}</td>
-									<td>{{ $motor->nama_motor }}</td>
+									<td><a href="{{ url('/motor').'/'.$motor->slug.'/detail' }}">{{ $motor->nama_motor }}</a></td>
 									<td>{{ $motor->tipe->kategori->nama_kategori }}</td>
 									<td>{{ $motor->tipe->nama_tipe }}</td>
 									<td><button type="button" class="btn btn-success" title="Detail Harga" data-toggle="modal" data-target="#detailHarga" onclick="detailHrg({{ $motor->id }})">Detail Harga</button></td>
@@ -91,7 +91,8 @@
 		</div><!-- end section-body -->
 		
    	</section>
-   	<!-- Modal -->
+	   
+	{{-- modal --}}
 	<div class="modal fade bd-example-modal-lg" id="detailHarga" tabindex="-1" role="dialog" aria-labelledby="detailHargaLabel" aria-hidden="true">
 		<div class="modal-dialog modal-xl" role="document">
 			<div class="modal-content">
@@ -123,4 +124,5 @@
 			</div>
 		</div>
 	</div>
+	{{-- end modal --}}
 @endsection

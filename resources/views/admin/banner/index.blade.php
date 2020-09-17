@@ -63,16 +63,16 @@
 									<td><a href="{{$banner->link}}">Link</a></td>
 									<td>
 										@if ($banner->status == 1)
-										<span class="badge badge-success">Aktif</span>
+											<span class="badge badge-success">Aktif</span>
 										@else
-										<span class="badge badge-danger">Tidak Aktif</span>
+											<span class="badge badge-danger">Tidak Aktif</span>
 										@endif
 									</td>
 									<td>{{ $banner->created_at->format('d-M-Y') }}</td>
 									<td>{{ $banner->updated_at->format('d-M-Y') }}</td>
 									<td>
 										<a class="btn-sm btn-info" href="{{ url('/banners').'/'.$banner->id.'/edit' }}" title="Edit Banner"><i class="fa fa-edit"></i></a>
-									<a class="btn-sm btn-danger" href="" title="Hapus Banner"><i class="fa fa-trash"></i></a>
+										<a class="btn-sm btn-danger" href="" title="Hapus Banner"><i class="fa fa-trash"></i></a>
 									</td>
 								</tr>    
 								@empty

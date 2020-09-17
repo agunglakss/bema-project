@@ -13,7 +13,9 @@ Route::get('/about-us', function() {
 });
 
 Route::group(['middleware' => ['auth']], function () {
+	// modal ajax pricelist
 	Route::get('/motor/pricelists/{id}', 'PricelistController@showPricelistByIdMotor');
+	
 	//Dashboard Admin
 	Route::get('/dashboard', 'DashboardController@index');
 	
@@ -36,6 +38,9 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/motor/create', 'MotorController@create');
 	Route::get('/motor/{motor:slug}/edit', 'MotorController@edit');
 	Route::patch('/motor/{motor:slug}/edit', 'MotorController@update');
+	Route::get('/motor/{motor:slug}/detail', 'MotorController@show');
+	Route::get('/motor/{motor:slug/pricelist/{id}/edit', 'MotorController@editPricelist')->name('motor.pricelist');
+	Route::patch('/motor{motor:slug/pricelist/{id}/edit', 'MotorController@updatePricelist')->name('motor.pricelist');
 	Route::post('/motor', 'MotorController@store');
 	
 	// admin pricelist
