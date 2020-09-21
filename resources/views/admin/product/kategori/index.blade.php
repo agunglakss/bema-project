@@ -63,8 +63,8 @@
                               <td>{{ $kategoriMotor->updated_at->format('d-M-Y') }}</td>
                               <td><div class="badge badge-success">Aktif</div></td>
                               <td>
-                                 <a class="btn-sm btn-info" href="{{ url ('/kategori-motor') }}/{{$kategoriMotor->slug}}/edit" title="Edit Kategori Motor"><i class="fa fa-edit"></i></a>
-                                 <a class="btn-sm btn-danger" href="#" title="Hapus Kategori Motor"><i class="fa fa-trash"></i></a>
+                                 <a class="btn btn-sm btn-info" href="{{ url ('/kategori-motor') }}/{{$kategoriMotor->slug}}/edit" title="Edit Kategori Motor"><i class="fa fa-edit"></i></a>
+                                 <button class="btn btn-sm btn-danger" id="idHapusKategori" title="Hapus Kategori" data-toggle="modal" data-target="#hapusKategori" data-url="{{ url('/kategori-motor').'/'.$kategoriMotor->slug.'/delete' }}"><i class="fa fa-trash"></i></button>
                               </td>
                            </tr>
                            @empty
@@ -82,5 +82,25 @@
 
       </div><!-- end section-body -->
 		
-	</section>
+   </section>
+   
+   {{-- modal --}}
+	<div class="modal fade" id="hapusKategori" tabindex="-1" role="dialog" aria-labelledby="hapusKategoriLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h6 class="modal-title">Yakin ingin menghapus kategori ini?</h6>
+				</div>
+				<div class="modal-footer bg-whitesmoke br">
+					<form id="formHapusKategori" action="" method="POST">
+						@csrf
+						@method('delete')
+						<button type="submit" class="btn btn-secondary">Delete</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{-- end modal --}}
 @endsection

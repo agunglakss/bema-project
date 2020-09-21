@@ -21,27 +21,57 @@
 
 <!-- function for multiple upload image -->
 <script type="text/javascript">
-   $(document).ready(function() {
-      let wrapper = $("#wrapper");
-      let buttonAdd = $(".btnAdd");
+	$(document).ready(function() {
+		let wrapper = $("#wrapper");
+		let buttonAdd = $(".btnAdd");
 
-      $(buttonAdd).click(function(e) {
-         e.preventDefault();
-         $(wrapper).append(`
-            <div class="input-group col-sm-10 offset-2 mt-2">
-               <input type="file" class="form-control" name="upload_img[]" style="padding:7px 0 0 5px;">
-               <span class="input-group-append">
-                  <button class="btn btn-danger btnRemove"><i class="fa fa-times"></i> Hapus</button>
-               </span>
-            </div>
-         `);
-      });
+		$(buttonAdd).click(function(e) {
+			e.preventDefault();
+			$(wrapper).append(`
+				<div class="input-group col-sm-10 offset-2 mt-2">
+				<input type="file" class="form-control" name="upload_img[]" style="padding:7px 0 0 5px;">
+				<span class="input-group-append">
+					<button class="btn btn-danger btnRemove"><i class="fa fa-times"></i> Hapus</button>
+				</span>
+				</div>
+			`);
+		});
 
-      $(wrapper).on("click", ".btnRemove", function(e) {
-         e.preventDefault();
-         $(this).parents('.input-group').remove();
-      });
-   });
+		$(wrapper).on("click", ".btnRemove", function(e) {
+			e.preventDefault();
+			$(this).parents('.input-group').remove();
+		});
+	});
+</script>
+
+<script>
+
+	// delete banner
+	$(document).on('click', '#idHapusBanner', function() {
+		const urlHapusBanner = $(this).data('url');
+		$('#formHapusBanner').attr('action', urlHapusBanner);
+	});
+
+	// delete kategori motor
+	$(document).on('click', '#idHapusKategori', function() {
+		const urlHapusKategori = $(this).data('url');
+		console.log(urlHapusKategori);
+		$('#formHapusKategori').attr('action', urlHapusKategori);
+	});
+
+	// delete tipe motor
+	$(document).on('click', '#idHapusTipe', function() {
+		const urlHapusTipe = $(this).data('url');
+		console.log(urlHapusTipe);
+		$('#formHapusTipe').attr('action', urlHapusTipe);
+	});
+
+	// delete motor
+	
+
+	//delete pricelist
+
+	
 </script>
 
 <script>

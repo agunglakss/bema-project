@@ -29,15 +29,16 @@ class PricelistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($slug)
     {
-        /* judul halaman */
         $title = "Tambah Daftar Harga Cicilan Motor";
 
-        /* ambil data motor dari database, tampung di variable $motors */
-        $motors = Motor::select('id', 'nama_motor')->get();
+        $motor = Motor::select('id', 'nama_motor', 'slug')->where('slug', $slug)->first();
+        if($motor == null) {
+            abort('404');
+        }
 
-        return view('admin.pricelist.create', compact('title', 'motors'));
+        return view('admin.pricelist.create', compact('title', 'motor'));
     }
 
     /**
@@ -46,36 +47,42 @@ class PricelistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $slug)
     {
+        $motor = Motor::where('slug', $slug)->first();
+
         /* validasi sebelum mengirimkan request ke database */
         $request->validate([
-            'nama_kategori' => 'required',
-            'uang_muka' => 'required',
-            'bulan_11' => 'required',
-            'bulan_17' => 'required',
-            'bulan_23' => 'required',
-            'bulan_27' => 'required',
-            'bulan_29' => 'required',
-            'bulan_33' => 'required',
-            'bulan_35' => 'required',
-        ]);
-        
-        /* kirim request ke database */
-        Pricelist::create([
-            'motor_id'  => $request->nama_kategori,
-            'uang_muka'  => $request->uang_muka,
-            'diskon'  => $request->diskon,
-            'bulan_11'  => $request->bulan_11,
-            'bulan_17'  => $request->bulan_17,
-            'bulan_23'  => $request->bulan_23,
-            'bulan_27'  => $request->bulan_27,
-            'bulan_29'  => $request->bulan_29,
-            'bulan_33'  => $request->bulan_33,
-            'bulan_35'  => $request->bulan_35,
+            'motor_id'      => 'required',
+            'uang_muka'     => 'required',
+            'bulan_11'      => 'required',
+            'bulan_17'      => 'required',
+            'bulan_23'      => 'required',
+            'bulan_27'      => 'required',
+            'bulan_29'      => 'required',
+            'bulan_33'      => 'required',
+            'bulan_35'      => 'required',
         ]);
 
-        return redirect('/pricelists')->with('status', 'Daftar Harga Berhasil Disimpan.');
+        if($motor->id == $request->motor_id ) {
+           
+            Pricelist::create([
+                'motor_id'      => $request->motor_id,
+                'uang_muka'     => $request->uang_muka,
+                'diskon'        => $request->diskon,
+                'bulan_11'  => $request->bulan_11,
+                'bulan_17'  => $request->bulan_17,
+                'bulan_23'  => $request->bulan_23,
+                'bulan_27'  => $request->bulan_27,
+                'bulan_29'  => $request->bulan_29,
+                'bulan_33'  => $request->bulan_33,
+                'bulan_35'  => $request->bulan_35,
+            ]);
+        } else {
+            abort('404');
+        }
+
+        return redirect('/motor')->with('status', 'Daftar Harga Berhasil Disimpan.');
 
     }
 
@@ -140,7 +147,6 @@ class PricelistController extends Controller
             'bulan_29'  => $request->bulan_29,
             'bulan_33'  => $request->bulan_33,
             'bulan_35'  => $request->bulan_35,
-
         ]);
 
         return redirect('/pricelists')->with('status', 'Daftar Harga Behasil Diupdate');
@@ -177,7 +183,7 @@ class PricelistController extends Controller
 		Excel::import(new PricelistImport, public_path('/import_excel/'.$nama_file));
  
 		// alihkan halaman pricelists
-		return redirect('/pricelists')->with('status', 'Import File Berhasil!');
+		return redirect('/motor')->with('status', 'Import File Berhasil!');
     }
     
     public function showPricelistByIdMotor($id)

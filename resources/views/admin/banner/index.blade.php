@@ -71,8 +71,8 @@
 									<td>{{ $banner->created_at->format('d-M-Y') }}</td>
 									<td>{{ $banner->updated_at->format('d-M-Y') }}</td>
 									<td>
-										<a class="btn-sm btn-info" href="{{ url('/banners').'/'.$banner->id.'/edit' }}" title="Edit Banner"><i class="fa fa-edit"></i></a>
-										<a class="btn-sm btn-danger" href="" title="Hapus Banner"><i class="fa fa-trash"></i></a>
+										<a class="btn btn-sm btn-info" href="{{ url('/banners').'/'.$banner->id.'/edit' }}" title="Edit Banner"><i class="fa fa-edit"></i></a>
+										<button class="btn btn-sm btn-danger" id="idHapusBanner" title="Hapus Banner" data-toggle="modal" data-target="#hapusBanner" data-url="{{ url('/banners').'/'.$banner->id.'/delete' }}"><i class="fa fa-trash"></i></button>
 									</td>
 								</tr>    
 								@empty
@@ -94,4 +94,24 @@
 		</div><!-- end section-body -->
 		
 	</section>
+	
+	{{-- modal --}}
+	<div class="modal fade" id="hapusBanner" tabindex="-1" role="dialog" aria-labelledby="hapusBannerLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h6 class="modal-title">Yakin ingin menghapus banner ini?</h6>
+				</div>
+				<div class="modal-footer bg-whitesmoke br">
+					<form id="formHapusBanner" action="" method="POST">
+						@csrf
+						@method('delete')
+						<button type="submit" class="btn btn-secondary">Delete</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{-- end modal --}}
 @endsection

@@ -48,7 +48,7 @@
                                 <div class="form-group col-md-4">
                                     <label name="nama_motor">Warna Motor</label><br>
                                     @forelse (json_decode($detailMotor->warna) as $warna)
-                                        <span class="btn btn-outline-dark">{{ $warna }}</span>
+                                        <span class="btn btn-outline-dark">{{ ucwords($warna) }}</span>
                                     @empty
                                         Warna belum tersedia.
                                     @endforelse
@@ -68,6 +68,10 @@
             <div class="row">
 				<div class="col-12">
 					<div class="card">
+                        <div class="card-header">
+                            <h4>Daftar Harga dan Cicilan Motor</h4>
+                            <a class="btn btn-primary" href="{{ url('/pricelists/').'/'.$detailMotor->slug.'/create' }}">Tambah Harga</a>
+						</div>
 						<div class="card-body">
 
 							<div class="table-responsive">

@@ -6,7 +6,7 @@
 	{{-- Section Header --}}
 	<div class="section-header">
 		<div class="section-header-back">
-			<a href="{{ url('/pricelists') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+			<a href="{{ url('/motor').'/'.$motor->slug.'/detail' }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
 		</div>
 		<h1>{{ $title }}</h1>
 		<div class="section-header-breadcrumb">
@@ -22,7 +22,7 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="card">
-					<form class="needs-validation" novalidate="" method="post" action="{{ url('/pricelists') }}">
+					<form class="needs-validation" novalidate="" method="post" action="{{ url('/pricelists').'/'.$motor->slug }}">
 						@csrf
 
 						{{-- Card Body --}}
@@ -31,14 +31,8 @@
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label" name="nama_kategori">Kategori Motor <span style="color: red">*</span></label>
 								<div class="col-sm-10">
-									<select class="form-control selectric" name="nama_kategori" required="">
-										<option value="">- Pilih Motor -</option>
-										@forelse ($motors as $motor)
-										<option value="{{ $motor->id }}">{{ $motor->nama_motor }}</option>	 
-										@empty
-										<option value="">- Pilih Motor -</option>
-										@endforelse
-									</select>
+									<input type="hidden" name="motor_id" value="{{ $motor->id }}">
+									<input class="form-control" type="text" name="nama_motor" required="" value="{{ $motor->nama_motor }}" readonly>
 									<div class="invalid-feedback">
 										Kategori motor wajib di isi.
 									</div>

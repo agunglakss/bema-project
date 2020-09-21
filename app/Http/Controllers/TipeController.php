@@ -8,11 +8,6 @@ use Illuminate\Support\str;
 
 class TipeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $title = 'Daftar Tipe Motor';
@@ -22,11 +17,6 @@ class TipeController extends Controller
         return view('admin.product.tipe.index', compact('title', 'tipeMotors',));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $title = 'Tambah Tipe Motor';
@@ -36,12 +26,6 @@ class TipeController extends Controller
         return view('admin.product.tipe.create', compact('title', 'kategoriMotors',));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -55,26 +39,14 @@ class TipeController extends Controller
             'slug'          => str::slug($request->nama_tipe, '-'),
         ]);
 
-        return redirect('/products/tipe-motor')->with('status',  'Tipe Motor Berhasil Ditambahkan!');
+        return redirect('/tipe-motor')->with('status',  'Tipe Motor Berhasil Ditambahkan!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show (Tipe $tipe)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit (Tipe $tipe)
     {
         $title = 'Edit Tipe Motor';
@@ -84,13 +56,6 @@ class TipeController extends Controller
         return view('admin.product.tipe.edit', compact('title', 'kategoriMotors', 'tipe'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Tipe $tipe)
     {
         $request->validate([
@@ -104,17 +69,14 @@ class TipeController extends Controller
             'slug'          => Str::slug($request->nama_tipe),
         ]);
 
-        return redirect('products/tipe-motor');
+        return redirect('/tipe-motor')->with('status', 'Tipe Motor Berhasil Diubah');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        $tipe = Tipe::where('slug', $slug)->first();
+        $tipe->delete();
+
+        return redirect('/tipe-motor')->with('status', 'Tipe Motor Berhasil Dihapus');
     }
 }

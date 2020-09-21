@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Storage;
 use App\Motor;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
@@ -33,12 +34,11 @@ class MotorController extends Controller
 		$request->validate([
 			'nama_kategori'		=> 'required',
 			'nama_tipe'     	=> 'required',
-			'nama_motor'    	=> 'required',
+			'nama_motor'    	=> 'required|unique',
 			'harga_otr'    		=> 'required|integer',
-			'thumbnail'				=> 'required|mimes:png,jpg,jpeg|max:3048',
-			'upload_img'			=> 'required',
+			'thumbnail'			=> 'required|mimes:png,jpg,jpeg|max:3048',
+			'upload_img'		=> 'required',
 			'upload_img.*'		=> 'image|mimes:png,jpg,jpeg|max:3048',
-			
 		]);
 
 		// lakukan looping untuk menyimpan value didalam variable array $warna[]
@@ -53,32 +53,27 @@ class MotorController extends Controller
 			foreach($request->file('upload_img') as $image)
 			{
 				// rubah nama file dengan nama random maksimal 8 karakter
-				$imageName = Str::random(8). '.' .$image->getClientOriginalExtension();
+				$imageWithExtension = \Str::random(8).'.'.$request->file('upload_img')->getClientOriginalExtension();
 
-				// simpan path folder didalam variable $path
-				$imagePath = public_path().'/img-products';
-
-				// pindahkan file kedalam folder public
-				$image->move($imagePath, $imageName);
+				// pindahkan image yang sudah dirumah namanya kedalam folder storage/app/public/product-image
+				Storage::putFileAs('public/product-image', $request->file('upload_img'), $imageWithExtension);
 				
-				// simpan file image yang sudah dirubah namanya kedalam variable array $img[]
-				$images[] = $imageName;
+				// tampung file image yang sudah dirubah namanya kedalam variable array $images[]
+				$images[] = $imageWithExtension;
 			}
 		}
 
-		// Upload thumbnail
-		if ($request->hasFIle('thumbnail')) {
-			$thumbnailName = Str::random(8). '.' .$request->thumbnail->getClientOriginalExtension();
-			$thumbnailPath = public_path().'/img-products';
-			$request->thumbnail->move($thumbnailPath, $thumbnailName);
-		}
+		if($request->hasFile('thumbnail')) {
+            $imageWithExtension = \Str::random(8).'.'.$request->file('thumbnail')->getClientOriginalExtension();
+            Storage::putFileAs('public/thumbnail', $request->file('thumbnail'), $imageWithExtension);
+        }
 		
 		$motor = Motor::create([
 			'kategori_id'   => $request->nama_kategori,
 			'tipe_id'       => $request->nama_tipe,
 			'nama_motor'    => $request->nama_motor,
 			'slug'          => str::slug($request->nama_motor, '-'),
-			'thumbnail'	    => $thumbnailName,
+			'thumbnail'	    => $imageWithExtension,
 			'images'	   	=> json_encode($images),
 			'warna'		    => json_encode($warnaArray),
 			'harga_otr'     => $request->harga_otr,
