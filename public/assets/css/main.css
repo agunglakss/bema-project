@@ -142,9 +142,6 @@ img {
     color: var(--secondary-white);
 }
 
-
-/** End Custom Button **/
-
 .langganan {
     background-color: var(--primary-white);
 }
@@ -197,13 +194,20 @@ img {
 
 .top-header {
     background-color: var(--primary-red);
-    padding: 10px 0;
 }
 
-.top-header .logo {
-    color: var(--primary-white);
-    margin: 0;
-    padding: 0;
+.top-header .telp-email {
+    color: var(--secondary-white);
+    font-size: 12px;
+    text-decoration: none;
+}
+
+
+/** Navbar **/
+
+.navbar {
+    background-color: var(--secondary-red);
+    font-weight: 700;
 }
 
 .navbar .form-control {
@@ -216,50 +220,14 @@ img {
     font-family: var(--font);
 }
 
-.top-header {
-    color: var(--primary-white);
-    line-height: 13px;
-    list-style: none;
+.navbar-toggler {
+    border: none;
+    outline: none;
 }
 
-.top-header .telp-email {
-    color: var(--secondary-white);
-    font-size: 13px;
-    font-weight: 400;
-    padding-right: 10px;
-    text-decoration: none;
+.navbar button:focus {
+    outline: none;
 }
-
-
-/** End Top Navbar **/
-
-
-/** Navbar **/
-
-.navbar {
-    background-color: var(--secondary-red);
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.navbar li a {
-    color: var(--primary-white);
-}
-
-.navbar li a:hover {
-    background-color: var(--primary-red);
-    border-radius: 3px;
-    color: var(--secondary-white);
-}
-
-.navbar li .active {
-    background-color: var(--primary-red);
-    border-radius: 3px;
-    color: var(--secondary-white);
-}
-
-
-/** End Nav **/
 
 
 /** Jumbo Slideshow **/
@@ -341,12 +309,8 @@ img {
     outline: none;
 }
 
-
-/** End jumbo slideshow **/
-
 .informations {
     background-color: var(--secondary-red);
-    text-align: center;
 }
 
 .informations .card {
@@ -375,15 +339,13 @@ img {
 
 .informations .card-body .card-title {
     font-size: 18px;
-    font-weight: bold;
     margin: 0;
 }
 
 .informations .card-body .card-text {
-    font-size: 11px;
-    font-weight: normal;
+    font-size: 12px;
+    font-weight: 400;
     margin: 0;
-    padding-top: 9px;
 }
 
 .categorys {
@@ -519,7 +481,7 @@ img {
 }
 
 .sidebar .sidebar-heading {
-    font-size: 16px;
+    font-size: 23px;
     font-family: var(--font);
     font-weight: 700;
     color: var(--primary-black);

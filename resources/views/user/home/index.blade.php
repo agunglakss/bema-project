@@ -37,8 +37,8 @@
 
             <div class="col-md-4">
                 <div class="card">
-                    <div class="row">
-                        <div class="col-md-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-3 col-xs-3">
                             <div class="rounded-circle icon-phone">
                                 <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
                             </div>
@@ -46,7 +46,7 @@
                         <div class="col-md-9">
                             <div class="card-body">
                                 <h4 class="card-title">Layanan Konsumen</h4>
-                                <p class="card-text">Online 24 jam melayani pertanyaan dan pemesanan Motor Honda. Hari libur tetap kami layani (via Whatsapp).</p>
+                                <p class="card-text mt-2">Online 24 jam melayani pertanyaan dan pemesanan Motor Honda. Hari libur tetap kami layani (via Whatsapp).</p>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                         <div class="col-md-9">
                             <div class="card-body">
                                 <h4 class="card-title">Proses Cepat dan Mudah</h4>
-                                <p class="card-text">Data kami jemput kerumah Anda. Hari ini survey, besok motor bisa kami kirim kerumah Anda.</p>
+                                <p class="card-text mt-2">Data kami jemput kerumah Anda. Hari ini survey, besok motor bisa kami kirim kerumah Anda.</p>
                             </div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                         <div class="col-md-9">
                             <div class="card-body">
                                 <h4 class="card-title">Pengiriman</h4>
-                                <p class="card-text">Rute pengiriman ke seluruh daerah Jabodetabek, dijamin motor sampai dengan aman dan mulus kerumah Anda.</p>
+                                <p class="card-text mt-2">Rute pengiriman ke seluruh daerah Jabodetabek, dijamin motor sampai dengan aman dan mulus kerumah Anda.</p>
                             </div>
                         </div>
                     </div>

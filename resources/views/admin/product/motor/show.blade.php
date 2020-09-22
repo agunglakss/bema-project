@@ -102,7 +102,7 @@
                                     <td>Rp {{ number_format($pricelist->bulan_33) }}</td>
                                     <td>Rp {{ number_format($pricelist->bulan_35) }}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-info" href="{{ url('/motor').'/'.'/pricelist'.$pricelist->id.'/edit' }}"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-info" href="{{ url('/pricelists').'/'.$detailMotor->slug.'/'.$pricelist->id.'/edit' }}"><i class="fa fa-edit"></i></a>
                                         <a class="btn btn-sm btn-danger" href="#"><i class="fa fa-trash"></i></a>
                                     </td>
                                  </tr>

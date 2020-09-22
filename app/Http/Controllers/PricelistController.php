@@ -10,11 +10,6 @@ use App\Motor;
 
 class PricelistController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $title = "Daftar Harga Cicilan Motor";
@@ -24,11 +19,6 @@ class PricelistController extends Controller
         return view('admin.pricelist.index', compact('title', 'motors'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create($slug)
     {
         $title = "Tambah Daftar Harga Cicilan Motor";
@@ -41,12 +31,6 @@ class PricelistController extends Controller
         return view('admin.pricelist.create', compact('title', 'motor'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request, $slug)
     {
         $motor = Motor::where('slug', $slug)->first();
@@ -64,12 +48,12 @@ class PricelistController extends Controller
             'bulan_35'      => 'required',
         ]);
 
-        if($motor->id == $request->motor_id ) {
+        if($motor->id == $request->motor_id) {
            
             Pricelist::create([
-                'motor_id'      => $request->motor_id,
-                'uang_muka'     => $request->uang_muka,
-                'diskon'        => $request->diskon,
+                'motor_id'  => $request->motor_id,
+                'uang_muka' => $request->uang_muka,
+                'diskon'    => $request->diskon,
                 'bulan_11'  => $request->bulan_11,
                 'bulan_17'  => $request->bulan_17,
                 'bulan_23'  => $request->bulan_23,
@@ -86,42 +70,28 @@ class PricelistController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Pricelist  $pricelist
-     * @return \Illuminate\Http\Response
-     */
     public function show(Pricelist $pricelist)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Pricelist  $pricelist
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit($slug, $id)
     {
         $title = "Edit Daftar Harga Cicilan Motor";
         
-        $motors = \App\Motor::all('id', 'nama_motor');
+        $motor = Motor::where('slug', $slug)->first();
 
-        $pricelist = Pricelist::find($id);
+        // cek jika parameter yang di terima ada di database
+        if($motor == null) {
+            abort(404);
+        }
 
-        return view('admin.pricelist.edit', compact('title', 'motors', 'pricelist'));
+        $pricelist = Pricelist::findOrFail($id);
+
+        return view('admin.pricelist.edit', compact('title', 'motor', 'pricelist'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pricelist  $pricelist
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug, $id)
     {
         $request->validate([
             'nama_kategori' => 'required',
@@ -134,7 +104,14 @@ class PricelistController extends Controller
             'bulan_33'      => 'required',
             'bulan_35'      => 'required',
         ]);
-        $pricelist = Pricelist::find($id);
+
+         // cek jika parameter yang di terima ada di database
+        $motor = Motor::where('slug', $slug)->first();
+        if($motor == null) {
+            abort('404');
+        }
+
+        $pricelist = Pricelist::findOrFail($id);
         
         $pricelist->update([
             'motor_id'  => $request->nama_kategori,
@@ -152,12 +129,6 @@ class PricelistController extends Controller
         return redirect('/pricelists')->with('status', 'Daftar Harga Behasil Diupdate');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Pricelist  $pricelist
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Pricelist $pricelist)
     {
         //
