@@ -226,8 +226,9 @@
 
 @endsection 
 
-@section('slider') 
-$(document).ready(function () {
+@section('custom-js') 
+<script>
+    $(document).ready(function () {
 	$('.slider-one').not('#slick-intialized').slick({
 		 dots: true,
 		 infinite: true,
@@ -240,4 +241,5 @@ $(document).ready(function () {
 		 nextArrow: '.site-slider .btn-slider .next',
 	});
  });
+</script>
 @endsection

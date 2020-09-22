@@ -27,10 +27,8 @@
 	
 	@include('layouts.user.source-footer') 
 	
-	{{-- Slider --}}
-    <script>
-        @yield('slider')
-    </script>
+	{{-- custom js --}}
+    @yield('custom-js')
 
 </body>
 

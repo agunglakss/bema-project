@@ -48,8 +48,8 @@ Route::group(['middleware' => ['auth']], function () {
 	
 	// admin pricelist
 	Route::get('/pricelists', 'PricelistController@index');
-	Route::get('/pricelists/{motor:slug}/create', 'PricelistController@create');
 	Route::post('/pricelists/import-harga-motor', 'PricelistController@import_excel');
+	Route::get('/pricelists/{motor:slug}/create', 'PricelistController@create');
 	Route::get('/pricelists/{motor:slug}/{pricelist:id}/edit', 'PricelistController@edit');
 	Route::patch('/pricelists/{motor:slug}/{pricelist:id}/edit', 'PricelistController@update');
 	Route::post('/pricelists/{motor:slug}', 'PricelistController@store');

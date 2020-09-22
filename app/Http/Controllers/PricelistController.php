@@ -148,10 +148,10 @@ class PricelistController extends Controller
 		$nama_file = rand().$file->getClientOriginalName();
  
 		// upload ke folder import_excel di dalam folder public
-		$file->move('import_excel',$nama_file);
+		$file->move('import_excel', $nama_file);
  
 		// import data
-		Excel::import(new PricelistImport, public_path('/import_excel/'.$nama_file));
+		Excel::import(new PricelistImport, public_path('/import_excel'.'/'.$nama_file));
  
 		// alihkan halaman pricelists
 		return redirect('/motor')->with('status', 'Import File Berhasil!');

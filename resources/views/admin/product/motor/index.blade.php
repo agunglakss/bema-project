@@ -100,7 +100,7 @@
 				</div>
 				<div class="modal-body">
 					<form method="POST" action="{{ url('/pricelists/import-harga-motor') }}" enctype="multipart/form-data">
-						<input type="hidden" name="_token" value="WU1ap6haiocT1msqmNzvsCcKuCzxI3dx24dka71D">
+						@csrf
 						<div class="form-group">
 							<label>Import</label>
 							<div class="input-group">

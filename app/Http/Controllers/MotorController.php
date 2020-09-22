@@ -34,7 +34,7 @@ class MotorController extends Controller
 		$request->validate([
 			'nama_kategori'		=> 'required',
 			'nama_tipe'     	=> 'required',
-			'nama_motor'    	=> 'required|unique',
+			'nama_motor'    	=> 'required|unique:motors',
 			'harga_otr'    		=> 'required|integer',
 			'thumbnail'			=> 'required|mimes:png,jpg,jpeg|max:3048',
 			'upload_img'		=> 'required',
@@ -53,10 +53,10 @@ class MotorController extends Controller
 			foreach($request->file('upload_img') as $image)
 			{
 				// rubah nama file dengan nama random maksimal 8 karakter
-				$imageWithExtension = \Str::random(8).'.'.$request->file('upload_img')->getClientOriginalExtension();
+				$imageWithExtension = Str::random(8).'.'.$image->getClientOriginalExtension();
 
 				// pindahkan image yang sudah dirumah namanya kedalam folder storage/app/public/product-image
-				Storage::putFileAs('public/product-image', $request->file('upload_img'), $imageWithExtension);
+				Storage::putFileAs('public/product-image', $image, $imageWithExtension);
 				
 				// tampung file image yang sudah dirubah namanya kedalam variable array $images[]
 				$images[] = $imageWithExtension;
@@ -64,7 +64,7 @@ class MotorController extends Controller
 		}
 
 		if($request->hasFile('thumbnail')) {
-            $imageWithExtension = \Str::random(8).'.'.$request->file('thumbnail')->getClientOriginalExtension();
+            $imageWithExtension = Str::random(8).'.'.$request->file('thumbnail')->getClientOriginalExtension();
             Storage::putFileAs('public/thumbnail', $request->file('thumbnail'), $imageWithExtension);
         }
 		
