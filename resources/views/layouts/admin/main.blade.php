@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-		<title>{{ $title }}</title>
 
-		@include('layouts.admin.source-header')
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+	<title>{{ $title }}</title>
 
-   	<body>
-		<div id="app">
-			<div class="main-wrapper">
+	@include('layouts.admin.source-header')
+</head>
+
+<body>
+	<div id="app">
+		<div class="main-wrapper">
 
 			<div class="navbar-bg">
 				{{-- background navbar --}}
@@ -25,43 +26,40 @@
 				<aside id="sidebar-wrapper">
 
 					<div class="sidebar-brand">
-						<a href="{{ url('/admin') }}">SKMH</a>
+						<a href="{{ url('/dashboard') }}">SKMH</a>
 					</div>
-				
+
 					<div class="sidebar-brand sidebar-brand-sm">
-						<a href="{{ url('/admin') }}">SKMH</a>
+						<a href="{{ url('/dashboard') }}">SKMH</a>
 					</div>
-				
+
 					<ul class="sidebar-menu">
 						<li class="menu-header">Dashboard</li>
 						<li class="dropdown">
-						<a href="{{ url('/users') }}" class="nav-link"><i class="fas fa-user"></i><span>Users</span></a>
+							<a href="{{ url('/users') }}" class="nav-link"><i class="fas fa-user"></i><span>Users</span></a>
 						</li>
 						<li class="dropdown">
-						<a href="{{ url('#') }}" class="nav-link has-dropdown"><i class="fas fa-motorcycle"></i><span>Products</span></a>
-						<ul class="dropdown-menu">
-							<li class="active"><a class="nav-link" href="{{ url('/kategori-motor') }}">Kategori Motor</a></li>
-							<li><a class="nav-link" href="{{ url('/tipe-motor') }}">Tipe Motor</a></li>
-							<li><a class="nav-link" href="{{ url('/motor') }}">Motor </a></li>
-						</ul>
+							<a href="{{ url('#') }}" class="nav-link has-dropdown"><i class="fas fa-motorcycle"></i><span>Products</span></a>
+							<ul class="dropdown-menu">
+								<li class="active"><a class="nav-link" href="{{ url('/kategori-motor') }}">Kategori Motor</a></li>
+								<li><a class="nav-link" href="{{ url('/tipe-motor') }}">Tipe Motor</a></li>
+								<li><a class="nav-link" href="{{ url('/motor') }}">Motor </a></li>
+							</ul>
 						</li>
 						<li class="dropdown">
-						<a href="{{ url('/pricelists') }}" class="nav-link"><i class="fas fa-wallet"></i><span>Pricelist</span></a>
+							<a href="{{ url('/banners') }}" class="nav-link"><i class="fas fa-image"></i><span>Banner</span></a>
 						</li>
 						<li class="dropdown">
-						<a href="{{ url('/banners') }}" class="nav-link"><i class="fas fa-image"></i><span>Banner</span></a>
+							<a href="#" class="nav-link"><i class="fas fa-address-book"></i><span>Subcribers</span></a>
 						</li>
 						<li class="dropdown">
-						<a href="#" class="nav-link"><i class="fas fa-address-book"></i><span>Subcribers</span></a>
+							<a href="#" class="nav-link"><i class="fas fa-credit-card"></i><span>Schema Credit</span></a>
 						</li>
 						<li class="dropdown">
-						<a href="#" class="nav-link"><i class="fas fa-credit-card"></i><span>Schema Credit</span></a>
-						</li>
-						<li class="dropdown">
-						<a href="#" class="nav-link"><i class="fas fa-users"></i><span>About Us</span></a>
+							<a href="#" class="nav-link"><i class="fas fa-users"></i><span>About Us</span></a>
 						</li>
 					</ul>
-				
+
 				</aside>
 			</div>
 			{{-- end sidebar --}}
@@ -76,14 +74,14 @@
 			</footer>
 			{{-- end footer --}}
 
-			</div>
-			{{-- end main wrapper --}}
-			
 		</div>
-		{{-- end app --}}
+		{{-- end main wrapper --}}
 
-		@include('layouts.admin.source-footer')
-		 
-	</body>
+	</div>
+	{{-- end app --}}
+
+	@include('layouts.admin.source-footer')
+
+</body>
 
 </html>
