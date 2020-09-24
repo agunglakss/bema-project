@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Motor;
-use App\Kategori;
-use App\Tipe;
 use App\Pricelist;
+use App\Kategori;
+use App\Motor;
+use App\Tipe;
 
 class ProductController extends Controller
 {
 	// Index
 	public function index()
 	{
-		$Motors = Motor::all();
+		$Motors = Motor::with(['tipe', 'pricelists'])->get();
 
 		return view('user.product.index', compact('Motors'));
 	}

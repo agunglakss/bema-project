@@ -55,19 +55,19 @@
                 </div>
 
                 @forelse ($Motors as $motor)
-                <div class="col-md-4 mb-5">
+                <div class="col-md-4 col-sm-6 col-6 mb-4">
                     <div class="box">
                         <a href="{{ url('/products').'/'.$motor->tipe->kategori->slug.'/'.$motor->tipe->slug.'/'.$motor->slug }}">
                             <div class="card">
                                 <img class="card-img-top img-fluid" alt="" src="{{ asset('/storage/thumbnail').'/'.$motor->thumbnail}}" alt="">
-                                <div class="card-block mt-3 mb-4 pl-3 pr-3">
-                                    <h6 class="card-title text-truncate mb-2">{{ $motor->nama_motor }}</h6>
+                                <div class="card-block mt-2 mb-4 pl-3 pr-3">
+                                    <h6 class="card-title text-truncate font-medium mb-2">{{ $motor->nama_motor }}</h6>
                                     <div class="title-dp mt-3">DP Mulai dari</div>
-                                    <div class="harga-diskon">Rp</div>
-                                    <div class="title-dp mt-3">Harga OTR</div>
-                                    <span class="harga-asli">Rp {{ number_format($motor->harga_otr) }},-</span>
+                                    <div class="harga-diskon font-bold">Rp 500,000</div>
+                                    <div class="title-dp mt-2">Harga OTR</div>
+                                    <span class="harga-asli font-medium">Rp {{ number_format($motor->harga_otr) }},-</span>
                                 </div>
-                                <button class="btn btn-box mb-3 ml-3 mr-3">AJUKAN SEKARANG</button>
+                                <button class="btn btn-box font-medium mb-3 ml-3 mr-3">Detail Motor</button>
                             </div>
                         </a>
                     </div>

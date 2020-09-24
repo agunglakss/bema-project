@@ -78,3 +78,6 @@ Route::get('/products/{kategori:slug}', 'ProductController@getMotorByCategory');
 
 // Home User
 Route::get('/', 'HomeController@index');
+
+// order
+Route::post('/pemesanan', 'OrderController@store');

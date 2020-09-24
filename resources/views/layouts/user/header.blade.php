@@ -3,13 +3,15 @@
 
     <div class="top-header py-2">
         <div class="container">
-            <a class="telp-email font-medium" href="mailto:faturahmanbema22@gmail.com"><i class="fa fa-envelope"></i> faturahmanbema22@gmail.com</a> &nbsp;
-            <a class="telp-email font-medium" href="telp:081281318653"> <i class="fa fa-phone"></i> +6281281318653</a>
+            <div class="telp-email">
+                <a class="font-reguler" href="mailto:faturahmanbema22@gmail.com"><i class="fa fa-envelope"></i> faturahmanbema22@gmail.com</a> &nbsp;
+                <a class="font-reguler" href="telp:081281318653"> <i class="fa fa-phone"></i> +6281281318653</a>
+            </div>
         </div>
     </div>
     {{-- end top header --}}
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}"><img class="logo" src="{{ asset('logo.png') }}" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,22 +20,22 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link{{ request()->is('/') ? ' active' : ''  }}" href="{{ url('/') }}">Home</a>
+                        <a class="nav-link{{ request()->is('/') ? ' active' : ''  }}" href="{{ url('/') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link{{ request()->is('products') ? ' active' : ''  }}" href="{{ url('products') }}">Products</a>
+                        <a class="nav-link{{ request()->is('products') ? ' active' : ''  }}" href="{{ url('products') }}">Produk</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link{{ request()->is('schema') ? ' active' : ''  }}" href="{{ url('schema') }}">Schema Credit</a>
+                        <a class="nav-link{{ request()->is('schema') ? ' active' : ''  }}" href="{{ url('schema') }}">Cara Pemesanan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link{{ request()->is('about-us') ? ' active' : ''  }}" href="{{ url('about-us') }}">About Us</a>
+                        <a class="nav-link{{ request()->is('about-us') ? ' active' : ''  }}" href="{{ url('about-us') }}">Tentang Kami</a>
                     </li>
                 </ul>
 
-                <form class="form-search">
+                <form class="form-search ml-auto">
                     <div class="input-group">
                         <input class="form-control" type="input" placeholder="Cari Motor Honda di sini" aria-label="Search">
                         <div class="input-group-append">

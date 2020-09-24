@@ -15,6 +15,10 @@ class Motor extends Model
 
     public function pricelists()
     {
-        return $this->hasMany('App\Pricelist');;
+        return $this->hasMany('App\Pricelist');
+    }
+
+    public function orders() {
+        return $this->hasManyThrough('App\Order', 'App\Pricelist');
     }
 }
