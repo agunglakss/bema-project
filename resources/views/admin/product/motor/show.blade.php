@@ -18,6 +18,26 @@
 
         {{-- section body --}}
         <div class="section-body">
+
+            {{-- notifikasi form sukses --}}
+            @if (session('status'))
+                <div class="alert alert-info alert-dismissible show fade" id="alert">
+                    <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                        <span>&times;</span>
+                        </button>
+                        {{ session('status') }}
+                    </div>
+                </div>
+            @endif
+
+            {{-- script hide otomatis alert --}}
+            <script>
+                setTimeout(function () {
+                    document.getElementById('alert').style.display='none';}, 
+                    5000
+                );
+            </script>
             
             {{-- detail motor --}}
             <div class="row">
@@ -103,7 +123,7 @@
                                     <td>Rp {{ number_format($pricelist->bulan_35) }}</td>
                                     <td>
                                         <a class="btn btn-sm btn-info" href="{{ url('/pricelists').'/'.$detailMotor->slug.'/'.$pricelist->id.'/edit' }}"><i class="fa fa-edit"></i></a>
-                                        <a class="btn btn-sm btn-danger" href="#"><i class="fa fa-trash"></i></a>
+                                        <button class="btn btn-sm btn-danger" id="idHapusPricelist" title="Hapus Pricelist Motor" data-toggle="modal" data-target="#hapusPricelist" data-url="{{ url('/pricelists').'/'.$detailMotor->slug.'/'.$pricelist->id.'/delete' }}"><i class="fa fa-trash"></i></button>
                                     </td>
                                  </tr>
                                 @empty
@@ -120,4 +140,24 @@
         </div>
           
     </div>
+
+    {{-- modal --}}
+    <div class="modal fade" id="hapusPricelist" tabindex="-1" role="dialog" aria-labelledby="hapusPricelistLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">Yakin ingin menghapus Pricelist Motor ini?</h6>
+                </div>
+                <div class="modal-footer bg-whitesmoke br">
+                    <form id="formHapusPricelist" action="" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-secondary">Delete</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- end modal --}}
 @endsection

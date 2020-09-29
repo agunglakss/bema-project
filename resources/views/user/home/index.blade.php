@@ -5,21 +5,15 @@
     <div class="container-fluid p-0">
         <div class="site-slider">
             <div class="slider-one">
+                @forelse ($banners as $banner)
                 <div>
-                    <a href="#">
-                        <img src="https://image.cermati.com/q_80/v1593506406/dnwfli2jqxuhvqtejvuv.webp" style="width:100%;" alt="">
+                    <a href="{{ $banner->link }}">
+                        <img src="{{ asset('/storage/banner-image').'/'.$banner->image }}" style="width:100%;height:570px" alt="">
                     </a>
                 </div>
-                <div>
-                    <a href="#">
-                        <img src="https://image.cermati.com/q_80/v1588237372/bpkpeuegg7xchj0x9lzi.webp" style="width:100%;" alt="">
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-                        <img src="https://image.cermati.com/q_80/v1587011967/m7sxdwloklvmim7xvj4p.webp" style="width:100%;" alt="">
-                    </a>
-                </div>
+                @empty
+                    
+                @endforelse
             </div>
             <div class="btn-slider">
                 <span class="prev position-top"><i class="fa fa-chevron-left"></i></span>

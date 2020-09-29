@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <form class="needs-validation" novalidate="" method="post" action="{{ url('/pricelists') }}/{{ $pricelist->id }}/edit">
+                    <form class="needs-validation" novalidate="" method="post" action="{{ url('/pricelists').'/'.$motor->slug.'/'.$pricelist->id.'/edit' }}">
 						@method('patch') 
 						@csrf 
 						
@@ -30,7 +30,6 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label" name="nama_kategori">Kategori Motor <span style="color: red">*</span></label>
                                 <div class="col-sm-10">
-                                    <input type="hidden" name="motor_id" value="{{ $motor->id }}">
 									<input class="form-control" type="text" name="nama_motor" required="" value="{{ $motor->nama_motor }}" readonly>
 									<div class="invalid-feedback">
 										Kategori motor wajib di isi.

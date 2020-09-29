@@ -30,8 +30,7 @@
 				<div class="col-md-6 mb-5">
 					<div class="row">
 						<div class="col-md-12 mb-3" id="top-image">
-							<img class="rounded-lg top-image" id="image-big"
-								src="{{ asset('/storage/thumbnail').'/'.$motor->thumbnail}}" alt="">
+							<img class="rounded-lg top-image" id="image-big" src="{{ asset('/storage/thumbnail').'/'.$motor->thumbnail}}" alt="">
 						</div>
 
 						@foreach (json_decode($motor->images) as $image )

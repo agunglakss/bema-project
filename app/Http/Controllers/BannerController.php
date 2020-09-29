@@ -62,26 +62,24 @@ class BannerController extends Controller
 
     public function update(Request $request, $id)
     {
-        
-        $banner = Banner::find($id);
-        
         $request->validate([
-            'image'     => 'required|mimes:png,jpg,jpeg|max:3048',
             'status'    => 'required',
             'link'      => 'required',
         ]);
+
+        $banner = Banner::find($id)->first();
 
         if($request->hasFile('image')) {
             $imageWithExtension = \Str::random(8).'.'.$request->file('image')->getClientOriginalExtension();
             Storage::putFileAs('public/banner-image', $request->file('image'), $imageWithExtension);
             Storage::disk('local')->delete('public/banner-image/'.$banner->image);
-            $request->image = $imageWithExtension;
+            $banner->image = $imageWithExtension;
         }
 
         $banner->update([
             'status'    => $request->status,
             'link'      => $request->link,
-            'image'     => $request->image,
+            'image'     => $banner->image,
         ]);
 
         return redirect('/banners')->with('status', 'Banner Berhasil Diubah'); 

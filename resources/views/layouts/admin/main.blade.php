@@ -36,7 +36,7 @@
 					<ul class="sidebar-menu">
 						<li class="menu-header">Dashboard</li>
 						<li class="dropdown">
-							<a href="{{ url('/users') }}" class="nav-link"><i class="fas fa-user"></i><span>Users</span></a>
+							<a href="{{ url('/reset-password') }}" class="nav-link"><i class="fas fa-user"></i><span>Profile</span></a>
 						</li>
 						<li class="dropdown">
 							<a href="{{ url('#') }}" class="nav-link has-dropdown"><i class="fas fa-motorcycle"></i><span>Products</span></a>
@@ -45,6 +45,9 @@
 								<li><a class="nav-link" href="{{ url('/tipe-motor') }}">Tipe Motor</a></li>
 								<li><a class="nav-link" href="{{ url('/motor') }}">Motor </a></li>
 							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="{{ url('/order') }}" class="nav-link"><i class="fas fa-image"></i><span>Order List</span></a>
 						</li>
 						<li class="dropdown">
 							<a href="{{ url('/banners') }}" class="nav-link"><i class="fas fa-image"></i><span>Banner</span></a>

@@ -14,7 +14,7 @@ class TipeController extends Controller
 
         $tipeMotors = Tipe::orderBy('nama_tipe')->paginate(5);
 
-        return view('admin.product.tipe.index', compact('title', 'tipeMotors',));
+        return view('admin.product.tipe.index', compact('title', 'tipeMotors'));
     }
 
     public function create()

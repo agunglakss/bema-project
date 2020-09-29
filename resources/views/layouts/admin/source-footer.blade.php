@@ -55,14 +55,12 @@
 	// delete kategori motor
 	$(document).on('click', '#idHapusKategori', function() {
 		const urlHapusKategori = $(this).data('url');
-		console.log(urlHapusKategori);
 		$('#formHapusKategori').attr('action', urlHapusKategori);
 	});
 
 	// delete tipe motor
 	$(document).on('click', '#idHapusTipe', function() {
 		const urlHapusTipe = $(this).data('url');
-		console.log(urlHapusTipe);
 		$('#formHapusTipe').attr('action', urlHapusTipe);
 	});
 
@@ -70,7 +68,10 @@
 	
 
 	//delete pricelist
-
+	$(document).on('click', '#idHapusPricelist', function() {
+		const urlHapusPricelist = $(this).data('url');
+		$('#formHapusPricelist').attr('action', urlHapusPricelist);
+	});
 	
 </script>
 

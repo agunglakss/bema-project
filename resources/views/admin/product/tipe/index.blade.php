@@ -90,6 +90,7 @@
       </div><!-- end section-body -->
 		
    </section>
+   
    {{-- modal --}}
 	<div class="modal fade" id="hapusTipe" tabindex="-1" role="dialog" aria-labelledby="hapusTipeLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">

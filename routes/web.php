@@ -13,27 +13,28 @@ Route::get('/about-us', function() {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-	// modal ajax pricelist
-	Route::get('/motor/pricelists/{id}', 'PricelistController@showPricelistByIdMotor');
 	
 	//Dashboard Admin
 	Route::get('/dashboard', 'DashboardController@index');
+
+	// profile
+	//Route::get('/profile', 'UserController@show');
 	
 	// admin kategori
 	Route::get('/kategori-motor', 'KategoriController@index');
 	Route::get('/kategori-motor/create', 'KategoriController@create');
 	Route::get('/kategori-motor/{kategori:slug}/edit', 'KategoriController@edit');
 	Route::patch('/kategori-motor/{kategori:slug}/edit', 'KategoriController@update');
-	Route::post('/kategori-motor', 'KategoriController@store');
 	Route::delete('/kategori-motor/{kategori:slug}/delete', 'KategoriController@destroy');
+	Route::post('/kategori-motor', 'KategoriController@store');
 	
 	// admin tipe
 	Route::get('/tipe-motor', 'TipeController@index');
 	Route::get('/tipe-motor/create', 'TipeController@create');
 	Route::get('/tipe-motor/{tipe:slug}/edit', 'TipeController@edit');
 	Route::patch('/tipe-motor/{tipe:slug}/edit', 'TipeController@update');
-	Route::post('/tipe-motor', 'TipeController@store');
 	Route::delete('/tipe-motor/{tipe:slug}/delete', 'TipeController@destroy');
+	Route::post('/tipe-motor', 'TipeController@store');
 	
 	// admin motor
 	Route::get('/motor', 'MotorController@index');
@@ -43,15 +44,13 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/motor/{motor:slug}/detail', 'MotorController@show');
 	Route::delete('/motor/{motor:slug}/delete', 'MotorController@destroy');
 	Route::post('/motor', 'MotorController@store');
-	Route::get('/motor/{motor:slug/pricelist/{id}/edit', 'MotorController@editPricelist')->name('motor.pricelist');
-	Route::patch('/motor{motor:slug/pricelist/{id}/edit', 'MotorController@updatePricelist')->name('motor.pricelist');
 	
 	// admin pricelist
-	Route::get('/pricelists', 'PricelistController@index');
 	Route::post('/pricelists/import-harga-motor', 'PricelistController@import_excel');
 	Route::get('/pricelists/{motor:slug}/create', 'PricelistController@create');
 	Route::get('/pricelists/{motor:slug}/{pricelist:id}/edit', 'PricelistController@edit');
 	Route::patch('/pricelists/{motor:slug}/{pricelist:id}/edit', 'PricelistController@update');
+	Route::delete('/pricelists/{motor:slug}/{pricelist:id}/delete', 'PricelistController@destroy');
 	Route::post('/pricelists/{motor:slug}', 'PricelistController@store');
 
 	// admin banner
@@ -59,11 +58,15 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/banners/create', 'BannerController@create');
 	Route::get('/banners/{id}/edit', 'BannerController@edit');
 	Route::patch('/banners/{id}/edit', 'BannerController@update');
-	Route::post('/banners', 'BannerController@store');
 	Route::delete('/banners/{id}/delete', 'BannerController@destroy');
+	Route::post('/banners', 'BannerController@store');
+
+	// order
+	Route::get('/order', 'OrderController@index');
 	
 	// logout
 	Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+	Route::get('reset-password', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 });
 
 // Authentication

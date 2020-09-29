@@ -15,12 +15,13 @@
 
 html,
 body {
-    padding: 0;
-    margin: 0;
-    top: 0;
-    bottom: 0;
     background-color: var(--primary-background);
+    bottom: 0;
     font-size: 14px;
+    font-family: var(--font);
+    margin: 0;
+    padding: 0;
+    top: 0;
 }
 
 img {
@@ -71,16 +72,17 @@ img {
     background-color: var(--primary-white);
     height: 450px;
     object-fit: contain;
-}  
+}
 
 .body-image {
     background-color: var(--primary-white);
-    height: 100%;
+    height: 93px;
     object-fit: contain;
     width: 100%;
 }
 
-.body-image:hover, .col-3 .active {
+.body-image:hover,
+.col-3 .active {
     cursor: pointer;
     box-shadow: 0 0 10px 2px var(--primary-red);
 }
@@ -196,7 +198,7 @@ img {
     background-color: var(--primary-red);
 }
 
-.top-header .telp-email a{
+.top-header .telp-email a {
     color: var(--secondary-white);
     font-size: 12px;
     text-decoration: none;
@@ -211,18 +213,17 @@ img {
     font-weight: 600;
 }
 
-.navbar .form-control{
+.navbar .form-control {
     box-shadow: inset 0 0 4px #e5e5e5;
     border: none;
 }
 
 .navbar .form-control:focus {
     border: 1px solid #ced4da;
-    
 }
 
-.navbar i{
-    color:var(--secondary-white);
+.navbar i {
+    color: var(--secondary-white);
 }
 
 .form-control::placeholder {
@@ -320,6 +321,10 @@ img {
     outline: none;
 }
 
+.slider-one img {
+    object-fit: contain;
+}
+
 .informations {
     background-color: var(--secondary-red);
 }
@@ -402,13 +407,14 @@ img {
 
 .box .card {
     border: none;
-    object-fit: contain;
 }
 
 .box .card img {
     border-radius: 3px 3px 0 0;
+    height: 225px;
     margin: 0;
     padding: 0;
+    object-fit: contain;
 }
 
 .box .card .card-title {

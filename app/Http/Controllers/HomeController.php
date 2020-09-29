@@ -7,87 +7,17 @@ use App\Motor;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        \DB::enableQueryLog();
         // Get All Motor
-        $AllMotors = Motor::all();
+        $AllMotors = Motor::orderBy('created_at', 'desc')->take(4)->get();
         
-        // Get All Motor By Category
-        $AllMotorByCategories = \App\Kategori::with('motors')->get();
-       
-        //dd(\DB::getQueryLog());
-        return view('user.home.index', compact('AllMotors', 'AllMotorByCategories'));
-    }
+        // Get Motor By Category
+        $AllMotorByCategories = \App\Kategori::with('motors')->orderBy('created_at', 'desc')->take(4)->get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        // banner
+        $banners = \App\Banner::select('image', 'link')->where('status', '1')->get();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('user.home.index', compact('AllMotors', 'AllMotorByCategories', 'banners'));
     }
 }
