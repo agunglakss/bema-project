@@ -112,18 +112,24 @@ class MotorController extends Controller
 			'nama_motor'    => 'required',
 			'harga_otr'     => 'required',
 		]);
+		
+		// lakukan looping untuk menyimpan value didalam variable array $warna[]
+		foreach ($request->warna as $warna) {
+			$warnaArray = explode(",", strtolower($warna));
+		}
 
 		$motor->update([
 			'kategori_id'   => $request->nama_kategori,
 			'tipe_id'       => $request->nama_tipe,
 			'nama_motor'    => $request->nama_motor,
 			'slug'          => Str::slug($request->nama_motor),
+			'warna'		    => json_encode($warnaArray),
 			'harga_otr'     => $request->harga_otr,
 			'cc_motor'      => $request->cc_motor,
 			'deskripsi'     => $request->deskripsi,
 		]);
 
-		return redirect('products/motor')->with('status', 'Motor Berhasil Diubah!');
+		return redirect('/motor')->with('status', 'Motor Berhasil Diubah!');
 	}
 
 	public function destroy($id)

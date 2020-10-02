@@ -68,6 +68,18 @@
                            </div>
                         </div>
                      </div>
+
+                     <div class="form-group row mb-4">
+                        <label class="col-sm-2 col-form-label">Warna Motor</label>
+                        <div class="col-sm-10">
+                           @forelse (json_decode($motor->warna) as $warna)
+                              <span class="btn btn-sm btn-outline-dark mb-2">{{ ucwords($warna) }}</span>
+                           @empty
+                               
+                           @endforelse
+                          <input type="text" class="form-control inputtags" name="warna[]" placeholder="Pisahkan dengan koma, jika lebih dari satu warna">
+                        </div>
+                     </div>
                      
                      <div class="form-group row">
                         <label class="col-sm-2 col-form-label" name="harga_otr">Harga OTR Motor *</label>
