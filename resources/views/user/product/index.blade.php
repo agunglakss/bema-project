@@ -63,7 +63,13 @@
                                 <div class="card-block mt-2 mb-4 pl-3 pr-3">
                                     <h6 class="card-title text-truncate font-medium mb-2">{{ $motor->nama_motor }}</h6>
                                     <div class="title-dp mt-3">DP Mulai dari</div>
-                                    <div class="harga-diskon font-bold">Rp 500,000</div>
+                                    <div class="harga-diskon font-bold">
+                                        @foreach ($motor->pricelists as $key => $pricelist)
+                                            @if ($key == 0)
+                                                Rp {{ number_format($pricelist->diskon) }}
+                                            @endif
+                                        @endforeach
+                                    </div>
                                     <div class="title-dp mt-2">Harga OTR</div>
                                     <span class="harga-asli font-medium">Rp {{ number_format($motor->harga_otr) }},-</span>
                                 </div>

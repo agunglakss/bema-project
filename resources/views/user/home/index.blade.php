@@ -106,6 +106,7 @@
 </div>
 {{-- End Categories --}}
 
+{{-- all motor --}}
 <div class="bg-white mb-3">
     <div class="container">
         <div class="row">
@@ -133,7 +134,13 @@
 									<div class="card-block mt-2 mb-4 pl-3 pr-3">
 										<h6 class="card-title text-truncate mb-2 font-medium">{{ $AllMotor->nama_motor }}</h6>
 										<div class="title-dp mt-3">DP Mulai Dari</div>
-										<div class="harga-diskon font-bold">Rp. 500.000</div>
+										<div class="harga-diskon font-bold">
+                                            @foreach ($AllMotor->pricelists as $key => $pricelist)
+                                                @if ($key == 0)
+                                                    Rp {{ number_format($pricelist->diskon) }}
+                                                @endif
+                                            @endforeach
+                                        </div>
 										<div class="title-dp mt-2">Harga OTR</div>
 										<span class="harga-asli">Rp {{ number_format($AllMotor->harga_otr) }}</span>
 									</div>
@@ -151,61 +158,59 @@
     </div>
 </div>
 
-@forelse ($AllMotorByCategories as $AllMotorByCategory) 
-	@if ($AllMotorByCategory->id == $AllMotorByCategory->id)
-	<div class="bg-white mb-3">
-		<div class="container">
-			<div class="row">
+{{-- motor matic --}}
+@forelse ($motorMatics as $motorMatic)
+<div class="bg-white mb-3">
+    <div class="container">
+        <div class="row">
+            <!-- col-md-12  -->
+            <div class="col-md-12 mt-3 mb-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box-header">
+                            <div class="row align-items-center">
+                                <div class="col-auto mr-auto">
+                                    <div class="title-box">Motor Matic</div>
+                                </div>
+                                <div class="col-auto text-right">
+                                    <a class="lihat-semua rounded" href="{{ url('/products/motor-matic') }}">Lihat Semua <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-				<!-- col-md-12  -->
-				<div class="col-md-12 mt-3 mb-5">
-					<div class="row">
-
-						<div class="col-md-12">
-							<div class="box-header">
-								<div class="row align-items-center">
-									<div class="col-auto mr-auto">
-										<div class="title-box">{{ $AllMotorByCategory->nama_kategori}}</div>
+                    @foreach ($motorMatic->motors as $motor)
+                    <div class="col-md-3 col-sm-6 col-6 mt-4">
+						<div class="box">
+							<a href="{{ url('/products').'/'.$motor->tipe->kategori->slug.'/'.$motor->tipe->slug.'/'.$motor->slug }}">
+								<div class="card">
+									<img class="card-img-top img-fluid" alt="" src="{{ asset('/storage/thumbnail').'/'.$motor->thumbnail }}" alt="">
+									<div class="card-block mt-2 mb-4 pl-3 pr-3">
+										<h6 class="card-title text-truncate mb-2 font-medium">{{ $motor->nama_motor }}</h6>
+										<div class="title-dp mt-3">DP Mulai Dari</div>
+										<div class="harga-diskon font-bold">
+                                            @foreach ($motor->pricelists as $key => $pricelist)
+                                                @if ($key == 0)
+                                                    Rp {{ number_format($pricelist->diskon) }}
+                                                @endif
+                                            @endforeach
+                                        </div>
+										<div class="title-dp mt-2">Harga OTR</div>
+										<span class="harga-asli">Rp {{ number_format($motor->harga_otr) }}</span>
 									</div>
-									<div class="col-auto text-right">
-										<a class="lihat-semua" href="{{ url('/products/'.$AllMotorByCategory->slug) }}">Lihat Semua <i class="fa fa-angle-right"></i></a>
-									</div>
+									<button class="btn btn-box mb-3 ml-3 mr-3 font-medium">Detail Motor</button>
 								</div>
-							</div>
+							</a>
 						</div>
-
-						@forelse ($AllMotorByCategory->motors as $motor)
-						<div class="col-md-3 col-sm-6 col-6 mt-4">
-							<div class="box">
-								<a href="{{ url('/products').'/'.$motor->tipe->kategori->slug.'/'.$motor->tipe->slug.'/'.$motor->slug }}">
-									<div class="card">
-										<img class="card-img-top img-fluid" alt="" src="{{ asset('/storage/thumbnail').'/'.$motor->thumbnail}}" alt="">
-										<div class="card-block mt-3 mb-4 pl-3 pr-3">
-											<h6 class="card-title text-truncate mb-2 font-medium">{{ $motor->nama_motor }}</h6>
-											<div class="title-dp mt-3">DP Mulai Dari</div>
-                                            <div class="harga-diskon font-bold">Rp. 500.000</div>
-                                            <div class="title-dp mt-2">Harga OTR</div>
-											<span class="harga-asli">Rp {{ number_format($motor->harga_otr) }}</span>
-										</div>
-										<button class="btn btn-box mb-3 ml-3 mr-3 font-medium">Detail Motor</button>
-									</div>
-								</a>
-							</div>
-						</div>
-						@empty
-						<div class="col-md-3 mt-4">
-							{{ $AllMotorByCategory->nama_kategori }} Belum Tersedia.
-						</div>
-						@endforelse
-
 					</div>
-				</div>
-				<!-- end col-md-12  -->
-
-			</div>
-		</div>
-	</div>
-	@endif 
+                    @endforeach
+                    
+                </div>
+            </div>
+            <!-- end col-md-12  -->
+        </div>
+    </div>
+</div>
 @empty
 <div class="bg-white mb-3">
     <div class="container">
@@ -216,7 +221,137 @@
         </div>
     </div>
 </div>
-@endforelse 
+@endforelse
+
+{{-- motor bebek --}}
+@forelse ($motorBebeks as $motorBebek)
+<div class="bg-white mb-3">
+    <div class="container">
+        <div class="row">
+            <!-- col-md-12  -->
+            <div class="col-md-12 mt-3 mb-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box-header">
+                            <div class="row align-items-center">
+                                <div class="col-auto mr-auto">
+                                    <div class="title-box">Motor Bebek</div>
+                                </div>
+                                <div class="col-auto text-right">
+                                    <a class="lihat-semua rounded" href="{{ url('/products/motor-bebek') }}">Lihat Semua <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @foreach ($motorBebek->motors as $motor)
+                    <div class="col-md-3 col-sm-6 col-6 mt-4">
+						<div class="box">
+							<a href="{{ url('/products').'/'.$motor->tipe->kategori->slug.'/'.$motor->tipe->slug.'/'.$motor->slug }}">
+								<div class="card">
+									<img class="card-img-top img-fluid" alt="" src="{{ asset('/storage/thumbnail').'/'.$motor->thumbnail }}" alt="">
+									<div class="card-block mt-2 mb-4 pl-3 pr-3">
+										<h6 class="card-title text-truncate mb-2 font-medium">{{ $motor->nama_motor }}</h6>
+										<div class="title-dp mt-3">DP Mulai Dari</div>
+										<div class="harga-diskon font-bold">
+                                            @foreach ($motor->pricelists as $key => $pricelist)
+                                                @if ($key == 0)
+                                                    Rp {{ number_format($pricelist->diskon) }}
+                                                @endif
+                                            @endforeach
+                                        </div>
+										<div class="title-dp mt-2">Harga OTR</div>
+										<span class="harga-asli">Rp {{ number_format($motor->harga_otr) }}</span>
+									</div>
+									<button class="btn btn-box mb-3 ml-3 mr-3 font-medium">Detail Motor</button>
+								</div>
+							</a>
+						</div>
+					</div>
+                    @endforeach
+                    
+                </div>
+            </div>
+            <!-- end col-md-12  -->
+        </div>
+    </div>
+</div>
+@empty
+<div class="bg-white mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-3 mb-5">
+                <h1 class="text-center">Motor belum tersedia.</h1>
+            </div>
+        </div>
+    </div>
+</div>
+@endforelse
+
+{{-- motor sport --}}
+@forelse ($motorSports as $motorSport)
+<div class="bg-white mb-3">
+    <div class="container">
+        <div class="row">
+            <!-- col-md-12  -->
+            <div class="col-md-12 mt-3 mb-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box-header">
+                            <div class="row align-items-center">
+                                <div class="col-auto mr-auto">
+                                    <div class="title-box">Motor Sport</div>
+                                </div>
+                                <div class="col-auto text-right">
+                                    <a class="lihat-semua rounded" href="{{ url('/products/motor-sport') }}">Lihat Semua <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @foreach ($motorSport->motors as $motor)
+                    <div class="col-md-3 col-sm-6 col-6 mt-4">
+						<div class="box">
+							<a href="{{ url('/products').'/'.$motor->tipe->kategori->slug.'/'.$motor->tipe->slug.'/'.$motor->slug }}">
+								<div class="card">
+									<img class="card-img-top img-fluid" alt="" src="{{ asset('/storage/thumbnail').'/'.$motor->thumbnail }}" alt="">
+									<div class="card-block mt-2 mb-4 pl-3 pr-3">
+										<h6 class="card-title text-truncate mb-2 font-medium">{{ $motor->nama_motor }}</h6>
+										<div class="title-dp mt-3">DP Mulai Dari</div>
+										<div class="harga-diskon font-bold">
+                                            @foreach ($motor->pricelists as $key => $pricelist)
+                                                @if ($key == 0)
+                                                    Rp {{ number_format($pricelist->diskon) }}
+                                                @endif
+                                            @endforeach
+                                        </div>
+										<div class="title-dp mt-2">Harga OTR</div>
+										<span class="harga-asli">Rp {{ number_format($motor->harga_otr) }}</span>
+									</div>
+									<button class="btn btn-box mb-3 ml-3 mr-3 font-medium">Detail Motor</button>
+								</div>
+							</a>
+						</div>
+					</div>
+                    @endforeach
+                    
+                </div>
+            </div>
+            <!-- end col-md-12  -->
+        </div>
+    </div>
+</div>
+@empty
+<div class="bg-white mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-3 mb-5">
+                <h1 class="text-center">Motor belum tersedia.</h1>
+            </div>
+        </div>
+    </div>
+</div>
+@endforelse
 
 @endsection 
 
