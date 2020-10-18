@@ -7,11 +7,18 @@
 		{{-- Breadcrumb --}}
 		<div class="col-md-12 mt-3 mb-5">
 			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item active"><a href="#">Home</a></li>
-					<li class="breadcrumb-item active"><a href="#">Motor Matic</a></li>
-					<li class="breadcrumb-item active">Honda Beat</li>
-				</ol>
+				<ol class="breadcrumb ">
+                    <li class="breadcrumb-item active"><a href="/">Home</a></li>
+                    <?php $link = "" ?>
+                    @for($i = 1; $i <= count(Request::segments()); $i++)
+                        @if($i < count(Request::segments()) & $i > 0)
+                            <?php $link .= "/" . Request::segment($i); ?>
+                            <li class="breadcrumb-item active"><a href="<?= $link ?>">{{ ucwords(str_replace('-',' ',Request::segment($i)))}}</a></li>
+                        @else 
+                            <li class="breadcrumb-item">{{ucwords(str_replace('-',' ',Request::segment($i)))}}</li>
+                        @endif
+                    @endfor
+                </ol>
 			</nav>
 		</div>
 		{{-- End breadcrumb --}}
