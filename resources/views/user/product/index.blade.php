@@ -8,19 +8,15 @@
             <nav aria-label="breadcrumb ">
                 <ol class="breadcrumb ">
                     <li class="breadcrumb-item active"><a href="/">Home</a></li>
-                    @if (isset($kategori))
-                    <li class="breadcrumb-item active">
-                        {{ $kategori->nama_kategori }}
-                    </li class="breadcrumb-item active">
-                    @elseif (isset($tipe))
-                    <li class="breadcrumb-item active">
-                        {{ $tipe->nama_tipe }}
-                    </li>
-                    @else
-                    <li class="breadcrumb-item active">
-                        Semua Produk
-                    </li>
-                    @endif
+                    <?php $link = "" ?>
+                    @for($i = 1; $i <= count(Request::segments()); $i++)
+                        @if($i < count(Request::segments()) & $i > 0)
+                            <?php $link .= "/" . Request::segment($i); ?>
+                            <li class="breadcrumb-item active"><a href="<?= $link ?>">{{ ucwords(str_replace('-',' ',Request::segment($i)))}}</a></li>
+                        @else 
+                            <li class="breadcrumb-item">{{ucwords(str_replace('-',' ',Request::segment($i)))}}</li>
+                        @endif
+                    @endfor
                 </ol>
             </nav>
         </div>
