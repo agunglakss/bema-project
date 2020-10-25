@@ -40,28 +40,33 @@ class OrderController extends Controller
             'alamat'        => $request->alamat,
             'nomor_telp'    => $request->nomor_telp,
         ]);
+        
+        $motor = Motor::findOrFail($pricelist->motor_id);
 
         // nomor whatsapp
-        //$numberWhatsApp = $request->nomor_telp;
+        $numberWhatsApp = $request->nomor_telp;
 
         // isi pesan
-        //$message = "Hallo kami dari Spesialis Kredit Motor Honda Berikut daftar pesanan Anda";
+        $text = "*Hallo, kami dari Spesialis Kredit Motor Honda.*\n" . "Berikut daftar pesanan Anda : \n\n" . $motor->nama_motor . "\nWarna : " . ucwords($request->warna) . "\nDP / Uang Muka : Rp " . number_format($pricelist->diskon) ."\nTenor " . $request->tenor . "\nBalas \"Ya\" untuk melanjutakan proses pemesanan.\nTerimakasih.";
         
         // kirim pesan
-        //$this->sendWhatsApp($numberWhatsApp);
+        $this->sendWhatsApp($numberWhatsApp, $text);
 
         return redirect('/');
         
     }
 
-    public function sendWhatsApp($numberWhatsApp)
+    public function sendWhatsApp($numberWhatsApp, $text)
     {
-
         $numberToString = (string) $numberWhatsApp;
-        $numberToString = $numberToString;
-        $my_apikey = "7WQNDEOIXMD2FVCMQXQT";
-        $destination = $numberToString;
-        $message = "MESSAGE TO SEND";
+        $resultNumberToString = $numberToString;
+
+        $textToString = (string) $text;
+        $resultTextToString = $textToString;
+
+        $my_apikey = "YSGY62JGWGTBAOK8009U";
+        $destination = $resultNumberToString;
+        $message = $resultTextToString;
         $api_url = "http://panel.rapiwha.com/send_message.php";
         $api_url .= "?apikey=". urlencode ($my_apikey);
         $api_url .= "&number=". urlencode ($destination);

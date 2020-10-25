@@ -159,13 +159,13 @@
 				$.each(data, function (i, data) {
 					$('#diskon').html('Rp ' + formatRupiah.format(data.diskon));
 					$('#tenor_cicilan').html(`
-						<option value="11">Bulan 11 x Rp ` + formatRupiah.format(data.bulan_11) + `</option>
-						<option value="17">Bulan 17 x Rp ` + formatRupiah.format(data.bulan_17) + `</option>
-						<option value="23">Bulan 23 x Rp ` + formatRupiah.format(data.bulan_23) + `</option>
-						<option value="27">Bulan 27 x Rp ` + formatRupiah.format(data.bulan_27) + `</option>
-						<option value="29">Bulan 29 x Rp ` + formatRupiah.format(data.bulan_29) + `</option>
-						<option value="33">Bulan 33 x Rp ` + formatRupiah.format(data.bulan_33) + `</option>
-						<option value="35">Bulan 35 x Rp ` + formatRupiah.format(data.bulan_35) + `</option>
+						<option value="11 Bulan x Rp `+ formatRupiah.format(data.bulan_11) +`">Bulan 11 x Rp ` + formatRupiah.format(data.bulan_11) + `</option>
+						<option value="17 Bulan x Rp `+ formatRupiah.format(data.bulan_17) +`">Bulan 17 x Rp ` + formatRupiah.format(data.bulan_17) + `</option>
+						<option value="23 Bulan x Rp `+ formatRupiah.format(data.bulan_23) +`">Bulan 23 x Rp ` + formatRupiah.format(data.bulan_23) + `</option>
+						<option value="27 Bulan x Rp `+ formatRupiah.format(data.bulan_27) +`">Bulan 27 x Rp ` + formatRupiah.format(data.bulan_27) + `</option>
+						<option value="29 Bulan x Rp `+ formatRupiah.format(data.bulan_29) +`">Bulan 29 x Rp ` + formatRupiah.format(data.bulan_29) + `</option>
+						<option value="33 Bulan x Rp `+ formatRupiah.format(data.bulan_33) +`">Bulan 33 x Rp ` + formatRupiah.format(data.bulan_33) + `</option>
+						<option value="35 Bulan x Rp `+ formatRupiah.format(data.bulan_35) +`">Bulan 35 x Rp ` + formatRupiah.format(data.bulan_35) + `</option>
 					`);
 				});
 			},

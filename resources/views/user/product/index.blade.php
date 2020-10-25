@@ -81,9 +81,14 @@
                 @endforelse
 
             </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    {{ $Motors->links() }}
+                </ul>
+              </nav>
         </div>
         {{-- End List Products --}}
-
+        
     </div>
 </div>
 @endsection
