@@ -1,5 +1,8 @@
-Private Project.
+#Private Project.
 
+Require
+php7.4-gd
+php7.4-zip
 
 - Import File Menggunakan maatwebsite/excel
    . composer require maatwebsite/excel
