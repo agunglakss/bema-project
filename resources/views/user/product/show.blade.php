@@ -126,7 +126,7 @@
 		{{-- deskripsi --}}
 		<div class="col-md-12 py-4 rounded-lg deskripsi">
 			<h3>Informasi Motor</h3>
-			<hr> {{ strip_tags($motor-> deskripsi) }}
+			<hr> {!! $motor->deskripsi !!}
 		</div>
 		{{-- end deskripsi --}}
 
