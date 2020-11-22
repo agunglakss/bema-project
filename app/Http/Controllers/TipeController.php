@@ -33,7 +33,7 @@ class TipeController extends Controller
             'nama_tipe'         => 'required',
         ]);
 
-     Tipe::create([
+        Tipe::create([
             'kategori_id'   => $request->nama_kategori,
             'nama_tipe'     => $request->nama_tipe,
             'slug'          => str::slug($request->nama_tipe, '-'),

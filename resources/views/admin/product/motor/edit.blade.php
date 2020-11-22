@@ -77,7 +77,7 @@
                            @empty
                                
                            @endforelse
-                          <input type="text" class="form-control inputtags" name="warna[]" placeholder="Pisahkan dengan koma, jika lebih dari satu warna">
+                          <input type="text" value="{{ ucwords($warna) }}" class="form-control inputtags" name="warna[]" placeholder="Pisahkan dengan koma, jika lebih dari satu warna">
                         </div>
                      </div>
                      
@@ -91,17 +91,20 @@
                         </div>
                      </div>
 
-                     {{-- <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" name="warna">Warna Motor</label>
-                        <div class="col-sm-10">
-                           <input type="text" class="form-control" name="warna" value="{{ $motor->warna }}">
-                        </div>
-                     </div> --}}
-
                      <div class="form-group row">
                         <label class="col-sm-2 col-form-label" name="cc_motor">CC Motor</label>
                         <div class="col-sm-10">
                            <input type="text" class="form-control" name="cc_motor" value="{{ $motor->cc_motor }}" >
+                        </div>
+                     </div>
+
+                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" name="status">Status</label>
+                        <div class="col-sm-10">
+                           <select class="form-control selectric" name="status" required="">
+                              <option value="1" @if ($motor->status == 1) selected="selected" @endif>Active</option>
+                              <option value="0"  @if ($motor->status == 0) selected="selected" @endif>Deactive</option>
+                           </select>
                         </div>
                      </div>
 

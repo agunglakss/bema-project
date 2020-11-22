@@ -8,9 +8,7 @@ Route::get('/schema', function() {
 });
 
 //About us
-Route::get('/about-us', function() {
-	return view('user.about-us');
-});
+Route::get('/about-us', 'AboutUsController@index');
 
 Route::group(['middleware' => ['auth']], function () {
 	
@@ -19,6 +17,10 @@ Route::group(['middleware' => ['auth']], function () {
 
 	// profile
 	//Route::get('/profile', 'UserController@show');
+
+	// tentang kami
+	Route::get('/tentang-kami/edit', 'AboutUsController@edit');
+	Route::put('/tentang-kami/edit', 'AboutUsController@update');
 	
 	// admin kategori
 	Route::get('/kategori-motor', 'KategoriController@index');
@@ -75,6 +77,7 @@ Route::post('login', 'Auth\LoginController@login')->name('login');
 
 // Product
 Route::get('/products', 'ProductController@index');
+Route::get('/products/search', 'ProductController@search');
 Route::get('/products/{kategori:slug}/{tipe:slug}/{motor:slug}', 'ProductController@show');
 Route::get('/products/{kategori:slug}/{tipe:slug}', 'ProductController@getMotorByType');
 Route::get('/products/{kategori:slug}', 'ProductController@getMotorByCategory');

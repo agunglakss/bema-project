@@ -1,4 +1,5 @@
-@extends('layouts.user.main') @section('content')
+@extends('layouts.user.main') 
+@section('content')
 
 <div class="container mb-3">
     <div class="row">
@@ -53,9 +54,14 @@
                 @forelse ($Motors as $motor)
                 <div class="col-md-4 col-sm-6 col-6 mb-5">
                     <div class="box">
-                        <a href="{{ url('/products').'/'.$motor->tipe->kategori->slug.'/'.$motor->tipe->slug.'/'.$motor->slug }}">
+                        <a href="@if($motor->status == 1)
+                                {{ url('/products').'/'.$motor->tipe->kategori->slug.'/'.$motor->tipe->slug.'/'.$motor->slug }}
+                                @else
+                                    #
+                                @endif">
                             <div class="card">
-                                <img class="card-img-top img-fluid" alt="" src="{{ asset('/storage/thumbnail').'/'.$motor->thumbnail}}" alt="">
+                                <img class="card-img-top img-fluid @if($motor->status != 1) tidak-tersedia @endif" alt="" src="{{ asset('/storage/thumbnail').'/'.$motor->thumbnail}}" alt="">
+                                @if($motor->status != 1) <h6 class="centered">Sold Out</h6> @endif
                                 <div class="card-block mt-2 mb-4 pl-3 pr-3">
                                     <h6 class="card-title text-truncate font-medium mb-2">{{ $motor->nama_motor }}</h6>
                                     <div class="title-dp mt-3">DP Mulai dari</div>
@@ -69,7 +75,11 @@
                                     <div class="title-dp mt-2">Harga OTR</div>
                                     <span class="harga-asli font-medium">Rp {{ number_format($motor->harga_otr) }},-</span>
                                 </div>
+                                @if($motor->status == 1)
                                 <button class="btn btn-box font-medium mb-3 ml-3 mr-3">Detail Motor</button>
+                                @else 
+                                <button class="btn btn-disabled font-medium mb-3 ml-3 mr-3">Sold Out</button>
+                                @endif
                             </div>
                         </a>
                     </div>

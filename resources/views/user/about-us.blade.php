@@ -15,7 +15,10 @@
             </div><!-- End Breadcrumbs -->
          
             <div class="col-md-12 mb-4 bg-white">
-               <br><br><br><br><br><br><br><br><br>
+               </br></br>
+               {!! $aboutUs->deskripsi !!}
+
+               </br></br></br></br></br></br></br></br></br></br></br></br>
             </div>
 
       </div>

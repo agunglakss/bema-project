@@ -22,9 +22,9 @@
     <section>
         @yield('content')
     </section>
-
-	@include('layouts.user.footer') 
-	
+    
+    @include('layouts.user.footer') 
+    <a class="btn btn-whatsapp" target="_BLANK" href="https://api.whatsapp.com/send?phone=6281281318653&text=Selamat%20datang%20di%20spesialis%20kredit%20motor%20honda"><i class="fa fa-whatsapp"> Whatsapp</i></a>
 	@include('layouts.user.source-footer') 
 	
 	{{-- custom js --}}

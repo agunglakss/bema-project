@@ -36,7 +36,7 @@
 					<ul class="sidebar-menu">
 						<li class="menu-header">Dashboard</li>
 						<li class="dropdown">
-							<a href="{{ url('/reset-password') }}" class="nav-link"><i class="fas fa-user"></i><span>Profile</span></a>
+							<a href="#" class="nav-link"><i class="fas fa-user"></i><span>Profile</span></a>
 						</li>
 						<li class="dropdown">
 							<a href="{{ url('#') }}" class="nav-link has-dropdown"><i class="fas fa-motorcycle"></i><span>Products</span></a>
@@ -59,7 +59,7 @@
 							<a href="#" class="nav-link"><i class="fas fa-credit-card"></i><span>Schema Credit</span></a>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="nav-link"><i class="fas fa-users"></i><span>About Us</span></a>
+							<a href="{{ url('/tentang-kami/edit') }}" class="nav-link"><i class="fas fa-users"></i><span>About Us</span></a>
 						</li>
 					</ul>
 

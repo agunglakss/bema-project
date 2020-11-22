@@ -54,6 +54,7 @@
 									<th>Nama Motor</th>
 									<th>Kategori Motor</th>
 									<th>Tipe Motor</th>
+									<th>Status</th>
 									<th>Created At</th>
 									<th>Updated At</th>
 									<th>Action</th>
@@ -64,11 +65,18 @@
 									<td><a href="{{ url('/motor').'/'.$motor->slug.'/detail' }}">{{ $motor->nama_motor }}</a></td>
 									<td>{{ $motor->tipe->kategori->nama_kategori }}</td>
 									<td>{{ $motor->tipe->nama_tipe }}</td>
+									<td>
+										@if ($motor->status == 1)
+											<span class="badge badge-success">Aktif</span>
+										@else
+											<span class="badge badge-danger">Tidak Aktif</span>
+										@endif
+									</td>
 									<td>{{ $motor->created_at->format('d-M-Y') }}</td>
 									<td>{{ $motor->updated_at->format('d-M-Y') }}</td>
 									<td>
 										<a class="btn-sm btn-info" href="{{ url('/motor') }}/{{$motor->slug}}/edit" title="Edit Motor"><i class="fa fa-edit"></i></a>
-										<a class="btn-sm btn-danger" href="{{ url('/motor') }}/{{ $motor->slug }}/delete" title="Hapus Motor"><i class="fa fa-trash"></i></a>
+										<!-- <a class="btn-sm btn-danger" href="{{ url('/motor') }}/{{ $motor->slug }}/delete" title="Hapus Motor"><i class="fa fa-trash"></i></a> -->
 									</td>
 								</tr>
 								@empty

@@ -13,7 +13,7 @@ class ProductController extends Controller
 	// Index
 	public function index()
 	{
-		$Motors = Motor::with(['tipe', 'pricelists' => function($query) { $query->orderBy('diskon'); }])->paginate(9);				
+		$Motors = Motor::with(['tipe', 'pricelists' => function($query) { $query->orderBy('diskon'); }])->orderBy('status', 'desc')->paginate(9);				
 		return view('user.product.index', compact('Motors'));
 	}
 
@@ -21,14 +21,14 @@ class ProductController extends Controller
 	// menampilkan data motor berdasarkan kategori motor
 	public function getMotorByCategory(Kategori $kategori)
 	{  
-		$Motors = $kategori->motors()->paginate(9);
+		$Motors = $kategori->motors()->orderBy('status', 'desc')->paginate(9);
 		return view('user.product.index', compact('kategori', 'Motors'));
 	}
 	
 	// menampilkan data motor berdasarkan tipe motor
 	public function getMotorByType(Kategori $kategori, Tipe $tipe)
 	{
-		$Motors = $tipe->motors()->paginate(9);
+		$Motors = $tipe->motors()->orderBy('status', 'desc')->paginate(9);
 		return view('user.product.index', compact('Motors', 'tipe', 'kategori'));
 	}
 	
@@ -44,5 +44,21 @@ class ProductController extends Controller
 	{
 		$pricelistByUangMuka = Pricelist::where(['motor_id' => $motor_id, 'uang_muka' => $uang_muka])->get();
 		return $pricelistByUangMuka;
+	}
+
+	// fungsi searching motor berdasarkan nama motor
+	public function search(Request $request)
+	{	
+		if($request->motor == "") {
+			abort('404');
+		}
+		$namaMotor = $request->motor;
+		
+		$Motors = Motor::where('nama_motor','like',"%".$namaMotor."%")->paginate(9);
+		if($Motors == "") {
+			abort('404');
+		}
+
+		return view('user.product.index', compact('Motors'));
 	}
 }

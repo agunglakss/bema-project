@@ -78,6 +78,7 @@ class MotorController extends Controller
 			'warna'		    => json_encode($warnaArray),
 			'harga_otr'     => $request->harga_otr,
 			'cc_motor'      => $request->cc_motor,
+			'status'		=> $request->status,
 			'deskripsi'     => $request->deskripsi,
 		]);
 		
@@ -106,6 +107,7 @@ class MotorController extends Controller
 
 	public function update(Request $request, Motor $motor)
 	{
+		//dd($request);
 		$request->validate([
 			'nama_kategori' => 'required',
 			'nama_tipe'     => 'required',
@@ -126,6 +128,7 @@ class MotorController extends Controller
 			'warna'		    => json_encode($warnaArray),
 			'harga_otr'     => $request->harga_otr,
 			'cc_motor'      => $request->cc_motor,
+			'status'		=> $request->status,
 			'deskripsi'     => $request->deskripsi,
 		]);
 
