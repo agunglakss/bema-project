@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Storage;
 use App\Motor;
+use App\Pricelist;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Illuminate\Support\str;
@@ -91,7 +92,9 @@ class MotorController extends Controller
 
 		$detailMotor = Motor::with('pricelists', 'tipe')->where('slug', $slug)->first();
 
-		return view('admin.product.motor.show', compact('title', 'detailMotor'));
+		$pricelist = Pricelist::where('motor_id', $detailMotor->id)->first();
+
+		return view('admin.product.motor.show', compact('title', 'detailMotor', 'pricelist'));
 	}
 
 	
@@ -135,13 +138,23 @@ class MotorController extends Controller
 		return redirect('/motor')->with('status', 'Motor Berhasil Diubah!');
 	}
 
-	public function destroy($id)
+	public function destroy($slug)
 	{
-		//
-	}
+		// cek motor berdasarkan slug motor
+		$motor = Motor::where('slug', $slug)->first();
 
-	public function editPricelist() 
-	{
-		
+		// hapus image di dalam folder storage/app/public/thumbnail
+		Storage::disk('public')->delete('thumbnail/'.$motor->thumbnail);
+
+		// lakukan looping untuk menghapus setiap image
+		// lalu hapus image di dalam folder storage/app/public/product-image
+		foreach(json_decode($motor->images) as $image) {
+			Storage::disk('public')->delete('product-image/'.$image);
+		}
+
+		// delete data di table motors
+		$motor->delete();
+	
+		return redirect('/motor')->with('status', 'Motor Berhasil Dihapus!');
 	}
 }

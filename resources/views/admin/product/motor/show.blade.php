@@ -90,7 +90,8 @@
 					<div class="card">
                         <div class="card-header">
                             <h4>Daftar Harga dan Cicilan Motor</h4>
-                            <a class="btn btn-primary" href="{{ url('/pricelists/').'/'.$detailMotor->slug.'/create' }}">Tambah Harga</a>
+                            <a class="btn btn-primary mr-2" href="{{ url('/pricelists/').'/'.$detailMotor->slug.'/create' }}">Tambah Harga</a>
+                            <button class="btn btn-danger" id="idHapusSemuaPricelist" title="Hapus Semua Pricelist Motor" data-toggle="modal" data-target="#hapusPricelist" data-url="{{ url('/pricelists').'/'.$detailMotor->slug.'/delete' }}">Delete Semua Harga Motor</button>
 						</div>
 						<div class="card-body">
 
@@ -107,6 +108,8 @@
                                     <th>Bulan 29</th>
                                     <th>Bulan 33</th>
                                     <th>Bulan 35</th>
+                                    <th>Bulan 47</th>
+                                    <th>Bulan 59</th>
                                     <th>Action</th>
 								</tr>
 								@forelse ($detailMotor->pricelists as $pricelist)
@@ -121,6 +124,8 @@
                                     <td>Rp {{ number_format($pricelist->bulan_29) }}</td>
                                     <td>Rp {{ number_format($pricelist->bulan_33) }}</td>
                                     <td>Rp {{ number_format($pricelist->bulan_35) }}</td>
+                                    <td>Rp {{ number_format($pricelist->bulan_47) }}</td>
+                                    <td>Rp {{ number_format($pricelist->bulan_59) }}</td>
                                     <td>
                                         <a class="btn btn-sm btn-info" href="{{ url('/pricelists').'/'.$detailMotor->slug.'/'.$pricelist->id.'/edit' }}"><i class="fa fa-edit"></i></a>
                                         <button class="btn btn-sm btn-danger" id="idHapusPricelist" title="Hapus Pricelist Motor" data-toggle="modal" data-target="#hapusPricelist" data-url="{{ url('/pricelists').'/'.$detailMotor->slug.'/'.$pricelist->id.'/delete' }}"><i class="fa fa-trash"></i></button>
@@ -146,7 +151,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="modal-title">Yakin ingin menghapus Pricelist Motor ini?</h6>
+                    <h6 class="modal-title"></h6>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
                     <form id="formHapusPricelist" action="" method="POST">

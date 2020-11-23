@@ -75,8 +75,8 @@
 									<td>{{ $motor->created_at->format('d-M-Y') }}</td>
 									<td>{{ $motor->updated_at->format('d-M-Y') }}</td>
 									<td>
-										<a class="btn-sm btn-info" href="{{ url('/motor') }}/{{$motor->slug}}/edit" title="Edit Motor"><i class="fa fa-edit"></i></a>
-										<!-- <a class="btn-sm btn-danger" href="{{ url('/motor') }}/{{ $motor->slug }}/delete" title="Hapus Motor"><i class="fa fa-trash"></i></a> -->
+										<a class="btn btn-sm btn-info" href="{{ url('/motor').'/'.$motor->slug.'/edit' }}" title="Edit Motor"><i class="fa fa-edit"></i></a>
+										<button class="btn btn-sm btn-danger" id="idHapusMotor" title="Hapus Motor" data-toggle="modal" data-target="#hapusMotor" data-url="{{ url('/motor').'/'.$motor->slug.'/delete' }}"><i class="fa fa-trash"></i></button>
 									</td>
 								</tr>
 								@empty
@@ -98,8 +98,28 @@
 		</div><!-- end section-body -->
 		
    	</section>
+
+	{{-- modal hapus motor --}}
+	<div class="modal fade" id="hapusMotor" tabindex="-1" role="dialog" aria-labelledby="hapusMotorLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h6 class="modal-title">Yakin ingin menghapus motor ini?</h6>
+				</div>
+				<div class="modal-footer bg-whitesmoke br">
+					<form id="formHapusMotor" action="" method="POST">
+						@csrf
+						@method('delete')
+						<button type="submit" class="btn btn-secondary">Delete</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{-- end modal --}}
 	   
-	{{-- modal --}}
+	{{-- modal import data--}}
 	<div class="modal fade" id="importHarga" tabindex="-1" role="dialog" aria-labelledby="importHargaLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">

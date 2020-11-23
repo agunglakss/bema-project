@@ -26,6 +26,8 @@ class PricelistImport implements ToModel, WithHeadingRow
             'bulan_29'  => $row['bulan_29'],
             'bulan_33'  => $row['bulan_33'],
             'bulan_35'  => $row['bulan_35'],
+            'bulan_47'  => $row['bulan_47'],
+            'bulan_59'  => $row['bulan_59']
         ]);
     }
 }

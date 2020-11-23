@@ -65,10 +65,21 @@
 	});
 
 	// delete motor
-	
+	$(document).on('click', '#idHapusMotor', function() {
+		const urlHapusMotor = $(this).data('url');
+		$('#formHapusMotor').attr('action', urlHapusMotor);
+	});
 
-	//delete pricelist
+	// delete all pricelist
+	$(document).on('click', '#idHapusSemuaPricelist', function() {
+		$('.modal-title').text('Yakin ingin menghapus semua Pricelist Motor ini?');
+		console.log(urlHapusSemuaPricelist);
+		$('#formHapusPricelist').attr('action', urlHapusSemuaPricelist);
+	})
+	
+	// delete pricelist
 	$(document).on('click', '#idHapusPricelist', function() {
+		$('.modal-title').text('Yakin ingin menghapus Pricelist Motor ini?');
 		const urlHapusPricelist = $(this).data('url');
 		$('#formHapusPricelist').attr('action', urlHapusPricelist);
 	});

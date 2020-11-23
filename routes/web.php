@@ -52,6 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/pricelists/{motor:slug}/create', 'PricelistController@create');
 	Route::get('/pricelists/{motor:slug}/{pricelist:id}/edit', 'PricelistController@edit');
 	Route::patch('/pricelists/{motor:slug}/{pricelist:id}/edit', 'PricelistController@update');
+	Route::delete('/pricelists/{motor:slug}/delete', 'PricelistController@destroyAllPricelist');
 	Route::delete('/pricelists/{motor:slug}/{pricelist:id}/delete', 'PricelistController@destroy');
 	Route::post('/pricelists/{motor:slug}', 'PricelistController@store');
 

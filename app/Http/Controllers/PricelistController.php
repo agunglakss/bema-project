@@ -127,6 +127,18 @@ class PricelistController extends Controller
         return redirect('/motor'.'/'.$motor->slug.'/detail')->with('status', 'Daftar Harga Berhasil Dihapus.');
     }
 
+    public function destroyAllPricelist($slug)
+    {
+        $motor = Motor::where('slug', $slug)->first();
+        if($motor == null) {
+            abort('404');
+        }
+        
+        $pricelist = Pricelist::where('motor_id', $motor->id)->delete();
+
+        return redirect('/motor'.'/'.$motor->slug.'/detail')->with('status', 'Daftar Harga Berhasil Dihapus.');
+    }
+
     // import execel
     public function import_excel(Request $request) 
 	{

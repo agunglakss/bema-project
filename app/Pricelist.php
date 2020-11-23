@@ -17,6 +17,8 @@ class Pricelist extends Model
         'bulan_29',
         'bulan_33',
         'bulan_35',
+        'bulan_47',
+        'bulan_59',
     ];
 
     public function motor()
