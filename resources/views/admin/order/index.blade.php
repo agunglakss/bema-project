@@ -32,36 +32,42 @@
                                 <tr>
                                     <td>{{ $order->order_id }}</td>
                                     <td>{{ $order->nama }}</td>
-                                    <td>{{ $order->pricelist->motor->nama_motor }}</td>
-                                    <td>{{ $order->pricelist->diskon }}</td>
-                                    <td>{{ $order->tenor }}</td>
-                                    <td>
-                                        @switch($order->tenor)
-                                            @case($order->tenor == 11)
-                                            {{ $order->pricelist->bulan_11 }}
-                                                @break
-                                            @case($order->tenor == 17)
-                                            {{ $order->pricelist->bulan_17 }}
-                                                @break
-                                            @case($order->tenor == 23)
-                                            {{ $order->pricelist->bulan_23 }}
-                                                @break
-                                            @case($order->tenor == 27)
-                                            {{ $order->pricelist->bulan_27 }}
-                                                @break
-                                            @case($order->tenor == 29)
-                                            {{ $order->pricelist->bulan_29 }}
-                                                @break
-                                            @case($order->tenor == 33)
-                                            {{ $order->pricelist->bulan_33 }}
-                                                @break
-                                            @case($order->tenor == 35)
-                                            {{ $order->pricelist->bulan_35 }}
-                                                @break
-                                            @default
-                                            
-                                        @endswitch
-                                    </td>
+                                    @if(!empty($order->pricelist->id))
+                                        <td>{{ $order->pricelist->motor->nama_motor }}</td>
+                                        <td>Rp {{ number_format($order->pricelist->diskon) }}</td>
+                                        <td>{{ $order->tenor }}</td>
+                                        <td>
+                                            @switch($order->tenor)
+                                                @case($order->tenor == 11)
+                                                Rp {{ number_format($order->pricelist->bulan_11) }}
+                                                    @break
+                                                @case($order->tenor == 17)
+                                                Rp {{ number_format($order->pricelist->bulan_17) }}
+                                                    @break
+                                                @case($order->tenor == 23)
+                                                Rp {{ number_format($order->pricelist->bulan_23) }}
+                                                    @break
+                                                @case($order->tenor == 27)
+                                                Rp {{ number_format($order->pricelist->bulan_27) }}
+                                                    @break
+                                                @case($order->tenor == 29)
+                                                Rp {{ number_format($order->pricelist->bulan_29) }}
+                                                    @break
+                                                @case($order->tenor == 33)
+                                                Rp {{ number_format($order->pricelist->bulan_33) }}
+                                                    @break
+                                                @case($order->tenor == 35)
+                                                Rp {{ number_format($order->pricelist->bulan_35) }}
+                                                    @break
+                                                @default 
+                                            @endswitch
+                                        </td>
+                                    @else
+                                    <td>Data not found</td>
+                                    <td>Data not found</td>
+                                    <td>Data not found</td>
+                                    <td>Data not found</td>
+                                    @endif
                                     <td>{{ $order->created_at }}</td>
                                 </tr>
                                 @empty

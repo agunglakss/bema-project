@@ -41,16 +41,16 @@ class OrderController extends Controller
             'nomor_telp'    => $request->nomor_telp,
         ]);
         
-        $motor = Motor::findOrFail($pricelist->motor_id);
+        // $motor = Motor::findOrFail($pricelist->motor_id);
 
-        // nomor whatsapp
-        $numberWhatsApp = $request->nomor_telp;
+        // // nomor whatsapp
+        // $numberWhatsApp = $request->nomor_telp;
 
         // isi pesan
-        $text = "*Hallo, kami dari Spesialis Kredit Motor Honda.*\n" . "Berikut daftar pesanan Anda : \n\n" . $motor->nama_motor . "\nWarna : " . ucwords($request->warna) . "\nDP / Uang Muka : Rp " . number_format($pricelist->diskon) ."\nTenor " . $request->tenor . "\nBalas \"Ya\" untuk melanjutakan proses pemesanan.\nTerimakasih.";
+        // $text = "*Hallo, kami dari Spesialis Kredit Motor Honda.*\n" . "Berikut daftar pesanan Anda : \n\n" . $motor->nama_motor . "\nWarna : " . ucwords($request->warna) . "\nDP / Uang Muka : Rp " . number_format($pricelist->diskon) ."\nTenor " . $request->tenor . "\nBalas \"Ya\" untuk melanjutakan proses pemesanan.\nTerimakasih.";
         
         // kirim pesan
-        $this->sendWhatsApp($numberWhatsApp, $text);
+        // $this->sendWhatsApp($numberWhatsApp, $text);
 
         return redirect('/');
         
