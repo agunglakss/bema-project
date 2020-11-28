@@ -41,7 +41,7 @@
 						</div>
 
 						@foreach (json_decode($motor->images) as $image )
-						<div class="col-3">
+						<div class="col-3 mb-4">
 							<img class="rounded-lg body-image" id="image-mini" src="{{ asset('/storage/product-image').'/'.$image }}" alt="">
 						</div>
 						@endforeach

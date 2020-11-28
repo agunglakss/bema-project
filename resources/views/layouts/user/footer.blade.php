@@ -46,10 +46,14 @@
             <div class="col-md-4 mb-4">
                 <div class="content-footer">
                     <div class="title-footer mb-3">
-                        Metode Pembayaran
+                        Bekerja Sama Dengan Leasing : 
                     </div>
                     <div class="body-footer">
-                        Dapatkan motor impian anda bersama kami, Proses mudah, Harga bersahabat, Pelayanan friendly, Kita bantu sampai di acc.
+                        <button type="button" class="btn btn-outline-info">FIF</button>
+                        <button type="button" class="btn btn-outline-info">Mega Finance</button>
+                        <button type="button" class="btn btn-outline-info">Adira</button>
+                        <button type="button" class="btn btn-outline-info">OTO</button>
+                        <button type="button" class="btn btn-outline-info mt-2">WOM Finance</button>
                     </div>
                 </div>
             </div>
