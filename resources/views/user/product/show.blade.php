@@ -14,7 +14,7 @@
                         @if($i < count(Request::segments()) & $i > 0)
                             <?php $link .= "/" . Request::segment($i); ?>
                             <li class="breadcrumb-item active"><a href="<?= $link ?>">{{ ucwords(str_replace('-',' ',Request::segment($i)))}}</a></li>
-                        @else 
+                        @else
                             <li class="breadcrumb-item">{{ucwords(str_replace('-',' ',Request::segment($i)))}}</li>
                         @endif
                     @endfor
@@ -69,7 +69,7 @@
 								<option value="{{$warnaMotor}}">{{ ucwords($warnaMotor) }}</option>
 								@endforeach
 							</select>
-						</div>
+                        </div>
 
 						<div class="form-group mb-5">
 							<label for="uang_muka" class="text-secondary-black font-medium">Uang Muka (DP)</label>
@@ -99,8 +99,7 @@
 
 						<div class="form-group mb-4">
 							<label for="nama" class="font-medium text-secondary-black">Nama</label>
-							<input type="text" class="form-control form-control" name="nama"
-								placeholder="Isi dengan nama lengkap">
+							<input type="text" class="form-control form-control" name="nama" placeholder="Isi dengan nama lengkap">
 						</div>
 
 						<div class="form-group mb-4">
@@ -111,7 +110,7 @@
 
 						<div class="form-group mb-4">
 							<label for="nomor_telepon" class="font-medium text-secondary-black">Nomor Telepon</label>
-							<input type="text" class="form-control form-control" name="nomor_telp" placeholder="+62">
+							<input type="text" class="form-control form-control" name="nomor_telp" placeholder="Masukan nomor handphone 62xxxxxxxxx">
 						</div>
 
 						<button type="submit" class="btn btn-lg btn-orange w-100">AJUKAN SEKARANG</button>
@@ -135,7 +134,7 @@
 @endsection
 
 @section('custom-js')
-<script>	
+<script>
 
 	// script untuk merubah image yang diklik
 	$(document).on('click', '#image-mini', function (e) {
@@ -146,7 +145,7 @@
 		$(this).addClass('active');
 	});
 
-	// fungsi untuk select option dinamis 
+	// fungsi untuk select option dinamis
 	function getPricelists() {
 		const motor_id = $("#uang_muka option:selected").attr("data-id");
 		const uang_muka = $("#uang_muka option:selected").attr("data-uang");
