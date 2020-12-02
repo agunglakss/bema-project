@@ -5,7 +5,7 @@
         <div class="container">
             <div class="telp-email">
                 <a class="font-reguler" href="mailto:faturahmanbema22@gmail.com"><i class="fa fa-envelope"></i> faturahmanbema22@gmail.com</a> &nbsp;
-                <a class="font-reguler" href="telp:081281318653"> <i class="fa fa-phone"></i> +6281281318653</a>
+                <a class="font-reguler" href="tel:+6281281318653"> <i class="fa fa-phone"></i> 081281318653</a>
             </div>
         </div>
     </div>
