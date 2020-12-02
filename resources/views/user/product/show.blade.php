@@ -105,12 +105,12 @@
 						<div class="form-group mb-4">
 							<label for="alamat" class="font-medium text-secondary-black">Alamat</label>
 							<textarea class="form-control form-control" name="alamat" id="alamat"
-								placeholder="Isi alamat untuk kelengkapan survey, ex. kota, kecamatan, kelurahan dan rt/rw."></textarea>
+								placeholder="Isi alamat untuk kelengkapan survey, contoh: nama kota, kecamatan, kelurahan dan rt/rw."></textarea>
 						</div>
 
 						<div class="form-group mb-4">
 							<label for="nomor_telepon" class="font-medium text-secondary-black">Nomor Telepon</label>
-							<input type="text" class="form-control form-control" name="nomor_telp" placeholder="Masukan nomor handphone 62xxxxxxxxx">
+							<input type="text" class="form-control form-control" name="nomor_telp" placeholder="Contoh : 0812xxxxxxxx (whastsapp)">
 						</div>
 
 						<button type="submit" class="btn btn-lg btn-orange w-100">AJUKAN SEKARANG</button>

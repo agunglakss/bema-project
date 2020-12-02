@@ -24,7 +24,7 @@
     </section>
     
     @include('layouts.user.footer') 
-    <a class="btn btn-whatsapp" target="_BLANK" href="https://api.whatsapp.com/send?phone=6281281318653&text=Selamat%20datang%20di%20spesialis%20kredit%20motor%20honda"><i class="fa fa-whatsapp"> Whatsapp</i></a>
+    <a class="btn btn-whatsapp" target="_BLANK" href="https://api.whatsapp.com/send?phone=6281281318653&text=Salam%20Satu%20Hati%0ASaya%20Bema%20dari%20spesialiskreditmotorhonda.com%0ABila%20ada%20pertanyaan%20untuk%20proses%20pembelian%20Motor%20Honda%20saya%20persilahkan"><i class="fa fa-whatsapp"> Whatsapp</i></a>
 	@include('layouts.user.source-footer') 
 	
 	{{-- custom js --}}

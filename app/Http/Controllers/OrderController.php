@@ -38,19 +38,19 @@ class OrderController extends Controller
             'tenor'         => $request->tenor,
             'nama'          => $request->nama,
             'alamat'        => $request->alamat,
-            'nomor_telp'    => $request->nomor_telp,
+            'nomor_telp'    => "62".$request->nomor_telp,
         ]);
         
-        // $motor = Motor::findOrFail($pricelist->motor_id);
+        $motor = Motor::findOrFail($pricelist->motor_id);
 
-        // // nomor whatsapp
-        // $numberWhatsApp = $request->nomor_telp;
+        // nomor whatsapp
+        $numberWhatsApp = "62".$request->nomor_telp;
 
         // isi pesan
-        // $text = "*Hallo, kami dari Spesialis Kredit Motor Honda.*\n" . "Berikut daftar pesanan Anda : \n\n" . $motor->nama_motor . "\nWarna : " . ucwords($request->warna) . "\nDP / Uang Muka : Rp " . number_format($pricelist->diskon) ."\nTenor " . $request->tenor . "\nBalas \"Ya\" untuk melanjutakan proses pemesanan.\nTerimakasih.";
+        $text = "*Hallo, kami dari Spesialis Kredit Motor Honda.*\n" . "Berikut daftar pesanan Anda : \n\n" . $motor->nama_motor . "\nWarna : " . ucwords($request->warna) . "\nDP / Uang Muka : Rp " . number_format($pricelist->diskon) ."\nTenor " . $request->tenor . "\nBalas \"Ya\" untuk melanjutakan proses pemesanan.\nTerimakasih.";
         
         // kirim pesan
-        // $this->sendWhatsApp($numberWhatsApp, $text);
+        $this->sendWhatsApp($numberWhatsApp, $text);
 
         return redirect('/');
         
@@ -72,20 +72,5 @@ class OrderController extends Controller
         $api_url .= "&number=". urlencode ($destination);
         $api_url .= "&text=". urlencode ($message);
         $my_result_object = json_decode(file_get_contents($api_url, false));
-    
-        // $numberToString = (string) $numberWhatsApp;
-        // $numberToString = $numberToString;
-
-        // $message = (string) $message;
-        // $message = $message;
-
-        // $my_apikey = "7WQNDEOIXMD2FVCMQXQT";
-        // $destination = $numberToString;
-        // $message = $message;
-        // $api_url = "http://panel.rapiwha.com/send_message.php";
-        // $api_url .= "?apikey=". urlencode ($my_apikey);
-        // $api_url .= "&number=". urlencode ($destination);
-        // $api_url .= "&text=". urlencode ($message);
-        // $my_result_object = json_decode(file_get_contents($api_url, false));
     }
 }

@@ -22,6 +22,7 @@
                                 <tr>
                                     <th>No. Order</th>
                                     <th>Nama Pemesan</th>
+                                    <th>No.Telp</th>
                                     <th>Motor</th>
                                     <th>Uang Muka (DP)</th>
                                     <th>Tenor</th>
@@ -32,6 +33,7 @@
                                 <tr>
                                     <td>{{ $order->order_id }}</td>
                                     <td>{{ $order->nama }}</td>
+                                    <td>{{ $order->nomor_telp}}</td>
                                     @if(!empty($order->pricelist->id))
                                         <td>{{ $order->pricelist->motor->nama_motor }}</td>
                                         <td>Rp {{ number_format($order->pricelist->diskon) }}</td>
