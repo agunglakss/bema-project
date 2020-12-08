@@ -31,6 +31,9 @@
                         <a class="nav-link{{ request()->is('schema') ? ' active' : ''  }}" href="{{ url('schema') }}">Cara Pemesanan</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link{{ request()->is('testimoni') ? ' active' : ''  }}" href="{{ url('testimoni') }}">Testimoni</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link{{ request()->is('about-us') ? ' active' : ''  }}" href="{{ url('about-us') }}">Tentang Kami</a>
                     </li>
                 </ul>

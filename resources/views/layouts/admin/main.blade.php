@@ -47,7 +47,7 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="{{ url('/order') }}" class="nav-link"><i class="fas fa-image"></i><span>Order List</span></a>
+							<a href="{{ url('/order') }}" class="nav-link"><i class="fas fa-shopping-cart"></i><span>Order List</span></a>
 						</li>
 						<li class="dropdown">
 							<a href="{{ url('/banners') }}" class="nav-link"><i class="fas fa-image"></i><span>Banner</span></a>
@@ -57,6 +57,9 @@
 						</li>
 						<li class="dropdown">
 							<a href="#" class="nav-link"><i class="fas fa-credit-card"></i><span>Schema Credit</span></a>
+						</li>
+						<li class="dropdown">
+							<a href="{{ url('/testimonial') }}" class="nav-link"><i class="fas fa-comments"></i><span>Testimonial</span></a>
 						</li>
 						<li class="dropdown">
 							<a href="{{ url('/tentang-kami/edit') }}" class="nav-link"><i class="fas fa-users"></i><span>About Us</span></a>

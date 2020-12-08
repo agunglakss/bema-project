@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
-    <title></title>
-    <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
+    <title>{{ $title ?? 'Kredit Motor Honda Murah | Spesialis Kredit Motor Honda' }}</title>
+    <meta name="description" content="Dapatkan Motor Impian Anda Bersama Kami Unit Ready Proses Cepat Diskon Dp Hingga 3 Jt. Dp Dibayar Ketika Motor Tiba Dirumah 100% Aman." />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="apple-mobile-web-app-title" content="Flatkit">

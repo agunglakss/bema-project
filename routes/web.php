@@ -2,14 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-//Schema
-Route::get('/schema', function() {
-	return view('user.schema');
-});
-
-//About us
-Route::get('/about-us', 'AboutUsController@index');
-
 Route::group(['middleware' => ['auth']], function () {
 	
 	//Dashboard Admin
@@ -66,6 +58,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 	// order
 	Route::get('/order', 'OrderController@index');
+
+	// testimonial
+	Route::get('/testimonial', 'TestimoniController@index');
+	Route::delete('/testimonial/{id}/delete', 'TestimoniController@destroy');
+	Route::post('/testimonial', 'TestimoniController@store');
 	
 	// logout
 	Route::post('logout', 'Auth\LoginController@logout')->name('logout');
@@ -88,3 +85,14 @@ Route::get('/', 'HomeController@index');
 
 // order
 Route::post('/pemesanan', 'OrderController@store');
+
+//Schema
+Route::get('/schema', function() {
+	return view('user.schema');
+});
+
+//About us
+Route::get('/about-us', 'AboutUsController@index');
+
+// Testimoni user
+Route::get('/testimoni', 'TestimoniController@gallery');

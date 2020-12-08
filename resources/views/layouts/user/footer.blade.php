@@ -71,9 +71,9 @@
                         <div class="media-sosial-box">
                             <div class="title-footer">Ikuti Media Sosial Kami</div>
                             <div class="media-sosial-body">
-                                <span><a href="https://instagram.com" target="blank"><i class="fa fa-instagram"></i></a></span>
+                                <span><a href="https://www.instagram.com/kredit_cash_motor_honda/" target="blank"><i class="fa fa-instagram"></i></a></span>
                                 <span><a href="https://twitter.com" target="blank"><i class="fa fa-twitter"></i></a></span>
-                                <span><a href="https://facebook.com" target="blank"><i class="fa fa-facebook"></i></a></span>
+                                <span><a href="https://www.facebook.com/Spesialiskreditmotorhonda/" target="blank"><i class="fa fa-facebook"></i></a></span>
                             </div>
                         </div>
                     </div>
