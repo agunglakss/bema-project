@@ -127,8 +127,8 @@
                                     <td>Rp {{ number_format($pricelist->bulan_47) }}</td>
                                     <td>Rp {{ number_format($pricelist->bulan_59) }}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-info" href="{{ url('/pricelists').'/'.$detailMotor->slug.'/'.$pricelist->id.'/edit' }}"><i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" id="idHapusPricelist" title="Hapus Pricelist Motor" data-toggle="modal" data-target="#hapusPricelist" data-url="{{ url('/pricelists').'/'.$detailMotor->slug.'/'.$pricelist->id.'/delete' }}"><i class="fa fa-trash"></i></button>
+                                        <a class="btn btn-sm btn-info mb-1 mt-1" href="{{ url('/pricelists').'/'.$detailMotor->slug.'/'.$pricelist->id.'/edit' }}"><i class="fa fa-edit"></i> Ubah</a>
+                                        <button class="btn btn-sm btn-danger mb-1 mt-1" id="idHapusPricelist" title="Hapus Pricelist Motor" data-toggle="modal" data-target="#hapusPricelist" data-url="{{ url('/pricelists').'/'.$detailMotor->slug.'/'.$pricelist->id.'/delete' }}"><i class="fa fa-trash"></i> Hapus</button>
                                     </td>
                                  </tr>
                                 @empty

@@ -63,8 +63,8 @@
                               <td>{{ $kategoriMotor->updated_at->format('d-M-Y') }}</td>
                               <td><div class="badge badge-success">Aktif</div></td>
                               <td>
-                                 <a class="btn btn-sm btn-info" href="{{ url ('/kategori-motor') }}/{{$kategoriMotor->slug}}/edit" title="Edit Kategori Motor"><i class="fa fa-edit"></i></a>
-                                 <button class="btn btn-sm btn-danger" id="idHapusKategori" title="Hapus Kategori" data-toggle="modal" data-target="#hapusKategori" data-url="{{ url('/kategori-motor').'/'.$kategoriMotor->slug.'/delete' }}"><i class="fa fa-trash"></i></button>
+                                 <a class="btn btn-sm btn-info" href="{{ url ('/kategori-motor') }}/{{$kategoriMotor->slug}}/edit" title="Edit Kategori Motor"><i class="fa fa-edit"></i> Ubah</a>
+                                 <button class="btn btn-sm btn-danger" id="idHapusKategori" title="Hapus Kategori" data-toggle="modal" data-target="#hapusKategori" data-url="{{ url('/kategori-motor').'/'.$kategoriMotor->slug.'/delete' }}"><i class="fa fa-trash"></i> Hapus</button>
                               </td>
                            </tr>
                            @empty

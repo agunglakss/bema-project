@@ -75,8 +75,8 @@
 									<td>{{ $motor->created_at->format('d-M-Y') }}</td>
 									<td>{{ $motor->updated_at->format('d-M-Y') }}</td>
 									<td>
-										<a class="btn btn-sm btn-info" href="{{ url('/motor').'/'.$motor->slug.'/edit' }}" title="Edit Motor"><i class="fa fa-edit"></i></a>
-										<button class="btn btn-sm btn-danger" id="idHapusMotor" title="Hapus Motor" data-toggle="modal" data-target="#hapusMotor" data-url="{{ url('/motor').'/'.$motor->slug.'/delete' }}"><i class="fa fa-trash"></i></button>
+										<a class="btn btn-sm btn-info" href="{{ url('/motor').'/'.$motor->slug.'/edit' }}" title="Edit Motor"><i class="fa fa-edit"></i> Ubah</a>
+										<button class="btn btn-sm btn-danger" id="idHapusMotor" title="Hapus Motor" data-toggle="modal" data-target="#hapusMotor" data-url="{{ url('/motor').'/'.$motor->slug.'/delete' }}"><i class="fa fa-trash"></i> Hapus</button>
 									</td>
 								</tr>
 								@empty

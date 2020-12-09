@@ -26,7 +26,7 @@
                     <div class="card-body">
 
                         <div class="form-group row">
-                           <label class="col-sm-2 col-form-label" >Kategori Motor *</label>
+                           <label class="col-sm-2 col-form-label" >Kategori Motor <span style="color: red;">*</span></label>
                            <div class="col-sm-10">
                               <select class="form-control selectric" name="nama_kategori" required="">
                                  <option value="">- Pilih Tipe Motor -</option>
@@ -37,13 +37,13 @@
                                  @endforelse
                               </select>
                               <div class="invalid-feedback">
-                                 Kategori motor wajib di isi.
+                                 Tipe motor wajib di isi.
                               </div>
                            </div>
                         </div>
                       
                         <div class="form-group row">
-                           <label class="col-sm-2 col-form-label">Tipe Motor *</label>
+                           <label class="col-sm-2 col-form-label">Tipe Motor <span style="color: red;">*</span></label>
                            <div class="col-sm-10">
                               <select class="form-control selectric" name="nama_tipe" required="">
                                  <option value="">- Pilih Tipe Motor -</option>
@@ -60,9 +60,9 @@
                         </div>
                      
                      <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" name="nama_motor">Nama Motor *</label>
+                        <label class="col-sm-2 col-form-label" name="nama_motor">Nama Motor <span style="color: red;">*</span></label>
                         <div class="col-sm-10">
-                           <input type="text" class="form-control" name="nama_motor" value="{{ $motor->nama_motor }}" placeholder="Isi dengan nama Motor" required="">
+                           <input type="text" class="form-control" name="nama_motor" value="{{ old('nama_motor') ?? $motor->nama_motor }}" placeholder="Isi dengan nama Motor" required="">
                            <div class="invalid-feedback">
                               Nama motor wajib di isi.
                            </div>
@@ -70,23 +70,26 @@
                      </div>
 
                      <div class="form-group row mb-4">
-                        <label class="col-sm-2 col-form-label">Warna Motor</label>
+                        <label class="col-sm-2 col-form-label">Warna Motor <span style="color: red;">*</span></label>
                         <div class="col-sm-10">
-                           @forelse (json_decode($motor->warna) as $warna)
-                              <span class="btn btn-sm btn-outline-dark mb-2">{{ ucwords($warna) }}</span>
-                           @empty
-                               
-                           @endforelse
-                          <input type="text" value="{{ ucwords($warna) }}" class="form-control inputtags" name="warna[]" placeholder="Pisahkan dengan koma, jika lebih dari satu warna">
+                           <input type="text" value="@forelse (json_decode($motor->warna) as $warna)
+                                                      {{ ucwords($warna) }},
+                                                      @empty
+                                                      @endforelse" 
+                                             class="form-control inputtags" name="warna[]" placeholder="Pisahkan dengan koma, jika lebih dari satu warna" required=""
+                           >
+                           <div class="invalid-feedback">
+                              Warna motor wajib di isi.
+                           </div>
                         </div>
                      </div>
                      
                      <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" name="harga_otr">Harga OTR Motor *</label>
+                        <label class="col-sm-2 col-form-label" name="harga_otr">Harga OTR Motor <span style="color: red;">*</span></label>
                         <div class="col-sm-10">
-                           <input type="text" class="form-control" name="harga_otr" value="{{ $motor->harga_otr }}" placeholder="Isi harga motor dalam rupiah" required="">
+                           <input type="text" class="form-control" name="harga_otr" value="{{ old('harga_otr') ?? $motor->harga_otr }}" placeholder="Isi harga motor dalam rupiah" required="">
                            <div class="invalid-feedback">
-                              Nama otr motor wajib di isi.
+                              Harga OTR motor wajib di isi.
                            </div>
                         </div>
                      </div>
@@ -99,12 +102,15 @@
                      </div>
 
                      <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" name="status">Status</label>
+                        <label class="col-sm-2 col-form-label" name="status">Status <span style="color: red;">*</span></label>
                         <div class="col-sm-10">
                            <select class="form-control selectric" name="status" required="">
                               <option value="1" @if ($motor->status == 1) selected="selected" @endif>Active</option>
                               <option value="0"  @if ($motor->status == 0) selected="selected" @endif>Deactive</option>
                            </select>
+                           <div class="invalid-feedback">
+                              Status motor wajib di isi.
+                           </div>
                         </div>
                      </div>
 

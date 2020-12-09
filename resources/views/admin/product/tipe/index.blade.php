@@ -68,8 +68,8 @@
                               <td>{{ $tipeMotor->created_at->format('d-M-Y') }}</td>
                               <td>{{ $tipeMotor->updated_at->format('d-M-Y') }}</td>
                               <td>
-                                 <a class="btn btn-sm btn-info" href="{{ url('/tipe-motor') }}/{{ $tipeMotor->slug }}/edit" title="Edit Tipe Motor"><i class="fa fa-edit"></i></a>
-                                 <button class="btn btn-sm btn-danger" id="idHapusTipe" title="Hapus Tipe Motor" data-toggle="modal" data-target="#hapusTipe" data-url="{{ url('/tipe-motor').'/'.$tipeMotor->slug.'/delete' }}"><i class="fa fa-trash"></i></button>
+                                 <a class="btn btn-sm btn-info" href="{{ url('/tipe-motor') }}/{{ $tipeMotor->slug }}/edit" title="Edit Tipe Motor"><i class="fa fa-edit"></i> Ubah</a>
+                                 <button class="btn btn-sm btn-danger" id="idHapusTipe" title="Hapus Tipe Motor" data-toggle="modal" data-target="#hapusTipe" data-url="{{ url('/tipe-motor').'/'.$tipeMotor->slug.'/delete' }}"><i class="fa fa-trash"></i> Hapus</button>
                               </td>
                            </tr>
                            @empty
