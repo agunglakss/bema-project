@@ -28,13 +28,13 @@
                         <a class="nav-link{{ request()->is('products') ? ' active' : ''  }}" href="{{ url('products') }}">Produk</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link{{ request()->is('schema') ? ' active' : ''  }}" href="{{ url('schema') }}">Cara Pemesanan</a>
+                        <a class="nav-link{{ request()->is('cara-pemesanan') ? ' active' : ''  }}" href="{{ url('cara-pemesanan') }}">Cara Pemesanan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link{{ request()->is('testimoni') ? ' active' : ''  }}" href="{{ url('testimoni') }}">Testimoni</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link{{ request()->is('about-us') ? ' active' : ''  }}" href="{{ url('about-us') }}">Tentang Kami</a>
+                        <a class="nav-link{{ request()->is('tentang-kami') ? ' active' : ''  }}" href="{{ url('tentang-kami') }}">Tentang Kami</a>
                     </li>
                 </ul>
 

@@ -12,16 +12,14 @@
           </ol>
         </nav>
     </div><!-- End Breadcrumbs -->
-  </div>
-</div>
 
-<div class="row">
-   <div class="container ">
-      
-    <div class="col-md-12 mb-4 py-4 px-5 bg-white">
-      
-    </div> 
-            
+    <!-- content -->
+    <div class="col-md-12 mb-4 ">
+			<div class="tentang-kami p-4 bg-white rounded-lg">
+				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam sit dolorem repellendus hic facere quasi provident excepturi itaque suscipit officiis! Sint reiciendis et illum sapiente facere sed quidem libero obcaecati!
+			</div>
+    </div>
+    <!-- end content -->
   </div>
 </div>
 @endsection

@@ -84,15 +84,15 @@ Route::get('/products/{kategori:slug}', 'ProductController@getMotorByCategory');
 Route::get('/', 'HomeController@index');
 
 // order
-Route::post('/pemesanan', 'OrderController@store');
+Route::post('/cara-pemesanan', 'OrderController@store');
 
 //Schema
-Route::get('/schema', function() {
+Route::get('/cara-pemesanan', function() {
 	return view('user.schema');
 });
 
 //About us
-Route::get('/about-us', 'AboutUsController@index');
+Route::get('/tentang-kami', 'AboutUsController@index');
 
 // Testimoni user
 Route::get('/testimoni', 'TestimoniController@gallery');
