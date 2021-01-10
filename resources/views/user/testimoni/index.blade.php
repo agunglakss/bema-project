@@ -16,7 +16,11 @@
     <!-- content -->
     <div class="col-md-12 mb-4 ">
 			<div class="tentang-kami p-4 bg-white rounded-lg">
-				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam sit dolorem repellendus hic facere quasi provident excepturi itaque suscipit officiis! Sint reiciendis et illum sapiente facere sed quidem libero obcaecati!
+				@forelse ($testimonials as $testimonial)
+        <img class="img-thumbnail img-testimonial mb-3" alt="{{ $testimonial->image }}" src="{{ asset('/storage/testimonial').'/'.$testimonial->image}}">
+        @empty
+        Testimoni belum ada.
+        @endforelse
 			</div>
     </div>
     <!-- end content -->

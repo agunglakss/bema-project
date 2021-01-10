@@ -12,7 +12,7 @@ class TestimoniController extends Controller
     {
         $title = "Daftar Testimonial";
 
-        $testimonials = Testimonial::paginate(5);
+        $testimonials = Testimonial::all();
         return view('admin.testimonial.index', compact('title', 'testimonials'));
     }
 

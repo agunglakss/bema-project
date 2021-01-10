@@ -629,3 +629,9 @@ img {
     text-decoration: none;
     color: var(--secondary-black);
 }
+
+.img-testimonial {
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+}
