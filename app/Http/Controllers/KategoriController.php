@@ -14,7 +14,7 @@ class KategoriController extends Controller
 
         $kategoriMotors = Kategori::orderBy('nama_Kategori')->paginate(5);
 
-        return view('admin.product.kategori.index', compact('title', 'kategoriMotors',));
+        return view('admin.product.kategori.index', compact('title', 'kategoriMotors'));
     }
 
     public function create()
