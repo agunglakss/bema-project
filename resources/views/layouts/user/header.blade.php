@@ -38,7 +38,7 @@
                     </li>
                 </ul>
 
-                <form class="form-search ml-auto" action="{{ url('/products/search') }}">
+                <form class="form-search ml-auto" action="{{ url_secure('/products/search') }}">
                     <div class="input-group">
                         <input class="form-control" name="motor" type="input" placeholder="Cari Motor Honda di sini" aria-label="Search">
                         <div class="input-group-append">
